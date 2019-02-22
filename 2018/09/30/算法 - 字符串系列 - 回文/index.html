@@ -1,45 +1,178 @@
-extends base
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="hexo,个人博客,blog">
+  <meta name="description" content="某某的个人博客">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+  
+  <link rel="dns-prefetch" href="https://widget.daovoice.io">
+  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
+  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  
+  
+  <link rel="dns-prefetch" href="https://hm.baidu.com/">
+  
+  
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://api.github.com">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com">
+  
+  <link rel="stylesheet" type="text/css" href="/./style/main.d9e3dd.css">
+	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<title>算法 - 字符串系列 - 回文</title>
+  
+  <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?awwssw1snsnsnn1ndndnndnd99j";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();
+  </script>
+  
+  
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
+  </script>
+  
+</head>
+<body>
+<canvas id="pattern-placeholder" height="230"></canvas>
+<div class="navbar-header">
+  <a class="blog-title" href="/">lbyte</a>
+  <a class="face-img" href="/">
+    <img src="https://tva3.sinaimg.cn/crop.0.0.200.200.180/005Kc3C1jw8f2uep0hhkvj305k05k3yk.jpg">
+  </a>
+</div>
+<main>
+  <div class="article-title">
+    
+  
+  <h1 class="title">
+    算法 - 字符串系列 - 回文
+  </h1>
+  
 
-block title
-  title= page.title + ' | ' + config.title
 
-block content
-  .post
-    h1.post-title= page.title
-    .post-meta
-      if theme.comment
-        include _partial/comment_count
-        +comment-count(page.path)
-      p
-        span.date= page.date.format(theme.date_formats.post)
-        if page.categories.length > 0
-          span
-            for category in page.categories.toArray()
-              a.category(href=url_for(category.path))= category.name 
-        if theme.busuanzi == true
-          span
-            i#busuanzi_container_page_pv
-              i#busuanzi_value_page_pv
-              i= '' + __('hits')
-    .post-content
-      != page.content
-    include _partial/tag
-    .post-share
-      include _partial/share
-    include _partial/post_nav
-    #comments
-      include _partial/comments
+    <ul class="article-info">
+      <li>
+        发布
+        <time datetime="2018-09-29T16:00:00.000Z" itemprop="datePublished">2018-09-30</time>
+      </li>
+      <li>
+        
+    更新 <time datetime="2019-02-21T15:43:22.907Z" itemprop="dateUpdated">2019-02-21</time>
 
-block tocmodel
-  if theme.toc.enable == true 
-    .widget(id='toc')
-      .widget-title
-        i(class='fa fa-fei')= __('contents')
-      != toc(page.content, {list_number: theme.toc.number})
+      </li>
+      <li id="busuanzi_container_page_pv">
+        阅读 <span id="busuanzi_value_page_pv"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="article">
+      <div class="content">
+        
+        <h4 id="【要求】"><a href="#【要求】" class="headerlink" title="【要求】"></a>【要求】</h4><p>一个字符串由许多的a和b组成，这个字符串的中间有一个字母X，怎么判断这个字符串是不是回文字符串？</p>
+<h3 id="一、用栈解决"><a href="#一、用栈解决" class="headerlink" title="一、用栈解决"></a>一、用栈解决</h3><p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(n)</p>
+<h4 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用栈解决 </span></span><br><span class="line"><span class="comment"> * 思路：创建一个栈，用来存放X左边的字符 </span></span><br><span class="line"><span class="comment"> *     遍历字符串，把每次遍历到的字符都压入栈中，直到遇到X停止</span></span><br><span class="line"><span class="comment"> *     然后继续遍历字符串（但不用压栈了），每遍历一个字符，栈中弹出一个字符，比较这两个字符是否相等</span></span><br><span class="line"><span class="comment"> *     如果相等，重复这个动作直到遍历完成，说明这是一个回文字符串 </span></span><br><span class="line"><span class="comment"> *     如果中途出现了不相等的情况，说明这不是回文字符串</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment"> *            字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 返回判断结果</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">	Stack&lt;Character&gt; leftToX = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">	<span class="comment">// 保存X的位置索引</span></span><br><span class="line">	<span class="keyword">int</span> indexOfX = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 遍历字符串，把每次遍历到的字符都压入栈中，直到遇到X停止</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (str.charAt(i) == <span class="string">'X'</span>) &#123;</span><br><span class="line">			indexOfX = i;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		leftToX.push(str.charAt(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 然后继续遍历字符串（但不用压栈了），每遍历一个字符，栈中弹出一个字符，比较这两个字符是否相等</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = indexOfX + <span class="number">1</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (leftToX.isEmpty()) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (leftToX.pop() != str.charAt(i)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!leftToX.isEmpty()) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="【测试】"><a href="#【测试】" class="headerlink" title="【测试】"></a>【测试】</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	String str1 = <span class="string">"ababababXbababa"</span>;</span><br><span class="line">	String str2 = <span class="string">"ababababXbabababa"</span>;</span><br><span class="line">	String str3 = <span class="string">"aaaababababXbababaaaa"</span>;</span><br><span class="line">	String str4 = <span class="string">"ababababababababXbabababa"</span>;</span><br><span class="line">	String str5 = <span class="string">"abaXbabababa"</span>;</span><br><span class="line">	String str6 = <span class="string">"baXab"</span>;</span><br><span class="line">	System.out.println(str1+<span class="string">" is Palindrome?"</span>+isPalindrome(str1));</span><br><span class="line">	System.out.println(str2+<span class="string">" is Palindrome?"</span>+isPalindrome(str2));</span><br><span class="line">	System.out.println(str3+<span class="string">" is Palindrome?"</span>+isPalindrome(str3));</span><br><span class="line">	System.out.println(str4+<span class="string">" is Palindrome?"</span>+isPalindrome(str4));</span><br><span class="line">	System.out.println(str5+<span class="string">" is Palindrome?"</span>+isPalindrome(str5));</span><br><span class="line">	System.out.println(str6+<span class="string">" is Palindrome?"</span>+isPalindrome(str6));</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ababababXbababa is Palindrome?false</span><br><span class="line">ababababXbabababa is Palindrome?true</span><br><span class="line">aaaababababXbababaaaa is Palindrome?false</span><br><span class="line">ababababababababXbabababa is Palindrome?false</span><br><span class="line">abaXbabababa is Palindrome?false</span><br><span class="line">baXab is Palindrome?true</span><br></pre></td></tr></table></figure>
+<h3 id="二、指针移动比对法"><a href="#二、指针移动比对法" class="headerlink" title="二、指针移动比对法"></a>二、指针移动比对法</h3><p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(1)</p>
+<h4 id="【代码】-1"><a href="#【代码】-1" class="headerlink" title="【代码】"></a>【代码】</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 指针移动法 </span></span><br><span class="line"><span class="comment"> * 思路：一个头指针从字符串头部开始出发，一个尾指针从字符串尾部开始出发</span></span><br><span class="line"><span class="comment"> *     两个指针每次都移动1步，比较它们所指向的字符是否相等，如果出现不相等说明字符串不是回文字符串</span></span><br><span class="line"><span class="comment"> *     如果一直都相等，直到两个指针在X处碰面，说明这个字符串是回文字符串</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment"> *            字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 返回判断结果</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPalindromeByPointer</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 头指针</span></span><br><span class="line">	<span class="keyword">int</span> head = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 尾指针</span></span><br><span class="line">	<span class="keyword">int</span> tail = str.length() - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (head &lt; tail) &#123;</span><br><span class="line">		<span class="keyword">if</span> (str.charAt(head) != str.charAt(tail)) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		head++;</span><br><span class="line">		tail--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="【测试】-1"><a href="#【测试】-1" class="headerlink" title="【测试】"></a>【测试】</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	String str1 = <span class="string">"ababababXbababa"</span>;</span><br><span class="line">	String str2 = <span class="string">"ababababXbabababa"</span>;</span><br><span class="line">	String str3 = <span class="string">"aaaababababXbababaaaa"</span>;</span><br><span class="line">	String str4 = <span class="string">"ababababababababXbabababa"</span>;</span><br><span class="line">	String str5 = <span class="string">"abaXbabababa"</span>;</span><br><span class="line">	String str6 = <span class="string">"baXab"</span>;</span><br><span class="line">	System.out.println(str1 + <span class="string">" is Palindrome?"</span> + isPalindromeByPointer(str1));</span><br><span class="line">	System.out.println(str2 + <span class="string">" is Palindrome?"</span> + isPalindromeByPointer(str2));</span><br><span class="line">	System.out.println(str3 + <span class="string">" is Palindrome?"</span> + isPalindromeByPointer(str3));</span><br><span class="line">	System.out.println(str4 + <span class="string">" is Palindrome?"</span> + isPalindromeByPointer(str4));</span><br><span class="line">	System.out.println(str5 + <span class="string">" is Palindrome?"</span> + isPalindromeByPointer(str5));</span><br><span class="line">	System.out.println(str6 + <span class="string">" is Palindrome?"</span> + isPalindromeByPointer(str6));</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="【运行效果】-1"><a href="#【运行效果】-1" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ababababXbababa is Palindrome?false</span><br><span class="line">ababababXbabababa is Palindrome?true</span><br><span class="line">aaaababababXbababaaaa is Palindrome?false</span><br><span class="line">ababababababababXbabababa is Palindrome?false</span><br><span class="line">abaXbabababa is Palindrome?false</span><br><span class="line">baXab is Palindrome?true</span><br></pre></td></tr></table></figure>
+      </div>
+        <div class="support-author">
+          <p>感谢您的阅读。 🙏
+          <a href="https://888.com/index.html" target="_blank">关于转载请看这里</a>
+            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
+          </p>
+        </div>
+        <!--
+            <div class="like ">
+              <div class="like-button">
+                <a id="like-note" href="">
+                  <i class="icon-heart"></i>喜欢
+                </a>
+              </div>
+              <span id="likes-count">256</span>
+            </div>
+        -->
+        <div class="otherLink">
+          <div class="previous">
+          </div>
+          <div class="next">
+          </div>
+        </div>
+        <div class="comments" id="comments">
+          
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+  const gitalk = new Gitalk({
+    clientID: '8888a8888',
+    clientSecret: '8888886666666',
+    repo: 'xxxx.github.io',
+    owner: 'admin',
+    admin: ['admin'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false
+  })
 
-block pageOnly
-  if theme.toc.enable == true 
-    script(type='text/javascript', src=url_for(theme.js) + '/toctotop.js' + '?v=' + theme.version, async)
-  else 
-    script(type='text/javascript', src=url_for(theme.js) + '/totop.js' + '?v=' + theme.version, async)
-  include _partial/comments_js
+  gitalk.render('comments');
+</script>
+
+
+        </div>
+      </div>
+    </div>
+   
+</main>
+<div class="footer">
+  <div class="info">
+    <p>
+    <a href="https://hexo.io"> Hexo </a> 强力驱动 |
+      <a href="https://github.com/Youthink/hexo-themes-yearn"> Yearn </a>
+      主题
+    </p>
+    <p>&copy;2013-2018 某某的博客 京ICP备xxxxxx号</p>
+  </div>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>//console
+  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
+  var canConsole = true;
+  var consoleInfo = (function(consoleConfig) {
+  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
+    return;
+  }
+  var consoleColor = '#6190e8';
+  var _console;
+  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
+  var textStyle = 'color: ' + consoleColor + ';';
+
+  consoleConfig.map(o => {
+    var num = (o.match(/%c/g) || []).length;
+    if(/^http(s)?:\/\//.test(o)) {
+      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
+      return;
+    }
+    if (num > 0) {
+      var logArguments = [];
+      for (var i = 0; i < num; i++) {
+        if (i % 2 === 0) {
+          logArguments.push(backgroundTextStyle);
+        } else {
+          logArguments.push(textStyle);
+        }
+      }
+      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
+      return;
+    }
+    console.log('%c' + o, textStyle);
+  });
+}(consoleConfig));</script><script type="text/javascript" src="/./js/main.d9e3dd.js"></script>
+
+</body>
+</html>
