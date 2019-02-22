@@ -1,156 +1,45 @@
+extends base
 
-<!DOCTYPE html>
-<html lang="zh-CN" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>算法 - 栈系列 - 只用一个栈实现栈自身的逆置 - lbyte</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
-    <meta name="keywords" content="lbyte,"> 
-    <meta name="description" content="喜欢的自然可以坚持长久,时间复杂度：O(n^2)
-空间复杂度：O(n)            用于栈开销
-【代码】12
-【运行效果】12
-"> 
-    <meta name="author" content="lbyte"> 
-    <link rel="alternative" href="atom.xml" title="lbyte" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <link rel="stylesheet" href="/css/diaspora.css">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({
-              google_ad_client: "ca-pub-8691406134231910",
-              enable_page_level_ads: true
-         });
-    </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-    </script>
-</head>
-</html>
-<body class="loading">
-    <span id="config-title" style="display:none">lbyte</span>
-    <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
-    <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">小项目 - 计算器</h3>
-    <div class="social">
-        <!--<div class="like-icon">-->
-            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-        <!--</div>-->
-        <div>
-            <div class="share">
-                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
-            </div>
-            <div id="qr"></div>
-        </div>
-    </div>
-    <div class="scrollbar"></div>
-</div>
+block title
+  title= page.title + ' | ' + config.title
 
-    <div class="section">
-        <div class="article">
-    <div class="main">
-        <h1 class="title">小项目 - 计算器</h1>
-        <div class="stuff">
-            <span>九月 25, 2018</span>
-            
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta
+      if theme.comment
+        include _partial/comment_count
+        +comment-count(page.path)
+      p
+        span.date= page.date.format(theme.date_formats.post)
+        if page.categories.length > 0
+          span
+            for category in page.categories.toArray()
+              a.category(href=url_for(category.path))= category.name 
+        if theme.busuanzi == true
+          span
+            i#busuanzi_container_page_pv
+              i#busuanzi_value_page_pv
+              i= '' + __('hits')
+    .post-content
+      != page.content
+    include _partial/tag
+    .post-share
+      include _partial/share
+    include _partial/post_nav
+    #comments
+      include _partial/comments
 
-        </div>
-        <div class="content markdown">
-            <h3 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * java实现计算器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> itis666</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Calc</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 表达式求值</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> resExp 原始中缀表达式</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回计算的结果</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> BigDecimal <span class="title">calc</span><span class="params">(String resExp)</span></span>&#123;</span><br><span class="line">		String[] exp = inExpToSuffixExp(resExp).split(<span class="string">","</span>);</span><br><span class="line">		<span class="comment">//定义一个存放操作数的栈</span></span><br><span class="line">		Stack&lt;String&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;exp.length;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!isOperator(exp[i]))&#123;</span><br><span class="line">				<span class="comment">//如果是操作数，压入操作栈</span></span><br><span class="line">				stack.push(exp[i]);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="comment">//如果是操作符，弹出栈中靠近栈顶的两个操作数</span></span><br><span class="line">				BigDecimal num2 = <span class="keyword">new</span> BigDecimal(stack.pop());</span><br><span class="line">				BigDecimal num1 = <span class="keyword">new</span> BigDecimal(stack.pop());</span><br><span class="line">				<span class="keyword">if</span>(<span class="string">"+"</span>.equals(exp[i]))&#123;</span><br><span class="line">					<span class="comment">//遇到+号，将两个操作数相加,然后将结果压栈</span></span><br><span class="line">					stack.push(<span class="string">""</span>+num1.add(num2));</span><br><span class="line">				&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"-"</span>.equals(exp[i]))&#123;</span><br><span class="line">					<span class="comment">//遇到-号，将两个操作数相减,然后将结果压栈</span></span><br><span class="line">					stack.push(<span class="string">""</span>+num1.subtract(num2));</span><br><span class="line">				&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"*"</span>.equals(exp[i]))&#123;</span><br><span class="line">					<span class="comment">//遇到*号，将两个操作数相乘,然后将结果压栈</span></span><br><span class="line">					stack.push(<span class="string">""</span>+num1.multiply(num2));</span><br><span class="line">				&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"/"</span>.equals(exp[i]))&#123;</span><br><span class="line">					<span class="comment">//遇到/号，将两个操作数相除,然后将结果压栈</span></span><br><span class="line">					stack.push(<span class="string">""</span>+num1.divide(num2));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//将最后的结果弹出并返回</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> BigDecimal(stack.pop());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 将中缀表达式转换成后缀表达式</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> resExp 原始输入的中缀表达式</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回后缀表达式</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">inExpToSuffixExp</span><span class="params">(String resExp)</span> </span>&#123;</span><br><span class="line">		String[] inExp = dealInExp(resExp).split(<span class="string">","</span>);</span><br><span class="line">		Stack&lt;String&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">		StringBuilder suffixExp = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">for</span> (String s : inExp) &#123;</span><br><span class="line">			<span class="keyword">if</span> (!isOperator(s)) &#123;</span><br><span class="line">				<span class="comment">// 遇到数字，直接输出</span></span><br><span class="line">				suffixExp.append(s + <span class="string">","</span>);</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"("</span>.equals(s)) &#123;</span><br><span class="line">				<span class="comment">// 遇到左括号,直接压栈</span></span><br><span class="line">				stack.push(s);</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">")"</span>.equals(s)) &#123;</span><br><span class="line">				<span class="comment">// 遇到右括号，将栈顶元素依次弹出，直至遇到左括号</span></span><br><span class="line">				<span class="keyword">while</span> (!<span class="string">"("</span>.equals(stack.get(stack.size() - <span class="number">1</span>))) &#123;</span><br><span class="line">					suffixExp.append(stack.pop() + <span class="string">","</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 弹出左括号但不输出</span></span><br><span class="line">				stack.pop();</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (isOperator(s)) &#123;</span><br><span class="line">				<span class="comment">// 遇到运算符,当前运算符优先级小于等于栈顶运算符优先级，将栈顶运算符弹出</span></span><br><span class="line">				<span class="comment">// 当前运算符继续和新的栈顶运算符比较...</span></span><br><span class="line">				<span class="keyword">while</span> (!stack.isEmpty() </span><br><span class="line">				  &amp;&amp;getPriority(s)&lt;=getPriority(stack.get(stack.size()-<span class="number">1</span>)))&#123;</span><br><span class="line">					suffixExp.append(stack.pop() + <span class="string">","</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				stack.push(s);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 最后,将栈内还没有弹出的运算符依次弹出</span></span><br><span class="line">		<span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">			suffixExp.append(stack.pop() + <span class="string">","</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 去除最后一个,号</span></span><br><span class="line">		suffixExp.delete(suffixExp.length() - <span class="number">1</span>, suffixExp.length());</span><br><span class="line">		<span class="keyword">return</span> suffixExp.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 预处理中缀表达式</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> inExp 原始中缀表达式</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回处理后的中缀表达式</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">dealInExp</span><span class="params">(String resExp)</span> </span>&#123;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; resExp.length(); i++) &#123;</span><br><span class="line">			String tmp = resExp.substring(i, i + <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span> (!isOperator(tmp)) &#123;</span><br><span class="line">				sb.append(tmp);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (sb.length() == <span class="number">0</span>) &#123;</span><br><span class="line">					sb.append(tmp + <span class="string">","</span>);</span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> (sb.charAt(sb.length() - <span class="number">1</span>) == <span class="string">','</span>) &#123;</span><br><span class="line">					sb.append(tmp + <span class="string">","</span>);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					sb.append(<span class="string">","</span> + tmp + <span class="string">","</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 判断是不是运算符</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> str 待判断的字符</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回判断结果</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isOperator</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"+-*/()"</span>.contains(str);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取运算符的优先级</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> operator 运算符</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回运算符的优先级</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getPriority</span><span class="params">(String operator)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"()+-*/"</span>.indexOf(operator)/<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		String resExp = sc.nextLine();</span><br><span class="line">		System.out.println(resExp+<span class="string">"="</span>+calc(resExp));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="【测试】"><a href="#【测试】" class="headerlink" title="【测试】"></a>【测试】</h3><h6 id="样例1："><a href="#样例1：" class="headerlink" title="样例1："></a>样例1：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：12+63*(10-6*23-6*6*9*526+(11*91-6/3))-66*(10+100/2-6*51)</span><br><span class="line">输出：12+63*(10-6*23-6*6*9*526+(11*91-6/3))-66*(10+100/2-6*51)=-10665591</span><br></pre></td></tr></table></figure>
-<h6 id="样例2："><a href="#样例2：" class="headerlink" title="样例2："></a>样例2：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：39.66*61.5+(20.61+52*6*(2.9+6.9*5))*3.5-8.1</span><br><span class="line">输出：39.66*61.5+(20.61+52*6*(2.9+6.9*5))*3.5-8.1=43343.925</span><br></pre></td></tr></table></figure>
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-                <source type="audio/mpeg" src>
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
-                    
-                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
-                    
-                </ul>
-            
-        </div>
-        
-    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+block tocmodel
+  if theme.toc.enable == true 
+    .widget(id='toc')
+      .widget-title
+        i(class='fa fa-fei')= __('contents')
+      != toc(page.content, {list_number: theme.toc.number})
 
-
-    </div>
-    
-</div>
-
-
-    </div>
-</div>
-</body>
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/diaspora.js"></script>
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-</html>
+block pageOnly
+  if theme.toc.enable == true 
+    script(type='text/javascript', src=url_for(theme.js) + '/toctotop.js' + '?v=' + theme.version, async)
+  else 
+    script(type='text/javascript', src=url_for(theme.js) + '/totop.js' + '?v=' + theme.version, async)
+  include _partial/comments_js
