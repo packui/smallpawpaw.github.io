@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="lbyte,个人博客,葛春林">
+  <meta name="description" content="葛春林个人博客">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+  
+  <link rel="dns-prefetch" href="https://widget.daovoice.io">
+  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
+  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  
+  
+  <link rel="dns-prefetch" href="https://hm.baidu.com/">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/./style/main.d9e3dd.css">
+	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<title>算法 - 栈系列 - 中缀表达式转后缀表达式</title>
+  
+  <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?awwssw1snsnsnn1ndndnndnd99j";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();
+  </script>
+  
+  
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
+  </script>
+  
+</head>
+<body>
+<canvas id="pattern-placeholder" height="230"></canvas>
+<div class="navbar-header">
+  <a class="blog-title" href="/">lbyte</a>
+  <a class="face-img" href="/">
+    <img src="https://tva3.sinaimg.cn/crop.0.0.200.200.180/005Kc3C1jw8f2uep0hhkvj305k05k3yk.jpg">
+  </a>
+</div>
+<main>
+  <div class="article-title">
+    
+  
+  <h1 class="title">
+    算法 - 栈系列 - 中缀表达式转后缀表达式
+  </h1>
+  
+
+
+    <ul class="article-info">
+      <li>
+        发布
+        <time datetime="2018-10-05T16:00:00.000Z" itemprop="datePublished">2018-10-06</time>
+      </li>
+      <li>
+        
+      </li>
+      <li id="busuanzi_container_page_pv">
+        阅读 <span id="busuanzi_value_page_pv"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="article">
+      <div class="content">
+        
+        <h3 id="一、什么是中缀表达式-amp-后缀表达式？"><a href="#一、什么是中缀表达式-amp-后缀表达式？" class="headerlink" title="一、什么是中缀表达式 &amp; 后缀表达式？"></a>一、什么是中缀表达式 &amp; 后缀表达式？</h3><p><strong>中缀表达式：</strong> 我们生活中使用的算术表达式其实就是中缀表达式<br><strong>举个例子：</strong>（1+6/3）*6 - 5</p>
+<p><strong>后缀表达式：</strong> 更有利于计算机进行计算的一种表达式，不再包含括号()，也不再考虑运算符优先级，一律从左到右进行计算<br><strong>举个例子：</strong> 1  2  +</p>
+<h3 id="二、怎么将中缀表达式转换成后缀表达式呢？"><a href="#二、怎么将中缀表达式转换成后缀表达式呢？" class="headerlink" title="二、怎么将中缀表达式转换成后缀表达式呢？"></a>二、怎么将中缀表达式转换成后缀表达式呢？</h3><p>利用栈结构来实现中缀表达式   -&gt;   后缀表达式</p>
+<p><strong>转换规则：</strong></p>
+<ul>
+<li>在中缀表达式中从左往右依次进行操作</li>
+<li>括号的优先级最低、其余运算符优先级与我们日常使用一致</li>
+<li>遇到数字，直接输出到后缀表达式中（不进行压栈）</li>
+<li>遇到左括号，将它压入栈中</li>
+<li>遇到右括号，将栈顶的运算符依次弹出并输出到后缀表达式中（直到遇到左括号停止，左括号只弹出不输出）</li>
+<li>遇到运算符，分两种情况处理<br>1、当前运算符优先级  &gt;  栈顶运算符优先级，进行压栈<br>2、当前运算符优先级  &lt;=  栈顶运算符优先级，将栈顶运算符弹出并输出到后缀表达式中，然后当前运算符继续和新的栈顶运算符进行优先级比较……直到当前运算符优先级 &gt; 栈顶运算符优先级停止</li>
+<li>如果已经到了中缀表达式的结束位置，中缀表达式处理完毕！</li>
+<li>最后，别忘了将栈中还没有弹出的运算符依次弹出并输出到后缀表达式中</li>
+</ul>
+<p><strong>举个例子：</strong></p>
+<p>中缀表达式：4+6<em>(5+3</em>9)-6</p>
+<p>下面通过 文字+图片 来详细说明整个转换过程是怎么进行的：</p>
+<p>（1）遇到 4，将 4 输出到后缀表达中<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\1.png" alt="在这里插入图片描述"></p>
+<p>（2）遇到 + ，将 + 压栈<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\2.png" alt="在这里插入图片描述"></p>
+<p>（3）遇到 6，将 6 输出到后缀表达中<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\3.png" alt="在这里插入图片描述"></p>
+<p>（4）遇到 <em> ，进行压栈（因为 </em> 的优先级大于当前栈顶的 + ）<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\4.png" alt="在这里插入图片描述"></p>
+<p>（5）遇到 ( ，直接压栈<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\5.png" alt="在这里插入图片描述"></p>
+<p>（6）遇到 5 ，将 5 输出到后缀表达中<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\6.png" alt="在这里插入图片描述"></p>
+<p>（7）遇到 + ，进行压栈<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\7.png" alt="在这里插入图片描述"></p>
+<p>（8）遇到 3 ，将 3 输出到后缀表达式中<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\8.png" alt="在这里插入图片描述"></p>
+<p>（9）遇到 * ，进行压栈<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\9.png" alt="在这里插入图片描述"></p>
+<p>（10）遇到 9 ，将 9 输出到后缀表达式中<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\10.png" alt="在这里插入图片描述"></p>
+<p>（11）遇到 ），依次弹出栈顶运算符，直到遇到左括号<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\11.png" alt="在这里插入图片描述"></p>
+<p>（12）遇到 - ，栈顶运算符 <em> 优先级更大，所以将 </em>  弹出并输出，<br>新栈顶运算符为 + ，同级，所以将 + 弹出并输出，<br>最后将 - 压栈<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\12.png" alt="在这里插入图片描述"></p>
+<p>（13）遇到 6 ，将 6 输出到后缀表达式中<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\13.png" alt="在这里插入图片描述"></p>
+<p>（14）中缀表达式已经到了末尾！最后将栈中还没有弹出的运算符依次弹出并输出<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\14.png" alt="在这里插入图片描述"></p>
+<p>（15）转换完毕！</p>
+<p><strong>后缀表达式：</strong>  4 6 5 3 9 <em> + </em> + 6 -</p>
+<p>其实总结起来就是一个核心的思想：因为表达式的计算中，高优先级的要先运算，低优先级的后运算，所以，我们的每一步转换过程其实都是在将高优先级的先添加到后缀表达式中，因为后续后缀表达式的计算将直接从左到右运算，不再考虑运算符的优先级。</p>
+<h3 id="三、那么计算机是怎么计算后缀表达式的值呢？"><a href="#三、那么计算机是怎么计算后缀表达式的值呢？" class="headerlink" title="三、那么计算机是怎么计算后缀表达式的值呢？"></a>三、那么计算机是怎么计算后缀表达式的值呢？</h3><p>中缀表达式：4+6<em>(5+3</em>9)-6=190</p>
+<p>下面演示后缀表达式是如何运算的：<br>4 6 5 3 9 <em> + </em> + 6 -<br><img src="算法 - 栈系列 - 中缀表达式转后缀表达式\15.png" alt="在这里插入图片描述"></p>
+<p>我们发现，结果也是190，与中缀表达式计算的结果是一致的，也验证了我们的转换是没有问题的！</p>
+<h3 id="四、代码实现"><a href="#四、代码实现" class="headerlink" title="四、代码实现"></a>四、代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 中缀表达式 -&gt; 后缀表达式</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InfixToSuffix</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 将中缀表达式转换成后缀表达式</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> resExp 原始输入的中缀表达式</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回后缀表达式</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">inExpToSuffixExp</span><span class="params">(String resExp)</span> </span>&#123;</span><br><span class="line">		String[] inExp = dealInExp(resExp).split(<span class="string">","</span>);</span><br><span class="line">		Stack&lt;String&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">		StringBuilder suffixExp = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">for</span> (String s : inExp) &#123;</span><br><span class="line">			<span class="keyword">if</span> (!isOperator(s)) &#123;</span><br><span class="line">				<span class="comment">// 遇到数字，直接输出</span></span><br><span class="line">				suffixExp.append(s + <span class="string">","</span>);</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"("</span>.equals(s)) &#123;</span><br><span class="line">				<span class="comment">// 遇到左括号,直接压栈</span></span><br><span class="line">				stack.push(s);</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">")"</span>.equals(s)) &#123;</span><br><span class="line">				<span class="comment">// 遇到右括号，将栈顶元素依次弹出，直至遇到左括号</span></span><br><span class="line">				<span class="keyword">while</span> (!<span class="string">"("</span>.equals(stack.get(stack.size() - <span class="number">1</span>))) &#123;</span><br><span class="line">					suffixExp.append(stack.pop() + <span class="string">","</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// 弹出左括号但不输出</span></span><br><span class="line">				stack.pop();</span><br><span class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (isOperator(s)) &#123;</span><br><span class="line">				<span class="comment">// 遇到运算符,当前运算符优先级小于等于栈顶运算符优先级，将栈顶运算符弹出</span></span><br><span class="line">				<span class="comment">// 当前运算符继续和新的栈顶运算符比较...</span></span><br><span class="line">				<span class="keyword">while</span> (!stack.isEmpty() </span><br><span class="line">				&amp;&amp;getPriority(s) &lt;= getPriority(stack.get(stack.size()-<span class="number">1</span>)))&#123;</span><br><span class="line">					suffixExp.append(stack.pop() + <span class="string">","</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				stack.push(s);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 最后,将栈内还没有弹出的运算符依次弹出</span></span><br><span class="line">		<span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">			suffixExp.append(stack.pop() + <span class="string">","</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 去除最后一个,号</span></span><br><span class="line">		suffixExp.delete(suffixExp.length() - <span class="number">1</span>, suffixExp.length());</span><br><span class="line">		<span class="keyword">return</span> suffixExp.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 预处理中缀表达式</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> inExp 原始中缀表达式</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回处理后的中缀表达式</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> String <span class="title">dealInExp</span><span class="params">(String resExp)</span> </span>&#123;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; resExp.length(); i++) &#123;</span><br><span class="line">			String tmp = resExp.substring(i, i + <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span> (!isOperator(tmp)) &#123;</span><br><span class="line">				sb.append(tmp);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (sb.length() == <span class="number">0</span>) &#123;</span><br><span class="line">					sb.append(tmp + <span class="string">","</span>);</span><br><span class="line">				&#125; <span class="keyword">else</span> <span class="keyword">if</span> (sb.charAt(sb.length() - <span class="number">1</span>) == <span class="string">','</span>) &#123;</span><br><span class="line">					sb.append(tmp + <span class="string">","</span>);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					sb.append(<span class="string">","</span> + tmp + <span class="string">","</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 判断是不是运算符</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> str 待判断的字符</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回判断结果</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isOperator</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"+-*/()"</span>.contains(str);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取运算符的优先级</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> operator 运算符</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回运算符的优先级</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getPriority</span><span class="params">(String operator)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"()+-*/"</span>.indexOf(operator)/<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		String resExp = sc.nextLine();</span><br><span class="line">		System.out.println(<span class="string">"后缀表达式:"</span>+inExpToSuffixExp(resExp));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="五、测试"><a href="#五、测试" class="headerlink" title="五、测试"></a>五、测试</h3><h6 id="样例1："><a href="#样例1：" class="headerlink" title="样例1："></a>样例1：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">66.623*6.5+(20.61+53*69*(2.6+6.9*5))*3.9-6.6</span><br><span class="line">后缀表达式:66.623,6.5,*,20.61,53,69,*,2.6,6.9,5,*,+,*,+,3.9,*,+,6.6,-</span><br></pre></td></tr></table></figure>
+<h6 id="样例2："><a href="#样例2：" class="headerlink" title="样例2："></a>样例2：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">((6*10-62*9)*6+(56-9*66))*6-5</span><br><span class="line">后缀表达式:6,10,*,62,9,*,-,6,*,56,9,66,*,-,+,6,*,5,-</span><br></pre></td></tr></table></figure>
+      </div>
+        <div class="support-author">
+          <p>感谢您的阅读。 🙏
+          <a href="https://888.com/index.html" target="_blank">关于转载请看这里</a>
+            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
+          </p>
+        </div>
+        <!--
+            <div class="like ">
+              <div class="like-button">
+                <a id="like-note" href="">
+                  <i class="icon-heart"></i>喜欢
+                </a>
+              </div>
+              <span id="likes-count">256</span>
+            </div>
+        -->
+        <div class="otherLink">
+          <div class="previous">
+          </div>
+          <div class="next">
+          </div>
+        </div>
+        <div class="comments" id="comments">
+          
+
+        </div>
+      </div>
+    </div>
+   
+</main>
+<div class="footer">
+  <div class="info">
+    <p>
+    <a href="https://hexo.io"> Hexo </a> 强力驱动 |
+      <a href="https://github.com/Youthink/hexo-themes-yearn"> Yearn </a>
+      主题
+    </p>
+    <p>&copy;2018-2019 葛春林个人博客 lbyte-lin</p>
+  </div>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>//console
+  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
+  var canConsole = false;
+  var consoleInfo = (function(consoleConfig) {
+  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
+    return;
+  }
+  var consoleColor = '#6190e8';
+  var _console;
+  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
+  var textStyle = 'color: ' + consoleColor + ';';
+
+  consoleConfig.map(o => {
+    var num = (o.match(/%c/g) || []).length;
+    if(/^http(s)?:\/\//.test(o)) {
+      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
+      return;
+    }
+    if (num > 0) {
+      var logArguments = [];
+      for (var i = 0; i < num; i++) {
+        if (i % 2 === 0) {
+          logArguments.push(backgroundTextStyle);
+        } else {
+          logArguments.push(textStyle);
+        }
+      }
+      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
+      return;
+    }
+    console.log('%c' + o, textStyle);
+  });
+}(consoleConfig));</script><script type="text/javascript" src="/./js/main.d9e3dd.js"></script>
+
+</body>
+</html>

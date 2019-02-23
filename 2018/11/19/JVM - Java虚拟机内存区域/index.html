@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="lbyte,个人博客,葛春林">
+  <meta name="description" content="葛春林个人博客">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+  
+  <link rel="dns-prefetch" href="https://widget.daovoice.io">
+  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
+  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  
+  
+  <link rel="dns-prefetch" href="https://hm.baidu.com/">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/./style/main.d9e3dd.css">
+	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<title>JVM - Java虚拟机内存区域</title>
+  
+  <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?awwssw1snsnsnn1ndndnndnd99j";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();
+  </script>
+  
+  
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
+  </script>
+  
+</head>
+<body>
+<canvas id="pattern-placeholder" height="230"></canvas>
+<div class="navbar-header">
+  <a class="blog-title" href="/">lbyte</a>
+  <a class="face-img" href="/">
+    <img src="https://tva3.sinaimg.cn/crop.0.0.200.200.180/005Kc3C1jw8f2uep0hhkvj305k05k3yk.jpg">
+  </a>
+</div>
+<main>
+  <div class="article-title">
+    
+  
+  <h1 class="title">
+    JVM - Java虚拟机内存区域
+  </h1>
+  
+
+
+    <ul class="article-info">
+      <li>
+        发布
+        <time datetime="2018-11-18T16:00:00.000Z" itemprop="datePublished">2018-11-19</time>
+      </li>
+      <li>
+        
+      </li>
+      <li id="busuanzi_container_page_pv">
+        阅读 <span id="busuanzi_value_page_pv"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="article">
+      <div class="content">
+        
+        <h3 id="一、为什么要学习JVM？"><a href="#一、为什么要学习JVM？" class="headerlink" title="一、为什么要学习JVM？"></a>一、为什么要学习JVM？</h3><p>​    正式进入JVM之前，读者应该要想一下，我们为什么要学习JVM？Java把内存管理机制交给了Java虚拟机，意味着Java程序员不需要像C程序员一样构造对象后必须配对出现delete或free代码来实现内存释放，但是随之也带来了问题，如果我们的程序出现了内存泄露和溢出问题，而此时Java程序员又不懂JVM，那程序的排错工作就变得非常棘手了，所以Java程序员掌握JVM还是很重要的！</p>
+<h3 id="二、JVM的内存结构"><a href="#二、JVM的内存结构" class="headerlink" title="二、JVM的内存结构"></a>二、JVM的内存结构</h3><p>​    我们知道Java程序是由Java虚拟机来执行的，Java虚拟机在执行程序时，把它管理的内存分成了多个不同的区域，这些区域各司其职、有各自的生命周期、也有各自的隔离属性。</p>
+<p><img src="JVM - Java虚拟机内存区域\1.jpg" alt="1"></p>
+<h4 id="1、程序计数器"><a href="#1、程序计数器" class="headerlink" title="1、程序计数器"></a>1、程序计数器</h4><p>​    程序计数器，简单来说，它的作用其实就是记录下字节码执行到哪里了，相当于一个行号指示器。</p>
+<p>​    Java虚拟机中的多线程在执行的时候采用的是时间片轮询的机制，在某个时刻，一个CPU只会执行一个线程的指令，假设当前正在执行线程A，当线程A的时间片用完了，CPU会重新调度，线程B获取到了CPU执行权，那么，就需要线程A的程序计数器就会记录下线程A的正在执行的指令的地址值，当下一次线程A获取到CPU执行权就接着这个地址继续向下执行，保证逻辑都能顺利被执行完成。其实所有的线程都是这样的，都需要有各自的程序计数器来记录自己执行的指令的地址值，所以程序计数器还必须是线程私有的。当线程正在执行的是Java代码时，程序计数器记录的就是字节码的指令地址值；当线程正在执行的是本地方法时，程序计数器记录的是空值。</p>
+<p>​    这也是Java虚拟机运行时数据区中唯一一个没有OOM异常的区域。</p>
+<h4 id="2、虚拟机栈"><a href="#2、虚拟机栈" class="headerlink" title="2、虚拟机栈"></a>2、虚拟机栈</h4><p>​    虚拟机栈描述的其实就是Java方法执行的内存模型，所以是线程私有的，每个方法在执行的时候都会创建一个方法栈帧，这个栈帧用来存放局部变量表、操作数栈、动态链接、方法出口等信息。</p>
+<p>​    调用Java方法对应着方法栈帧的入栈，Java方法执行完毕对应着方法栈帧的出栈，所以虚拟机栈的生命周期和线程的生命周期是一样的。</p>
+<p>​    其中局部变量表存放的是编译期可以确定的所有数据类型，包括：基本数据类型、对象引用、returnAddress类型，所以局部变量表所需的内存空间在编译期就可以完全确定下来，在运行其局部变量表的内存也就不会再发生变化了。</p>
+<p>基本数据类型：byte、short、char、int、long、float、double、boolean</p>
+<p>对象引用：指向真实对象的引用类型，一般来说分为直接指针、句柄地址</p>
+<p>returnAddress：指向了一条字节码指令的地址</p>
+<p>​    在虚拟机规范中，虚拟机栈规定了两种异常</p>
+<p>（1）StackoverflowError：当线程请求的栈的深度大于虚拟机栈所能支持的最大深度，就会抛出该异常</p>
+<p>（2）OutOfMemoryError：当虚拟机进行动态扩展时，无法再申请到足够的内存空间，就会抛出该异常</p>
+<h4 id="3、本地方法栈"><a href="#3、本地方法栈" class="headerlink" title="3、本地方法栈"></a>3、本地方法栈</h4><p>​    本地方法栈描述的其实就是native方法执行的内存模型，所以是线程私有的，而且虚拟机规范并没有明确规定native方法必须使用的语言、方式和数据结构，所以各个虚拟机产品可以自由实现。在HotSpot虚拟机中本地方法栈和虚拟机栈合二为一</p>
+<p>​    在虚拟机规范中，虚拟机栈规定了两种异常</p>
+<p>（1）StackoverflowError：当线程请求的栈的深度大于虚拟机栈所能支持的最大深度，就会抛出该异常</p>
+<p>（2）OutOfMemoryError：当虚拟机进行动态扩展时，无法再申请到足够的内存空间，就会抛出该异常</p>
+<h4 id="4、堆"><a href="#4、堆" class="headerlink" title="4、堆"></a>4、堆</h4><p>​    Java堆是Java虚拟机管理的内存最大的一块区域，是线程共享的，堆的唯一作用其实就是用来存放对象实例，在Java虚拟机启动的时候，就会被创建，几乎所有的对象实例都在这里分配，随着JIT编译器、逃逸分析技术的发展，对象实例可能会在栈上分配、标量替换。</p>
+<p>​    Java堆可以在物理位置不连续，但是逻辑上要保持连续，在具体实现时，可以实现成固定大小的，也可以实现成可扩展的，可扩展的Java堆是通过-Xms和-Xmx来控制的。</p>
+<p>​    也是因为几乎所有的对象实例都在这里分配，所以Java堆是垃圾收集器管理的主要区域，也被称为GC堆，它有两种常见的划分方式：</p>
+<p>（1）从内存回收角度来看，为了更好的进行内存回收，可以将Java堆细分为年轻代和老年代，其中年轻代还可以进一步细分为Eden区、From Survivor区、To Survivor区。因为现在的垃圾收集器基本都是采用分代收集算法，采用这种分代存放的方式可以更方便的进行垃圾回收。</p>
+<p><img src="JVM - Java虚拟机内存区域\2.jpg" alt="2"></p>
+<p>（2）从内存分配的角度来看，为了更快的完成内存分配，可以将Java堆分成多个线程私有的分配缓冲区TLAB</p>
+<p>​    在虚拟机规范中，虚拟机栈规定了一种异常</p>
+<p>（1）OutOfMemoryError：如果在Java堆中没有内存完成实例分配，也无法进行动态扩展时，就会抛出该异常</p>
+<h4 id="5、方法区"><a href="#5、方法区" class="headerlink" title="5、方法区"></a>5、方法区</h4><p>​    方法区是线程共享的区域，用来存放已经被虚拟机加载完成的类信息、常量、静态变量、JIT编译器编译的代码，在逻辑上属于堆的逻辑部分。不需要连续的物理内存、可以设置成固定大小也可以设置成可扩展模式，还可以选择不实现垃圾收集，因为垃圾收集行为在方法区当中比较少出现，一般来说，这个区域的垃圾回收目标主要是常量池的回收、类型的卸载。</p>
+<p>​    在HotSpot虚拟机中，GC分代收集扩展到了方法区，通常又被称为永久代，也就是说使用了永久代来实现了方法区，可以实现堆内存回收代码的复用，也即可以像管理Java堆一样管理方法区，但是其它虚拟机不存在永久代一说。但其实使用永久代来实现方法区存在弊端，会导致更容易发生内存溢出问题，因为永久代会受-XX:MaxPermSize的值约束，当永久代使用的内存超过这个值，就会产生内存溢出问题，反之，没有使用永久代来实现方法区的话，只要使用的内存没有达到进程可用内存的上限，就不会产生内存溢出问题。除此之外，还会因为这个原因导致某些方法在不同的虚拟机上产生不同的表现。</p>
+<p>​    因为使用永久代实现方法区存在这些问题，所以JDK之后，字符串常量池已经从方法区中移出了，放到了堆内存当中。</p>
+<p>​    方法区中还包括运行时常量池，运行时常量池主要用来存放编译期生成的各种字面量、符号引用、翻译出来的直接引用，Java虚拟机规范没有对它做任何细节上的要求，不同的虚拟机产品可以根据自身的需要来定制实现这个内存区域。此外，Java语言并不要求常量只能在编译期产生，也不是必须预置入Class文件中的常量池内存才能进入方法区，例如String类的intern()方法就可以在运行期间将心的常量放入常量池中。</p>
+<p>​    在虚拟机规范中，虚拟机栈规定了一种异常</p>
+<p>（1）OutOfMemoryError：当方法区无法满足内存分配的需要或者常量池无法再申请到内存时，就会抛出该异常</p>
+
+      </div>
+        <div class="support-author">
+          <p>感谢您的阅读。 🙏
+          <a href="https://888.com/index.html" target="_blank">关于转载请看这里</a>
+            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
+          </p>
+        </div>
+        <!--
+            <div class="like ">
+              <div class="like-button">
+                <a id="like-note" href="">
+                  <i class="icon-heart"></i>喜欢
+                </a>
+              </div>
+              <span id="likes-count">256</span>
+            </div>
+        -->
+        <div class="otherLink">
+          <div class="previous">
+          </div>
+          <div class="next">
+          </div>
+        </div>
+        <div class="comments" id="comments">
+          
+
+        </div>
+      </div>
+    </div>
+   
+</main>
+<div class="footer">
+  <div class="info">
+    <p>
+    <a href="https://hexo.io"> Hexo </a> 强力驱动 |
+      <a href="https://github.com/Youthink/hexo-themes-yearn"> Yearn </a>
+      主题
+    </p>
+    <p>&copy;2018-2019 葛春林个人博客 lbyte-lin</p>
+  </div>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>//console
+  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
+  var canConsole = false;
+  var consoleInfo = (function(consoleConfig) {
+  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
+    return;
+  }
+  var consoleColor = '#6190e8';
+  var _console;
+  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
+  var textStyle = 'color: ' + consoleColor + ';';
+
+  consoleConfig.map(o => {
+    var num = (o.match(/%c/g) || []).length;
+    if(/^http(s)?:\/\//.test(o)) {
+      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
+      return;
+    }
+    if (num > 0) {
+      var logArguments = [];
+      for (var i = 0; i < num; i++) {
+        if (i % 2 === 0) {
+          logArguments.push(backgroundTextStyle);
+        } else {
+          logArguments.push(textStyle);
+        }
+      }
+      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
+      return;
+    }
+    console.log('%c' + o, textStyle);
+  });
+}(consoleConfig));</script><script type="text/javascript" src="/./js/main.d9e3dd.js"></script>
+
+</body>
+</html>
