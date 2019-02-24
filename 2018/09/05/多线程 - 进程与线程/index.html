@@ -1,155 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="keywords" content="lbyte,个人博客,葛春林">
-  <meta name="description" content="葛春林个人博客">
-  <meta http-equiv="x-dns-prefetch-control" content="on">
-  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
-  
-  <link rel="dns-prefetch" href="https://widget.daovoice.io">
-  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
-  <link rel="dns-prefetch" href="https://im.daovoice.io">
-  
-  
-  <link rel="dns-prefetch" href="https://hm.baidu.com/">
-  
-  
-  <link rel="stylesheet" type="text/css" href="/./style/main.d9e3dd.css">
-	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-	<title>多线程 - 进程与线程</title>
-  
-  <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?awwssw1snsnsnn1ndndnndnd99j";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();
-  </script>
-  
-  
-    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
-  </script>
-  
-</head>
-<body>
-<canvas id="pattern-placeholder" height="230"></canvas>
-<div class="navbar-header">
-  <a class="blog-title" href="/">lbyte</a>
-  <a class="face-img" href="/">
-    <img src="https://tva3.sinaimg.cn/crop.0.0.200.200.180/005Kc3C1jw8f2uep0hhkvj305k05k3yk.jpg">
-  </a>
-</div>
-<main>
-  <div class="article-title">
-    
-  
-  <h1 class="title">
-    多线程 - 进程与线程
-  </h1>
-  
+extends base
 
+block title
+  title= page.title + ' | ' + config.title
 
-    <ul class="article-info">
-      <li>
-        发布
-        <time datetime="2018-09-04T16:00:00.000Z" itemprop="datePublished">2018-09-05</time>
-      </li>
-      <li>
-        
-      </li>
-      <li id="busuanzi_container_page_pv">
-        阅读 <span id="busuanzi_value_page_pv"></span>
-      </li>
-    </ul>
-  </div>
-  <div class="container">
-    <div class="article">
-      <div class="content">
-        
-        <h3 id="进程与线程概念"><a href="#进程与线程概念" class="headerlink" title="进程与线程概念"></a>进程与线程概念</h3><p><strong>进程：</strong> 进程是系统进行资源分配和调度的基本单位，操作系统在分配资源时是分配给进程的，一个进程至少包含一个线程，进程中的多个线程可以共享进程资源，通常我们启动一个应用程序就启动了进程，可以看作是应用级别的概念。<br>例如：我们启动电脑管家应用程序就会在后台启动一个进程。</p>
-<p><strong>线程：</strong> 线程本身不能独立存在，它是进程中的一个执行路径，也就是进程中的一个实体，操作系统分配资源时有个特殊的资源CPU是分配给线程的，因为真正占用CPU的是线程，线程之间在轮流占用CPU，所以，线程又是CPU分配的基本单位，可以看作是功能级别的概念。<br>例如：我们使用电脑管家的垃圾清理功能，同时又使用电脑管家的杀毒功能，那么其实就相应的启动了垃圾清理的线程、杀毒的线程。</p>
-<h3 id="进程与线程的内存结构"><a href="#进程与线程的内存结构" class="headerlink" title="进程与线程的内存结构"></a>进程与线程的内存结构</h3><p><img src="多线程 - 进程与线程\1.png" alt="1"></p>
-<p><strong>堆：</strong> 进程中最大的一块内存，在进程创建时分配的区域，存放着new构建的对象实例，可以被进程中所有线程共享。</p>
-<p><strong>方法区：</strong> 存放着Java虚拟机加载的类、常量、 静态变量等信息，也可以被进程中所有线程共享。</p>
-<p><strong>程序计数器：</strong> 即PC计数器，是线程中的一小块内存区域，用来记录线程当前要执行的指令的地址，是线程私有的，因为线程是CPU分配的基本单位，线程之间在轮流占用CPU，每当本次CPU占用的时间片用完之后，当前线程就要让出CPU的执行权，那么就在这个时候，程序计数器就要记录让出CPU时当前线程执行到哪了，等到下一次线程被重新分配到CPU时，接着这个地方继续向下执行。<br>备注：如果执行的是native方法，那么程序计数器记录的是undefined的地址；如果执行的是java代码，程序计数器记录的便是要执行的指令地址。</p>
-<p><strong>栈：</strong> 每个线程都有自己的栈区域，它存放着当前线程的局部变量、线程的调用栈帧，也是线程私有的。</p>
-<p>启动线程的正确打开方式是调用start方法，而且调用start方法，线程并不会立即启动，这只是一个启动的标志，就像在告诉系统我已经万事俱备了，就差你给我CPU的执行机会！我就可以真正启动了！</p>
+block content
+  .post
+    h1.post-title= page.title
+    .post-meta= page.date.format('ll')
+      if page.categories.length > 0
+        span= ' | '
+        span.category
+          for category in page.categories.toArray()
+            a(href=url_for(category.path))= category.name
+      if theme.busuanzi == true
+        script(src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js', async)
+        span#busuanzi_container_page_pv= ' | '
+          span#busuanzi_value_page_pv
+          span= ' ' + __('Hits')
+      if theme.wordcount == true
+        include _partial/wordcount.pug
+    if theme.disqus
+      a.disqus-comment-count(data-disqus-identifier=page.path, href=url_for(page.path) + '#disqus_thread')
+    if theme.changyan
+      a.ds-thread-count(href=url_for(page.path) + '#SOHUCS')
+        span#changyan_count_unit(style='font-size: 15px; color: #6E7173;') 0
+        span= ' ' + __('Comment')
+      script(src='https://assets.changyan.sohu.com/upload/plugins/plugins.count.js', async)
+    if theme.valine.enable
+      a.disqus-comment-count( href=url_for(page.path) + '#vcomment')
+        span.valine-comment-count(data-xid=url_for(page.path))
+        span= ' ' + __('Comment')
+    if page.toc
+      div(class='clear')
+        div(id='toc' class='toc-article')
+          div(class='toc-title')= __('contents')
+          != toc(page.content, {list_number: theme.toc_number})
+    .post-content
+      != page.content
+    if theme.donate.enable == true
+      iframe(src='/donate/?AliPayQR=' + theme.donate.alipay_qr + '&WeChatQR=' + theme.donate.wechat_qr + '&GitHub=' + theme.donate.github + '&BTCQR=' + theme.donate.btc_qr + '&BTCKEY='+ theme.donate.btc_key + '&PayPal=' + theme.donate.paypal_url, style='overflow-x:hidden; overflow-y:hidden; border:0xp none #fff; min-height:240px; width:100%;', frameborder='0', scrolling='no')
 
-      </div>
-        <div class="support-author">
-          <p>感谢您的阅读。 🙏
-          <a href="https://888.com/index.html" target="_blank">关于转载请看这里</a>
-            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
-          </p>
-        </div>
-        <!--
-            <div class="like ">
-              <div class="like-button">
-                <a id="like-note" href="">
-                  <i class="icon-heart"></i>喜欢
-                </a>
-              </div>
-              <span id="likes-count">256</span>
-            </div>
-        -->
-        <div class="otherLink">
-          <div class="previous">
-          </div>
-          <div class="next">
-          </div>
-        </div>
-        <div class="comments" id="comments">
-          
+    if theme.post_copyright.enable == true && page.copyright != false
+      div
+        ul.post-copyright
+          li.post-copyright-author
+            strong= __('copyright_author_prefix')
+            = theme.post_copyright.author
+          li.post-copyright-link
+            strong= __('copyright_link_prefix')
+            a(href='/' + page.path)= page.permalink
+          li.post-copyright-license
+            strong= __('copyright_declare_prefix')
+            if theme.post_copyright.copyright_text
+              != theme.post_copyright.copyright_text
+            else
+              != __('copyright_default_text')
+      br
 
-        </div>
-      </div>
-    </div>
-   
-</main>
-<div class="footer">
-  <div class="info">
-    <p>
-    <a href="https://hexo.io"> Hexo </a> 强力驱动 |
-      <a href="https://github.com/Youthink/hexo-themes-yearn"> Yearn </a>
-      主题
-    </p>
-    <p>&copy;2018-2019 葛春林个人博客 lbyte-lin</p>
-  </div>
-</div>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    if theme.shareto == true
+      script(type='text/javascript', src=url_for(theme.js) + '/share.js' + '?v=' + theme.version, async)
+      a.article-share-link(data-url=page.permalink, data-id=page._id, data-qrcode=qrcode(page.permalink))= __('shareto')
 
-<script>//console
-  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
-  var canConsole = false;
-  var consoleInfo = (function(consoleConfig) {
-  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
-    return;
-  }
-  var consoleColor = '#6190e8';
-  var _console;
-  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
-  var textStyle = 'color: ' + consoleColor + ';';
+    include _partial/tag.pug
+    include _partial/post_nav.pug
 
-  consoleConfig.map(o => {
-    var num = (o.match(/%c/g) || []).length;
-    if(/^http(s)?:\/\//.test(o)) {
-      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
-      return;
-    }
-    if (num > 0) {
-      var logArguments = [];
-      for (var i = 0; i < num; i++) {
-        if (i % 2 === 0) {
-          logArguments.push(backgroundTextStyle);
-        } else {
-          logArguments.push(textStyle);
-        }
-      }
-      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
-      return;
-    }
-    console.log('%c' + o, textStyle);
-  });
-}(consoleConfig));</script><script type="text/javascript" src="/./js/main.d9e3dd.js"></script>
-
-</body>
-</html>
+    if page.comments
+      include _partial/comments.pug
