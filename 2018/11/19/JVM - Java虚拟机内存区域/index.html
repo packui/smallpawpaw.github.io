@@ -20,13 +20,13 @@
 <meta property="og:site_name" content="lbyte">
 <meta property="og:description" content="文章主要讲解Java虚拟机内存的各个区域，旨在帮助读者快速了解Java虚拟机的内存区域">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/11/19/JVM%20-%20Java虚拟机内存区域/JVM%20-%20Java虚拟机内存区域/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2018/11/19/JVM%20-%20Java虚拟机内存区域/JVM%20-%20Java虚拟机内存区域/2.jpg">
-<meta property="og:updated_time" content="2019-02-23T02:29:46.292Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/19/JVM%20-%20Java虚拟机内存区域/JVM运行时数据区.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/11/19/JVM%20-%20Java虚拟机内存区域/堆.jpg">
+<meta property="og:updated_time" content="2019-02-24T11:42:32.567Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM - Java虚拟机内存区域">
 <meta name="twitter:description" content="文章主要讲解Java虚拟机内存的各个区域，旨在帮助读者快速了解Java虚拟机的内存区域">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/19/JVM%20-%20Java虚拟机内存区域/JVM%20-%20Java虚拟机内存区域/1.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/19/JVM%20-%20Java虚拟机内存区域/JVM运行时数据区.jpg">
   
     <link rel="alternate" href="/atom.xml" title="lbyte" type="application/atom+xml">
   
@@ -93,8 +93,8 @@
     <div class="article-content article-content-doorframe" itemprop="articleBody">
       
         <h3 id="一、为什么要学习JVM？"><a href="#一、为什么要学习JVM？" class="headerlink" title="一、为什么要学习JVM？"></a>一、为什么要学习JVM？</h3><p>​    正式进入JVM之前，读者应该要想一下，我们为什么要学习JVM？Java把内存管理机制交给了Java虚拟机，意味着Java程序员不需要像C程序员一样构造对象后必须配对出现delete或free代码来实现内存释放，但是随之也带来了问题，如果我们的程序出现了内存泄露和溢出问题，而此时Java程序员又不懂JVM，那程序的排错工作就变得非常棘手了，所以Java程序员掌握JVM还是很重要的！</p>
-<h3 id="二、JVM的内存结构"><a href="#二、JVM的内存结构" class="headerlink" title="二、JVM的内存结构"></a>二、JVM的内存结构</h3><p>​    我们知道Java程序是由Java虚拟机来执行的，Java虚拟机在执行程序时，把它管理的内存分成了多个不同的区域，这些区域各司其职、有各自的生命周期、也有各自的隔离属性。</p>
-<p><img src="JVM - Java虚拟机内存区域\1.jpg" alt="1"></p>
+<h3 id="二、JVM的内存结构"><a href="#二、JVM的内存结构" class="headerlink" title="二、JVM的内存结构"></a>二、JVM的内存结构</h3><p>​    我们知道Java程序是由Java虚拟机来执行的，Java虚拟机在执行程序时，把它管理的内存分成了多个不同的区域，这些区域各司其职、有各自的生命周期、也有各自的隔离属性。<a id="more"></a></p>
+<p><img src="/2018/11/19/JVM - Java虚拟机内存区域/JVM运行时数据区.jpg" alt="JVM运行时数据区"></p>
 <h4 id="1、程序计数器"><a href="#1、程序计数器" class="headerlink" title="1、程序计数器"></a>1、程序计数器</h4><p>​    程序计数器，简单来说，它的作用其实就是记录下字节码执行到哪里了，相当于一个行号指示器。</p>
 <p>​    Java虚拟机中的多线程在执行的时候采用的是时间片轮询的机制，在某个时刻，一个CPU只会执行一个线程的指令，假设当前正在执行线程A，当线程A的时间片用完了，CPU会重新调度，线程B获取到了CPU执行权，那么，就需要线程A的程序计数器就会记录下线程A的正在执行的指令的地址值，当下一次线程A获取到CPU执行权就接着这个地址继续向下执行，保证逻辑都能顺利被执行完成。其实所有的线程都是这样的，都需要有各自的程序计数器来记录自己执行的指令的地址值，所以程序计数器还必须是线程私有的。当线程正在执行的是Java代码时，程序计数器记录的就是字节码的指令地址值；当线程正在执行的是本地方法时，程序计数器记录的是空值。</p>
 <p>​    这也是Java虚拟机运行时数据区中唯一一个没有OOM异常的区域。</p>
@@ -115,7 +115,7 @@
 <p>​    Java堆可以在物理位置不连续，但是逻辑上要保持连续，在具体实现时，可以实现成固定大小的，也可以实现成可扩展的，可扩展的Java堆是通过-Xms和-Xmx来控制的。</p>
 <p>​    也是因为几乎所有的对象实例都在这里分配，所以Java堆是垃圾收集器管理的主要区域，也被称为GC堆，它有两种常见的划分方式：</p>
 <p>（1）从内存回收角度来看，为了更好的进行内存回收，可以将Java堆细分为年轻代和老年代，其中年轻代还可以进一步细分为Eden区、From Survivor区、To Survivor区。因为现在的垃圾收集器基本都是采用分代收集算法，采用这种分代存放的方式可以更方便的进行垃圾回收。</p>
-<p><img src="JVM - Java虚拟机内存区域\2.jpg" alt="2"></p>
+<p><img src="/2018/11/19/JVM - Java虚拟机内存区域/堆.jpg" alt="堆"></p>
 <p>（2）从内存分配的角度来看，为了更快的完成内存分配，可以将Java堆分成多个线程私有的分配缓冲区TLAB</p>
 <p>​    在虚拟机规范中，虚拟机栈规定了一种异常</p>
 <p>（1）OutOfMemoryError：如果在Java堆中没有内存完成实例分配，也无法进行动态扩展时，就会抛出该异常</p>
