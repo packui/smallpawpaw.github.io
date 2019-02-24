@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="lbyte,个人博客,葛春林">
+  <meta name="description" content="葛春林个人博客">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+  
+  <link rel="dns-prefetch" href="https://widget.daovoice.io">
+  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
+  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  
+  
+  <link rel="dns-prefetch" href="https://hm.baidu.com/">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/./style/main.d9e3dd.css">
+	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<title>计算机基础</title>
+  
+  <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?awwssw1snsnsnn1ndndnndnd99j";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();
+  </script>
+  
+  
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
+  </script>
+  
+</head>
+<body>
+<canvas id="pattern-placeholder" height="230"></canvas>
+<div class="navbar-header">
+  <a class="blog-title" href="/">lbyte</a>
+  <a class="face-img" href="/">
+    <img src="https://tva3.sinaimg.cn/crop.0.0.200.200.180/005Kc3C1jw8f2uep0hhkvj305k05k3yk.jpg">
+  </a>
+</div>
+<main>
+  <div class="article-title">
+    
+  
+  <h1 class="title">
+    计算机基础
+  </h1>
+  
+
+
+    <ul class="article-info">
+      <li>
+        发布
+        <time datetime="2018-04-09T16:00:00.000Z" itemprop="datePublished">2018-04-10</time>
+      </li>
+      <li>
+        
+      </li>
+      <li id="busuanzi_container_page_pv">
+        阅读 <span id="busuanzi_value_page_pv"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="article">
+      <div class="content">
+        
+        <h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><h3 id="一、通识"><a href="#一、通识" class="headerlink" title="一、通识"></a>一、通识</h3><h5 id="1、将任意一个十进制数转换成任意进制"><a href="#1、将任意一个十进制数转换成任意进制" class="headerlink" title="1、将任意一个十进制数转换成任意进制"></a>1、将任意一个十进制数转换成任意进制</h5><p>例如：将十进制数 13 转换成 3进制 表示形式？<br>13%3=1（最低位）    13/3=4<br>4%3=1            4/3=1<br>1%3=1（最高位）    1/3=0    结束<br>答案是：111</p>
+<h3 id="二、操作系统"><a href="#二、操作系统" class="headerlink" title="二、操作系统"></a>二、操作系统</h3><h5 id="1、32位和64位"><a href="#1、32位和64位" class="headerlink" title="1、32位和64位"></a>1、32位和64位</h5><p>是指进程的逻辑内存的寻址空间的大小，32位的操作系统每个进程都会有2^32大小（4G）的寻址空间可以使用，但不意味着直接把这4G给这些进程</p>
+<h5 id="2、进程和线程"><a href="#2、进程和线程" class="headerlink" title="2、进程和线程"></a>2、进程和线程</h5><p>内存结构不同：<br>进程在操作系统里面是有明显的边界的，它们相互独立，不能共享内存；而线程是程序的多个顺序的流动态执行，没有独立的地址空间和内存，不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制，线程与线程是可以共享内存的；<br>通信上存在不同：<br>进程之间的内存是独立的，所以必须通过特定的通信方式进行，常见的通信方式是使用TCP/IP的端口来实现；<br>而线程之间通信是很方便的，只需要指针一指，指向相应的内存空间既可以实现通信。<br>开销上存在差异：<br>进程需要分配比较大的内存空间，进程里面的内存指的是逻辑内存，每个进程里面可以有很多线程在运行，所以开销比较大；而线程只需要分配栈和PC就可以了，开销比较小。</p>
+<p>虽然系统资源调度和分配最终进CPU的是某个线程，但是考虑这个线程的时候还需要考虑其所在的进程是怎样的，所以线程不是独立单位<br>文件/网络句柄是所有进程都可以使用的，所有进程都可以打开同一个文件，也可以抢同一个网络端口</p>
+<h5 id="3、进程为什么不能共享内存？"><a href="#3、进程为什么不能共享内存？" class="headerlink" title="3、进程为什么不能共享内存？"></a>3、进程为什么不能共享内存？</h5><p>因为进程在操作系统中是有明显的边界的，不同的应用程序需要分配不同的内存，考虑到用户信息和软件的安全性问题，进程是不能共享内存的，假设一个网上银行在运行，如果进程的内存被共享，意味着用户的相关信息是可以被别的进程获取到，这是很危险的，所以进程之间不能共享内存。</p>
+<h5 id="4、存储"><a href="#4、存储" class="headerlink" title="4、存储"></a>4、存储</h5><p>操作系统中的存储是结构化的，包括硬盘、内存、缓存、寄存器，速度由慢到快，价格也是从便宜到贵，放在内存的东西访问速度是很快的，比如谷歌搜索为什么快，因为谷歌把存储大部分信息都放在了内存里，少部分访问量小的存放在硬盘里，基于内存的搜索是很快的</p>
+<h5 id="5、寻址空间"><a href="#5、寻址空间" class="headerlink" title="5、寻址空间"></a>5、寻址空间</h5><p>寻址空间是内存独立的，每个进程都有自己的寻址空间，这个寻址空间的大小和物理内存没有关系，只和操作系统的位数有关系，可能是32位也可能是64位的逻辑内存的大小。<br>32位  -&gt;  4G<br>64位  -&gt;  过大，暂时不考虑<br>64位JVM：意味着Java程序可以使用的内存很大，当把一个32位系统下的程序迁移到64位上时，我们不要更改代码，只          需要重新编译一下就可以了<br>例如：int n = *p;  -&gt; 编译成汇编： MOV EAX,[EBX]，也就是把EBX寄存器里的地址指向的数据读出来，放在EAX寄                                             存器里面，然后编译器会记住n对应的是EAX，p对应的是EBX<br>指针p指向的不是物理内存，而是一个逻辑内存，也就是寻址空间，接下来，系统会将这个逻辑地址和物理内存进行对应，因为逻辑内存比较大，我们对应的地址有可能在物理内存里，也有可能不在物理内存里，如果在，我们直接把相应的数据取出来就可以了，如果不在，则在虚拟内存里面，接下来，就需要把虚拟内存里的数据放到物理内存里面，这个过程不是说直接把p指向的那块内存放到物理内存去，而是把p指向所在的那个分页放过去，这个分页可能几K，也可能几M，如果物理内存可以放得下，则直接放进去就可以了，如果放不下，系统会把物理内存里很久没有使用的东西交换进虚拟内存里，交换完成后，p指向的部分就进入了物理内存，也就确保了p所指向的数据在物理内存里了，接下来只需把这部分数据取出来放到EAX寄存器里面就好了。</p>
+<p>一个运行良好的系统或者程序里面，绝大部分数据都已经在物理内存里面，这样就会很快，但是如果物理内存使用量过多的话，就会发生频繁的分页，系统性能就会变得很慢。</p>
+<h5 id="6、信号量和互斥锁"><a href="#6、信号量和互斥锁" class="headerlink" title="6、信号量和互斥锁"></a>6、信号量和互斥锁</h5><p>信号量又称为信号灯，它是用来协调不同进程间的数据对象的，而最主要的应用是共享内存方式的进程间通信。本质上，信号量是一个计数器，它用来记录对某个资源（如共享内存）的存取状况。<br>互斥体禁止多个线程同时进入受保护的代码“临界区”（critical section）。因此，在任意时刻，只有一个线程被允许进入这样的代码保护区。<br>对于互斥锁，如果资源已经被占用，资源申请者只能进入睡眠状态。但是自旋锁不会引起调用者睡眠，如果自旋锁已经被别的执行单元保持，调用者就一直循环在那里看是否该自旋锁的保持者已经释放了锁，”自旋”一词就是因此而得名。</p>
+
+      </div>
+        <div class="support-author">
+          <p>感谢您的阅读。 🙏
+          <a href="https://888.com/index.html" target="_blank">关于转载请看这里</a>
+            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
+          </p>
+        </div>
+        <!--
+            <div class="like ">
+              <div class="like-button">
+                <a id="like-note" href="">
+                  <i class="icon-heart"></i>喜欢
+                </a>
+              </div>
+              <span id="likes-count">256</span>
+            </div>
+        -->
+        <div class="otherLink">
+          <div class="previous">
+          </div>
+          <div class="next">
+          </div>
+        </div>
+        <div class="comments" id="comments">
+          
+
+        </div>
+      </div>
+    </div>
+   
+</main>
+<div class="footer">
+  <div class="info">
+    <p>
+    <a href="https://hexo.io"> Hexo </a> 强力驱动 |
+      <a href="https://github.com/Youthink/hexo-themes-yearn"> Yearn </a>
+      主题
+    </p>
+    <p>&copy;2018-2019 葛春林个人博客 lbyte-lin</p>
+  </div>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>//console
+  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
+  var canConsole = false;
+  var consoleInfo = (function(consoleConfig) {
+  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
+    return;
+  }
+  var consoleColor = '#6190e8';
+  var _console;
+  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
+  var textStyle = 'color: ' + consoleColor + ';';
+
+  consoleConfig.map(o => {
+    var num = (o.match(/%c/g) || []).length;
+    if(/^http(s)?:\/\//.test(o)) {
+      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
+      return;
+    }
+    if (num > 0) {
+      var logArguments = [];
+      for (var i = 0; i < num; i++) {
+        if (i % 2 === 0) {
+          logArguments.push(backgroundTextStyle);
+        } else {
+          logArguments.push(textStyle);
+        }
+      }
+      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
+      return;
+    }
+    console.log('%c' + o, textStyle);
+  });
+}(consoleConfig));</script><script type="text/javascript" src="/./js/main.d9e3dd.js"></script>
+
+</body>
+</html>
