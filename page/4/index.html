@@ -54,21 +54,21 @@
       <div id="middlecontent" title class="global-width sidebar-right">
         <section id="main">
   
-    <article id="post-算法 - 排序系列 - 归并排序" class="article global-container article-type-post" itemscope itemprop="blogPost">
+    <article id="post-算法 - 统计字符串中各个字符出现的次数" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
       
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/29/算法 - 排序系列 - 归并排序/">算法 - 排序系列 - 归并排序</a>
+      <a class="article-title" href="/2018/08/13/算法 - 统计字符串中各个字符出现的次数/">算法 - 统计字符串中各个字符出现的次数</a>
     </h1>
   
 
     </header>
   
   <div class="article-meta">
-    <a href="/2018/06/29/算法 - 排序系列 - 归并排序/" class="article-date">
-  <time datetime="2018-06-28T16:00:00.000Z" itemprop="datePublished">2018-06-29</time>
+    <a href="/2018/08/13/算法 - 统计字符串中各个字符出现的次数/" class="article-date">
+  <time datetime="2018-08-12T16:00:00.000Z" itemprop="datePublished">2018-08-13</time>
 </a>
     
   <div class="article-category">
@@ -83,9 +83,93 @@
     
     <div class="article-content article-content-doorframe" itemprop="articleBody">
       
-        <h4 id="【图解】"><a href="#【图解】" class="headerlink" title="【图解】"></a>【图解】</h4><p><img src="/2018/06/29/算法 - 排序系列 - 归并排序/归并排序.png" alt="归并排序"></p>
-<h3 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 归并排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		sortProcess(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 归并排序的过程</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sortProcess</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (L == R) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> mid = L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		<span class="comment">// 把左边排好序</span></span><br><span class="line">		sortProcess(arr, L, mid);</span><br><span class="line">		<span class="comment">// 把右边排好序</span></span><br><span class="line">		sortProcess(arr, mid + <span class="number">1</span>, R);</span><br><span class="line">		<span class="comment">// 利用辅助数组做到整体有序</span></span><br><span class="line">		merge(arr, L, R);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 利用辅助数组将左右有序片段进行归并的过程</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] help = <span class="keyword">new</span> <span class="keyword">int</span>[R - L + <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> mid = L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		<span class="comment">// 辅助数组的索引</span></span><br><span class="line">		<span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">// 左侧移动的指针</span></span><br><span class="line">		<span class="keyword">int</span> left = L;</span><br><span class="line">		<span class="comment">// 右侧移动的指针</span></span><br><span class="line">		<span class="keyword">int</span> right = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt;= mid &amp;&amp; right &lt;= R) &#123;</span><br><span class="line">			help[index++] = arr[left] &lt; arr[right] ? arr[left++] : arr[right++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 左右两侧有一方到了最后</span></span><br><span class="line">		<span class="keyword">while</span> (left &lt;= mid) &#123;</span><br><span class="line">			help[index++] = arr[left++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (right &lt;= R) &#123;</span><br><span class="line">			help[index++] = arr[right++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 将排好序的辅助数组复制到原数组</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; help.length; i++) &#123;</span><br><span class="line">			arr[L + i] = help[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123; <span class="number">10</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">12</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">12</span>, <span class="number">56</span>, <span class="number">30</span>, <span class="number">1</span>, <span class="number">25</span>, <span class="number">9</span>, -<span class="number">10</span>, -<span class="number">5</span>, <span class="number">6</span>, <span class="number">0</span> &#125;;</span><br><span class="line">		mergeSort(arr);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> a : arr) &#123;</span><br><span class="line">			System.out.print(a + <span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+        <h4 id="代码"><a href="#代码" class="headerlink" title="[代码]"></a>[代码]</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountWord</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 1、获取需要被统计的字符串</span></span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入一个字符串："</span>);</span><br><span class="line">		String str = sc.nextLine();</span><br><span class="line">		<span class="comment">// 2、将字符串转换成字符数组</span></span><br><span class="line">		<span class="keyword">char</span>[] word = str.toCharArray();</span><br><span class="line">		<span class="comment">// 3、定义一个HashMap集合用于存储字符、字符出现的次数</span></span><br><span class="line">		HashMap&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		<span class="comment">// 4、遍历字符数组并判断集合中是否存在该字符</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">char</span> c : word) &#123;</span><br><span class="line">			<span class="comment">// 5、如果集合不包含该字符，则将该字符作为键存储在集合中，对应的值存储为1、如果集合包含该字符，则对应的值+1</span></span><br><span class="line">			map.put(c, map.containsKey(c) ? map.get(c) + <span class="number">1</span> : <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 6、遍历集合打印每个字符出现的次数</span></span><br><span class="line">		<span class="keyword">for</span> (Character key : map.keySet()) &#123;</span><br><span class="line">			System.out.println(key + <span class="string">"总共出现了："</span> + map.get(key) + <span class="string">"次"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">请输入一个字符串：</span><br><span class="line">bh,jsbv.blyscdghklgcsyugvkasgl</span><br><span class="line">g总共出现了：4次</span><br><span class="line">d总共出现了：1次</span><br><span class="line">b总共出现了：3次</span><br><span class="line">c总共出现了：2次</span><br><span class="line">a总共出现了：1次</span><br><span class="line">l总共出现了：3次</span><br><span class="line">j总共出现了：1次</span><br><span class="line">.总共出现了：1次</span><br><span class="line">k总共出现了：2次</span><br><span class="line">h总共出现了：2次</span><br><span class="line">,总共出现了：1次</span><br><span class="line">v总共出现了：2次</span><br><span class="line">u总共出现了：1次</span><br><span class="line">s总共出现了：4次</span><br><span class="line">y总共出现了：2次</span><br></pre></td></tr></table></figure></div>
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
 
+  
+    <article id="post-算法 - 排序系列 - 冒泡排序" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/22/算法 - 排序系列 - 冒泡排序/">算法 - 排序系列 - 冒泡排序</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2018/07/22/算法 - 排序系列 - 冒泡排序/" class="article-date">
+  <time datetime="2018-07-21T16:00:00.000Z" itemprop="datePublished">2018-07-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h3 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h3><p>相邻元素两两进行比较，如果前面的大于后面的，则将它们交换，否则不交换。每一对元素都进行同样的操作，每次都可以将当次最大的元素冒到最后面，从而整体有序。</p>
+<h3 id="二、图解"><a href="#二、图解" class="headerlink" title="二、图解"></a>二、图解</h3><p><img src="/2018/07/22/算法 - 排序系列 - 冒泡排序/1.png" alt="1"></p>
+<h3 id="三、代码实现"><a href="#三、代码实现" class="headerlink" title="三、代码实现"></a>三、代码实现</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 冒泡排序</span></span><br><span class="line"><span class="comment"> * 时间复杂度O(N^2)，空间复杂度O(1)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSort</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubblesort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr==<span class="keyword">null</span>||arr.length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//每次确定当次的最大值，把它冒到当次的最后位置上</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> end=arr.length-<span class="number">1</span>;end&gt;<span class="number">0</span>;end--)&#123;</span><br><span class="line">			<span class="comment">//在未完成排序的区间内,前后元素两两比较</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;end;j++)&#123;				</span><br><span class="line">				<span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">					swap(arr,j,j+<span class="number">1</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">		arr[i] = arr[i] ^ arr[j];</span><br><span class="line">		arr[j] = arr[i] ^ arr[j];</span><br><span class="line">		arr[i] = arr[i] ^ arr[j];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123;<span class="number">10</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">12</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">56</span>,<span class="number">30</span>,<span class="number">1</span>,<span class="number">25</span>,<span class="number">9</span>,-<span class="number">10</span>,-<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>&#125;;</span><br><span class="line">		bubblesort(arr);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a:arr)&#123;</span><br><span class="line">			System.out.print(a+<span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-10 -5 0 1 1 6 6 6 9 9 10 12 12 25 30 56</span><br></pre></td></tr></table></figure></div>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-算法 - 最大公约数最小公倍数" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/10/算法 - 最大公约数最小公倍数/">算法 - 最大公约数最小公倍数</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2018/07/10/算法 - 最大公约数最小公倍数/" class="article-date">
+  <time datetime="2018-07-09T16:00:00.000Z" itemprop="datePublished">2018-07-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h4 id="思路"><a href="#思路" class="headerlink" title="[思路]"></a>[思路]</h4><p>1、最大公约数：使用辗转相除法（也叫欧几里德算法）</p>
+<p>2、最小公倍数：最小公倍数 = 两数乘积 / 最大公约数</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="[代码]"></a>[代码]</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 最大公约数和最小公倍数问题：</span></span><br><span class="line"><span class="comment"> * 输入两个正整数a、b，求其最大公约数和最小公倍数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GCDAndLCM</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a, b;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请依次输入两个正整数："</span>);</span><br><span class="line">		a = sc.nextInt();</span><br><span class="line">		b = sc.nextInt();</span><br><span class="line">		<span class="keyword">if</span> (sc != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">// 关闭键盘录入对象</span></span><br><span class="line">			sc.close();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(a + <span class="string">"和"</span> + b + <span class="string">"的最大公约数是："</span> + getGCD(a, b));</span><br><span class="line">		System.out.println(a + <span class="string">"和"</span> + b + <span class="string">"的最小公倍数是："</span> + getLCM(a, b));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取两个正整数的最大公约数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> a 第1个正整数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> b 第2个正整数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回两个正整数的最大公约数</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getGCD</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 使用辗转相除法（也叫欧几里德算法）</span></span><br><span class="line">		<span class="keyword">int</span> temp = a % b;</span><br><span class="line">		<span class="keyword">while</span> (temp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			a = b;</span><br><span class="line">			b = temp;</span><br><span class="line">			temp = a % b;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> b;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取两个正整数的最小公倍数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> a 第1个正整数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> b 第2个正整数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回两个正整数的最小公倍数</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getLCM</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 最小公倍数 = 两数乘积 / 最大公约数</span></span><br><span class="line">		<span class="keyword">return</span> (a * b) / getGCD(a, b);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">请依次输入两个正整数：</span><br><span class="line">10 30</span><br><span class="line">10和30的最大公约数是：10</span><br><span class="line">10和30的最小公倍数是：30</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -126,6 +210,47 @@
       
         <h4 id="【图解】"><a href="#【图解】" class="headerlink" title="【图解】"></a>【图解】</h4><p><img src="/2018/06/29/算法 - 排序系列 - 堆排序/堆排序.png" alt="堆排序"></p>
 <h3 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 堆排序</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapinsert</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">			heapinsert(arr,i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapinsert</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> cur)</span></span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(cur&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[cur]&gt;arr[(cur-<span class="number">1</span>)/<span class="number">2</span>])&#123;</span><br><span class="line">				swap(arr,cur,(cur-<span class="number">1</span>)/<span class="number">2</span>);</span><br><span class="line">				cur = (cur-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp = arr[i];</span><br><span class="line">		arr[i] = arr[j];</span><br><span class="line">		arr[j]  =temp;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapify</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> cur,<span class="keyword">int</span> heapSize)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">2</span>*cur+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(left&lt;=heapSize)&#123;</span><br><span class="line">			<span class="keyword">int</span> maxIndex = left+<span class="number">1</span>&lt;=heapSize?</span><br><span class="line">							arr[left+<span class="number">1</span>]&gt;arr[left]?left+<span class="number">1</span>:left</span><br><span class="line">							:left;</span><br><span class="line">			maxIndex = arr[maxIndex]&gt;arr[cur]?maxIndex:cur;</span><br><span class="line">			<span class="keyword">if</span>(maxIndex==cur)&#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			swap(arr,cur,maxIndex);</span><br><span class="line">			cur = maxIndex;</span><br><span class="line">			left = <span class="number">2</span>*cur+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapsort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr==<span class="keyword">null</span> || arr.length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//排序前先将数组变成大根堆结构</span></span><br><span class="line">		heapinsert(arr);</span><br><span class="line">		<span class="keyword">int</span> heapSize = arr.length-<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(heapSize&gt;<span class="number">0</span>)&#123;</span><br><span class="line">			swap(arr,<span class="number">0</span>,heapSize);</span><br><span class="line">			heapSize--;</span><br><span class="line">			heapify(arr,<span class="number">0</span>,heapSize);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123;<span class="number">1</span>,<span class="number">50</span>,<span class="number">10</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">20</span>,<span class="number">0</span>,-<span class="number">5</span>,-<span class="number">5</span>,-<span class="number">3</span>,-<span class="number">10</span>&#125;;</span><br><span class="line">		heapsort(arr);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a:arr)&#123;</span><br><span class="line">			System.out.print(a+<span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
+    <article id="post-算法 - 排序系列 - 归并排序" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/29/算法 - 排序系列 - 归并排序/">算法 - 排序系列 - 归并排序</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2018/06/29/算法 - 排序系列 - 归并排序/" class="article-date">
+  <time datetime="2018-06-28T16:00:00.000Z" itemprop="datePublished">2018-06-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+    
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h4 id="【图解】"><a href="#【图解】" class="headerlink" title="【图解】"></a>【图解】</h4><p><img src="/2018/06/29/算法 - 排序系列 - 归并排序/归并排序.png" alt="归并排序"></p>
+<h3 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MergeSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 归并排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		sortProcess(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 归并排序的过程</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sortProcess</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (L == R) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> mid = L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		<span class="comment">// 把左边排好序</span></span><br><span class="line">		sortProcess(arr, L, mid);</span><br><span class="line">		<span class="comment">// 把右边排好序</span></span><br><span class="line">		sortProcess(arr, mid + <span class="number">1</span>, R);</span><br><span class="line">		<span class="comment">// 利用辅助数组做到整体有序</span></span><br><span class="line">		merge(arr, L, R);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 利用辅助数组将左右有序片段进行归并的过程</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] help = <span class="keyword">new</span> <span class="keyword">int</span>[R - L + <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> mid = L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		<span class="comment">// 辅助数组的索引</span></span><br><span class="line">		<span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">// 左侧移动的指针</span></span><br><span class="line">		<span class="keyword">int</span> left = L;</span><br><span class="line">		<span class="comment">// 右侧移动的指针</span></span><br><span class="line">		<span class="keyword">int</span> right = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt;= mid &amp;&amp; right &lt;= R) &#123;</span><br><span class="line">			help[index++] = arr[left] &lt; arr[right] ? arr[left++] : arr[right++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 左右两侧有一方到了最后</span></span><br><span class="line">		<span class="keyword">while</span> (left &lt;= mid) &#123;</span><br><span class="line">			help[index++] = arr[left++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (right &lt;= R) &#123;</span><br><span class="line">			help[index++] = arr[right++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 将排好序的辅助数组复制到原数组</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; help.length; i++) &#123;</span><br><span class="line">			arr[L + i] = help[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123; <span class="number">10</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">12</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">12</span>, <span class="number">56</span>, <span class="number">30</span>, <span class="number">1</span>, <span class="number">25</span>, <span class="number">9</span>, -<span class="number">10</span>, -<span class="number">5</span>, <span class="number">6</span>, <span class="number">0</span> &#125;;</span><br><span class="line">		mergeSort(arr);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> a : arr) &#123;</span><br><span class="line">			System.out.print(a + <span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
       
     </div>
@@ -350,171 +475,11 @@
 </article>
 
   
-    <article id="post-JSP - 自定义标签" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/20/JSP - 自定义标签/">JSP - 自定义标签</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2018/05/20/JSP - 自定义标签/" class="article-date">
-  <time datetime="2018-05-19T16:00:00.000Z" itemprop="datePublished">2018-05-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/jsp/">jsp</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
-      
-        <h3 id="一、编写自定义标签类"><a href="#一、编写自定义标签类" class="headerlink" title="一、编写自定义标签类"></a>一、编写自定义标签类</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTag</span> <span class="keyword">extends</span> <span class="title">TagSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">doStartTag</span><span class="params">()</span> <span class="keyword">throws</span> JspException </span>&#123;</span><br><span class="line">  	JspWriter out = <span class="keyword">super</span>.pageContext.getOut();</span><br><span class="line">  	<span class="comment">//.........</span></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        out.print(<span class="string">"&lt;span&gt;自定义标签输出的内容&lt;span&gt;"</span>);</span><br><span class="line">        out.print(<span class="string">"&lt;h3&gt;自定义标签输出的标题&lt;h3&gt;"</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">super</span>.doStartTag();</span><br><span class="line">			<span class="comment">//.....</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h3 id="二、编写tld描述文件"><a href="#二、编写tld描述文件" class="headerlink" title="二、编写tld描述文件"></a>二、编写tld描述文件</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE taglib</span></span><br><span class="line"><span class="meta">  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"</span></span><br><span class="line"><span class="meta">  "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">taglib</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tlib-version</span>&gt;</span>2.0<span class="tag">&lt;/<span class="name">tlib-version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">jsp-version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">jsp-version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">short-name</span>&gt;</span>myTag<span class="tag">&lt;/<span class="name">short-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">uri</span>&gt;</span>http://itheima/myTag/<span class="tag">&lt;/<span class="name">uri</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tag</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>out<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tag-class</span>&gt;</span>com.itheima.crm.utils.MyTag<span class="tag">&lt;/<span class="name">tag-class</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">body-content</span>&gt;</span>JSP<span class="tag">&lt;/<span class="name">body-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tag</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">taglib</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="三、使用自定义标签，页面引入"><a href="#三、使用自定义标签，页面引入" class="headerlink" title="三、使用自定义标签，页面引入"></a>三、使用自定义标签，页面引入</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">"myTag"</span> uri=<span class="string">"http://itheima/myTag/"</span>%&gt;</span><br><span class="line">&lt;myTag:out&gt;&lt;/myTag:out&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-计算机基础" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/10/计算机基础/">计算机基础</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2018/04/10/计算机基础/" class="article-date">
-  <time datetime="2018-04-09T16:00:00.000Z" itemprop="datePublished">2018-04-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/计算机/">计算机</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
-      
-        <h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><h3 id="一、通识"><a href="#一、通识" class="headerlink" title="一、通识"></a>一、通识</h3><h5 id="1、将任意一个十进制数转换成任意进制"><a href="#1、将任意一个十进制数转换成任意进制" class="headerlink" title="1、将任意一个十进制数转换成任意进制"></a>1、将任意一个十进制数转换成任意进制</h5><p>例如：将十进制数 13 转换成 3进制 表示形式？<br>13%3=1（最低位）    13/3=4<br>4%3=1            4/3=1<br>1%3=1（最高位）    1/3=0    结束<br>答案是：111</p>
-<h3 id="二、操作系统"><a href="#二、操作系统" class="headerlink" title="二、操作系统"></a>二、操作系统</h3><h5 id="1、32位和64位"><a href="#1、32位和64位" class="headerlink" title="1、32位和64位"></a>1、32位和64位</h5><p>是指进程的逻辑内存的寻址空间的大小，32位的操作系统每个进程都会有2^32大小（4G）的寻址空间可以使用，但不意味着直接把这4G给这些进程</p>
-<h5 id="2、进程和线程"><a href="#2、进程和线程" class="headerlink" title="2、进程和线程"></a>2、进程和线程</h5><p>内存结构不同：<br>进程在操作系统里面是有明显的边界的，它们相互独立，不能共享内存；而线程是程序的多个顺序的流动态执行，没有独立的地址空间和内存，不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制，线程与线程是可以共享内存的；<br>通信上存在不同：<br>进程之间的内存是独立的，所以必须通过特定的通信方式进行，常见的通信方式是使用TCP/IP的端口来实现；<br>而线程之间通信是很方便的，只需要指针一指，指向相应的内存空间既可以实现通信。<br>开销上存在差异：<br>进程需要分配比较大的内存空间，进程里面的内存指的是逻辑内存，每个进程里面可以有很多线程在运行，所以开销比较大；而线程只需要分配栈和PC就可以了，开销比较小。</p>
-<p>虽然系统资源调度和分配最终进CPU的是某个线程，但是考虑这个线程的时候还需要考虑其所在的进程是怎样的，所以线程不是独立单位<br>文件/网络句柄是所有进程都可以使用的，所有进程都可以打开同一个文件，也可以抢同一个网络端口</p>
-<h5 id="3、进程为什么不能共享内存？"><a href="#3、进程为什么不能共享内存？" class="headerlink" title="3、进程为什么不能共享内存？"></a>3、进程为什么不能共享内存？</h5><p>因为进程在操作系统中是有明显的边界的，不同的应用程序需要分配不同的内存，考虑到用户信息和软件的安全性问题，进程是不能共享内存的，假设一个网上银行在运行，如果进程的内存被共享，意味着用户的相关信息是可以被别的进程获取到，这是很危险的，所以进程之间不能共享内存。</p>
-<h5 id="4、存储"><a href="#4、存储" class="headerlink" title="4、存储"></a>4、存储</h5><p>操作系统中的存储是结构化的，包括硬盘、内存、缓存、寄存器，速度由慢到快，价格也是从便宜到贵，放在内存的东西访问速度是很快的，比如谷歌搜索为什么快，因为谷歌把存储大部分信息都放在了内存里，少部分访问量小的存放在硬盘里，基于内存的搜索是很快的</p>
-<h5 id="5、寻址空间"><a href="#5、寻址空间" class="headerlink" title="5、寻址空间"></a>5、寻址空间</h5><p>寻址空间是内存独立的，每个进程都有自己的寻址空间，这个寻址空间的大小和物理内存没有关系，只和操作系统的位数有关系，可能是32位也可能是64位的逻辑内存的大小。<br>32位  -&gt;  4G<br>64位  -&gt;  过大，暂时不考虑<br>64位JVM：意味着Java程序可以使用的内存很大，当把一个32位系统下的程序迁移到64位上时，我们不要更改代码，只          需要重新编译一下就可以了<br>例如：int n = *p;  -&gt; 编译成汇编： MOV EAX,[EBX]，也就是把EBX寄存器里的地址指向的数据读出来，放在EAX寄                                             存器里面，然后编译器会记住n对应的是EAX，p对应的是EBX<br>指针p指向的不是物理内存，而是一个逻辑内存，也就是寻址空间，接下来，系统会将这个逻辑地址和物理内存进行对应，因为逻辑内存比较大，我们对应的地址有可能在物理内存里，也有可能不在物理内存里，如果在，我们直接把相应的数据取出来就可以了，如果不在，则在虚拟内存里面，接下来，就需要把虚拟内存里的数据放到物理内存里面，这个过程不是说直接把p指向的那块内存放到物理内存去，而是把p指向所在的那个分页放过去，这个分页可能几K，也可能几M，如果物理内存可以放得下，则直接放进去就可以了，如果放不下，系统会把物理内存里很久没有使用的东西交换进虚拟内存里，交换完成后，p指向的部分就进入了物理内存，也就确保了p所指向的数据在物理内存里了，接下来只需把这部分数据取出来放到EAX寄存器里面就好了。</p>
-<p>一个运行良好的系统或者程序里面，绝大部分数据都已经在物理内存里面，这样就会很快，但是如果物理内存使用量过多的话，就会发生频繁的分页，系统性能就会变得很慢。</p>
-<h5 id="6、信号量和互斥锁"><a href="#6、信号量和互斥锁" class="headerlink" title="6、信号量和互斥锁"></a>6、信号量和互斥锁</h5><p>信号量又称为信号灯，它是用来协调不同进程间的数据对象的，而最主要的应用是共享内存方式的进程间通信。本质上，信号量是一个计数器，它用来记录对某个资源（如共享内存）的存取状况。<br>互斥体禁止多个线程同时进入受保护的代码“临界区”（critical section）。因此，在任意时刻，只有一个线程被允许进入这样的代码保护区。<br>对于互斥锁，如果资源已经被占用，资源申请者只能进入睡眠状态。但是自旋锁不会引起调用者睡眠，如果自旋锁已经被别的执行单元保持，调用者就一直循环在那里看是否该自旋锁的保持者已经释放了锁，”自旋”一词就是因此而得名。</p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
-    <article id="post-MySQL安装篇" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/20/MySQL安装篇/">开发工具 - MySQL安装篇</a>
-    </h1>
-  
-
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2017/12/20/MySQL安装篇/" class="article-date">
-  <time datetime="2017-12-19T16:00:00.000Z" itemprop="datePublished">2017-12-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
-      
-        <h4 id="一、下载MySQL"><a href="#一、下载MySQL" class="headerlink" title="一、下载MySQL"></a>一、下载MySQL</h4><p>MySQL官网：<a href="https://www.mysql.com/" target="_blank" rel="noopener">https://www.mysql.com/</a></p>
-<h4 id="二、安装MySQL"><a href="#二、安装MySQL" class="headerlink" title="二、安装MySQL"></a>二、安装MySQL</h4><p>本文以mysql-5.5.27-winx64.msi为例进行安装，其实不管哪个版本，安装本质都是相通的</p>
-<p>1、双击运行mysql-5.5.27-winx64.msi，安装前面部分都是傻瓜式安装方式比较简单</p>
-<p>2、安装MySQL之后，会继续进入MySQL配置设置，如下：</p>
-<p><img src="/2017/12/20/MySQL安装篇/p1.PNG" alt="1"></p>
-<p>选择进行详细配置还是标准配置，这里选择“详细配置”</p>
-<p><img src="/2017/12/20/MySQL安装篇/p2.PNG" alt="2"></p>
-<p>选择安装的MySQL作为服务器还是开发使用，这里选择开发使用</p>
-<p><img src="/2017/12/20/MySQL安装篇/p3.PNG" alt="3"></p>
-<p>选择多功能类型数据库、仅支持事务类型数据库还是非事务数据库，这里选择“多功能类型”</p>
-<p><img src="/2017/12/20/MySQL安装篇/p4.PNG" alt="4"></p>
-<p>存储引擎的表空间配置，默认下一步即可</p>
-<p><img src="/2017/12/20/MySQL安装篇/p5.PNG" alt="5"></p>
-<p>设置MySQL并发连接数，我们选择第一个，表示假定20个连接的模式，可以根据自己的需要设置</p>
-<p><img src="/2017/12/20/MySQL安装篇/p6.PNG" alt="6"></p>
-<p>设置MySQL端口，默认3306即可</p>
-<p><img src="/2017/12/20/MySQL安装篇/p7.PNG" alt="7"></p>
-<p>设置MySQL的字符集，这里选择第二个 将utf8作为MySQL默认的字符集</p>
-<p><img src="/2017/12/20/MySQL安装篇/p8.PNG" alt="8"></p>
-<p>设置MySQL服务的名字、默认MySQL即可，将“Include Bin Directory in Windows PATH”勾选上，将MySQL的bin添加到系统环境变量中去，方便我们后期在命令行窗口操作MySQL</p>
-<p><img src="/2017/12/20/MySQL安装篇/p9.PNG" alt="9"></p>
-<p>设置root账户的密码（自己要记牢），然后Next</p>
-<p><img src="/2017/12/20/MySQL安装篇/p10.PNG" alt="10"></p>
-<p>点击“execute”表示执行</p>
-<p><img src="/2017/12/20/MySQL安装篇/p11.PNG" alt="11"></p>
-<p>当出现下图，四个都打上对勾，表示安装配置成功，点击“finish”完成全部安装配置</p>
-<p><img src="/2017/12/20/MySQL安装篇/p12.PNG" alt="12"></p>
-<p>3、验证MySQL是否安装成功</p>
-<p>在命令行窗口下，输入: mysql -uroot -p，然后回车，输入刚刚配置的root账户的密码，出现如下界面，表示安装确实成功了</p>
-<p><img src="/2017/12/20/MySQL安装篇/p13.PNG" alt="13"></p>
-<p>4、接下来就可以快乐的玩玩MySQL了！</p>
-
-      
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
   </nav>
 
 
@@ -576,15 +541,15 @@
           </li>
         
           <li>
-            <a href="/2018/10/30/算法 - 查找系列 - 查找中位数/">算法 - 查找系列 - 查找中位数</a>
+            <a href="/2018/11/16/算法 - 链表系列 - 寻找链表的倒数第N个结点/">算法 - 链表系列 - 寻找链表的倒数第N个结点</a>
           </li>
         
           <li>
-            <a href="/2018/10/25/算法 - 链表系列 - 链表成环问题/">算法 - 链表系列 - 链表成环问题</a>
+            <a href="/2018/11/11/算法 - 链表系列 - 链表成环问题/">算法 - 链表系列 - 链表成环问题</a>
           </li>
         
           <li>
-            <a href="/2018/10/19/算法 - 查找系列 - 有序数组相关查找/">算法 - 查找系列 - 有序数组相关查找</a>
+            <a href="/2018/11/06/算法 - 对数器/">算法 - 对数器</a>
           </li>
         
       </ul>
