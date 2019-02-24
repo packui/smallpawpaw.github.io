@@ -187,13 +187,11 @@
       
         <h3 id="进程与线程概念"><a href="#进程与线程概念" class="headerlink" title="进程与线程概念"></a>进程与线程概念</h3><p><strong>进程：</strong> 进程是系统进行资源分配和调度的基本单位，操作系统在分配资源时是分配给进程的，一个进程至少包含一个线程，进程中的多个线程可以共享进程资源，通常我们启动一个应用程序就启动了进程，可以看作是应用级别的概念。<br>例如：我们启动电脑管家应用程序就会在后台启动一个进程。</p>
 <p><strong>线程：</strong> 线程本身不能独立存在，它是进程中的一个执行路径，也就是进程中的一个实体，操作系统分配资源时有个特殊的资源CPU是分配给线程的，因为真正占用CPU的是线程，线程之间在轮流占用CPU，所以，线程又是CPU分配的基本单位，可以看作是功能级别的概念。<br>例如：我们使用电脑管家的垃圾清理功能，同时又使用电脑管家的杀毒功能，那么其实就相应的启动了垃圾清理的线程、杀毒的线程。</p>
-<h3 id="进程与线程的内存结构"><a href="#进程与线程的内存结构" class="headerlink" title="进程与线程的内存结构"></a>进程与线程的内存结构</h3><p><img src="/2018/09/05/多线程 - 进程与线程/1.png" alt="1"></p>
-<p><strong>堆：</strong> 进程中最大的一块内存，在进程创建时分配的区域，存放着new构建的对象实例，可以被进程中所有线程共享。</p>
-<p><strong>方法区：</strong> 存放着Java虚拟机加载的类、常量、 静态变量等信息，也可以被进程中所有线程共享。</p>
-<p><strong>程序计数器：</strong> 即PC计数器，是线程中的一小块内存区域，用来记录线程当前要执行的指令的地址，是线程私有的，因为线程是CPU分配的基本单位，线程之间在轮流占用CPU，每当本次CPU占用的时间片用完之后，当前线程就要让出CPU的执行权，那么就在这个时候，程序计数器就要记录让出CPU时当前线程执行到哪了，等到下一次线程被重新分配到CPU时，接着这个地方继续向下执行。<br>备注：如果执行的是native方法，那么程序计数器记录的是undefined的地址；如果执行的是java代码，程序计数器记录的便是要执行的指令地址。</p>
-<p><strong>栈：</strong> 每个线程都有自己的栈区域，它存放着当前线程的局部变量、线程的调用栈帧，也是线程私有的。</p>
-<p>启动线程的正确打开方式是调用start方法，而且调用start方法，线程并不会立即启动，这只是一个启动的标志，就像在告诉系统我已经万事俱备了，就差你给我CPU的执行机会！我就可以真正启动了！</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/09/05/多线程 - 进程与线程/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     
@@ -676,7 +674,7 @@
   <div class="widget-box">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
     </div>
   </div>
 
