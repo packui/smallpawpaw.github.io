@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JSP - 自定义标签 | lbyte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="keywords" content="lbyte">
+  
+  <meta name="description" content="JSP - 自定义标签一编写自定义标签类">
+<meta name="keywords" content="lbyte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP - 自定义标签">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/JSP - 自定义标签/index.html">
+<meta property="og:site_name" content="lbyte">
+<meta property="og:description" content="JSP - 自定义标签一编写自定义标签类">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-24T01:53:31.527Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSP - 自定义标签">
+<meta name="twitter:description" content="JSP - 自定义标签一编写自定义标签类">
+  
+    <link rel="alternate" href="/atom.xml" title="lbyte" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="lbyte-lin">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-JSP - 自定义标签" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      JSP - 自定义标签
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2018/05/20/JSP - 自定义标签/" class="article-date">
+  <time datetime="2018-05-19T16:00:00.000Z" itemprop="datePublished">2018-05-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/jsp/">jsp</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h3 id="一、编写自定义标签类"><a href="#一、编写自定义标签类" class="headerlink" title="一、编写自定义标签类"></a>一、编写自定义标签类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTag</span> <span class="keyword">extends</span> <span class="title">TagSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">doStartTag</span><span class="params">()</span> <span class="keyword">throws</span> JspException </span>&#123;</span><br><span class="line">  	JspWriter out = <span class="keyword">super</span>.pageContext.getOut();</span><br><span class="line">  	<span class="comment">//.........</span></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        out.print(<span class="string">"&lt;span&gt;自定义标签输出的内容&lt;span&gt;"</span>);</span><br><span class="line">        out.print(<span class="string">"&lt;h3&gt;自定义标签输出的标题&lt;h3&gt;"</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">super</span>.doStartTag();</span><br><span class="line">			<span class="comment">//.....</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、编写tld描述文件"><a href="#二、编写tld描述文件" class="headerlink" title="二、编写tld描述文件"></a>二、编写tld描述文件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE taglib</span></span><br><span class="line"><span class="meta">  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"</span></span><br><span class="line"><span class="meta">  "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">taglib</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tlib-version</span>&gt;</span>2.0<span class="tag">&lt;/<span class="name">tlib-version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">jsp-version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">jsp-version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">short-name</span>&gt;</span>myTag<span class="tag">&lt;/<span class="name">short-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">uri</span>&gt;</span>http://itheima/myTag/<span class="tag">&lt;/<span class="name">uri</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tag</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>out<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tag-class</span>&gt;</span>com.itheima.crm.utils.MyTag<span class="tag">&lt;/<span class="name">tag-class</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">body-content</span>&gt;</span>JSP<span class="tag">&lt;/<span class="name">body-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tag</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">taglib</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="三、使用自定义标签，页面引入"><a href="#三、使用自定义标签，页面引入" class="headerlink" title="三、使用自定义标签，页面引入"></a>三、使用自定义标签，页面引入</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">"myTag"</span> uri=<span class="string">"http://itheima/myTag/"</span>%&gt;</span><br><span class="line">&lt;myTag:out&gt;&lt;/myTag:out&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2018/06/21/算法 - 排序系列 - 选择排序/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            算法 - 排序系列 - 选择排序
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2018/04/10/计算机基础/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">计算机基础</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="lbyte-lin">
+    <h3 class="avatar-name">
+      
+        lbyte
+      
+    </h3>
+    <p class="avatar-slogan">
+      人生如一个又一个小小的队列重现，春夏秋冬轮回年年，早中晚夜循环天天，变化的是时间，不变的是对未来执着的信念
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jsp/">jsp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/多线程/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/">算法 - 二叉树 - 完全二叉树转大根堆</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/19/JVM - Java虚拟机内存区域/">JVM - Java虚拟机内存区域</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/30/算法 - 查找系列 - 查找中位数/">算法 - 查找系列 - 查找中位数</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/25/算法 - 链表系列 - 链表成环问题/">算法 - 链表系列 - 链表成环问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/19/算法 - 查找系列 - 有序数组相关查找/">算法 - 查找系列 - 有序数组相关查找</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 lbyte &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
