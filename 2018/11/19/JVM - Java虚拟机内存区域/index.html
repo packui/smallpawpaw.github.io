@@ -22,7 +22,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/11/19/JVM%20-%20Java虚拟机内存区域/JVM运行时数据区.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/11/19/JVM%20-%20Java虚拟机内存区域/堆.jpg">
-<meta property="og:updated_time" content="2019-02-24T11:42:32.567Z">
+<meta property="og:updated_time" content="2019-02-24T11:56:48.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM - Java虚拟机内存区域">
 <meta name="twitter:description" content="文章主要讲解Java虚拟机内存的各个区域，旨在帮助读者快速了解Java虚拟机的内存区域">
@@ -93,7 +93,7 @@
     <div class="article-content article-content-doorframe" itemprop="articleBody">
       
         <h3 id="一、为什么要学习JVM？"><a href="#一、为什么要学习JVM？" class="headerlink" title="一、为什么要学习JVM？"></a>一、为什么要学习JVM？</h3><p>​    正式进入JVM之前，读者应该要想一下，我们为什么要学习JVM？Java把内存管理机制交给了Java虚拟机，意味着Java程序员不需要像C程序员一样构造对象后必须配对出现delete或free代码来实现内存释放，但是随之也带来了问题，如果我们的程序出现了内存泄露和溢出问题，而此时Java程序员又不懂JVM，那程序的排错工作就变得非常棘手了，所以Java程序员掌握JVM还是很重要的！</p>
-<h3 id="二、JVM的内存结构"><a href="#二、JVM的内存结构" class="headerlink" title="二、JVM的内存结构"></a>二、JVM的内存结构</h3><p>​    我们知道Java程序是由Java虚拟机来执行的，Java虚拟机在执行程序时，把它管理的内存分成了多个不同的区域，这些区域各司其职、有各自的生命周期、也有各自的隔离属性。<a id="more"></a></p>
+<h3 id="二、JVM的内存结构"><a href="#二、JVM的内存结构" class="headerlink" title="二、JVM的内存结构"></a>二、JVM的内存结构</h3><p>​    我们知道Java程序是由Java虚拟机来执行的，Java虚拟机在执行程序时，把它管理的内存分成了多个不同的区域，这些区域各司其职、有各自的生命周期、也有各自的隔离属性。</p>
 <p><img src="/2018/11/19/JVM - Java虚拟机内存区域/JVM运行时数据区.jpg" alt="JVM运行时数据区"></p>
 <h4 id="1、程序计数器"><a href="#1、程序计数器" class="headerlink" title="1、程序计数器"></a>1、程序计数器</h4><p>​    程序计数器，简单来说，它的作用其实就是记录下字节码执行到哪里了，相当于一个行号指示器。</p>
 <p>​    Java虚拟机中的多线程在执行的时候采用的是时间片轮询的机制，在某个时刻，一个CPU只会执行一个线程的指令，假设当前正在执行线程A，当线程A的时间片用完了，CPU会重新调度，线程B获取到了CPU执行权，那么，就需要线程A的程序计数器就会记录下线程A的正在执行的指令的地址值，当下一次线程A获取到CPU执行权就接着这个地址继续向下执行，保证逻辑都能顺利被执行完成。其实所有的线程都是这样的，都需要有各自的程序计数器来记录自己执行的指令的地址值，所以程序计数器还必须是线程私有的。当线程正在执行的是Java代码时，程序计数器记录的就是字节码的指令地址值；当线程正在执行的是本地方法时，程序计数器记录的是空值。</p>
