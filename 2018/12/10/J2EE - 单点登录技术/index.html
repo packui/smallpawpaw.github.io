@@ -1,12 +1,17 @@
-
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8">
+  
+
   
   <title>J2EE - 单点登录技术 | lbyte</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="keywords" content="lbyte">
+  
   <meta name="description" content="J2EE - 单点登录技术">
 <meta name="keywords" content="lbyte">
 <meta property="og:type" content="article">
@@ -24,96 +29,70 @@
 <meta name="twitter:description" content="J2EE - 单点登录技术">
 <meta name="twitter:image" content="http://yoursite.com/2018/12/10/J2EE%20-%20单点登录技术/p1.PNG">
   
-    <link rel="alternative" href="/atom.xml" title="lbyte" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="lbyte" type="application/atom+xml">
   
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
-  
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
-  
-
+  <link rel="stylesheet" href="/css/highlight.css">
 </head>
 </html>
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <nav id="upper-nav" class="inner">
-      <a id="main-nav-toggle" class="nav-icon"></a>
-      <div class="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        
-          <a id="nav-github" class="nav-icon" href="https://github.com/myname"></a>
-        
-      </div>
-    </nav>
-    <div id="header-title">
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="lbyte-lin">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
       
-        <h1 id="blog-title-wrap">
-          <a href="/" id="blog-title">My Blog</a>
-        </h1>
+        <a class="nav-item" href="/" title>首页</a>
       
-    </div>
-    <div id="contenedor">
-      <ul class="cube">
-        <li class="cara">MyLogo</li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-      </ul>
-    </div>
-    <nav id="main-nav">
+        <a class="nav-item" href="/archives" title>归档</a>
       
-        <a class="main-nav-link" href="/">Home</a>
-      
-        <a class="main-nav-link" href="/archives">Archives</a>
-      
-        <a class="main-nav-link" href="/about">About</a>
-      
-      <a class="main-nav-link st-search-show-outputs">搜索</a>
     </nav>
   </div>
 </header>
-
-    <div class="outer">
-      <section id="main"><article id="post-J2EE - 单点登录技术" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2018/12/10/J2EE - 单点登录技术/" class="article-date">
-  <time datetime="2018-12-09T16:00:00.000Z" itemprop="datePublished">2018-12-10</time>
-</h3>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/J2EE/">J2EE</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-J2EE - 单点登录技术" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
   
     <h1 class="article-title" itemprop="name">
       J2EE - 单点登录技术
     </h1>
   
 
-      </header>
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2018/12/10/J2EE - 单点登录技术/" class="article-date">
+  <time datetime="2018-12-09T16:00:00.000Z" itemprop="datePublished">2018-12-10</time>
+</a>
     
-    <div class="article-entry" itemprop="articleBody">
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/J2EE/">J2EE</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
       
-        
         <h3 id="0、写在前面"><a href="#0、写在前面" class="headerlink" title="0、写在前面"></a>0、写在前面</h3><p>​    这篇博文，笔者主要讲解了单点登录技术相关知识点，同时也给出了相应的Demo，使用单点登录和配置文件打交道比较多，在这里，笔者会在配置文件中比较重要的部分加上注释进行讲解，方便大家理解与掌握这项技术，尽管我已经努力将篇幅缩短，文章还是偏长，但是读者静下心来认真看完，相信也会有所收获</p>
 <h3 id="一、SSO简介"><a href="#一、SSO简介" class="headerlink" title="一、SSO简介"></a>一、SSO简介</h3><p>​    单点登录技术其实就是SSO技术，在多应用系统当中，因为不同的子系统要部署到不同的服务器上，为了避免每次访问不同的系统都进行登录操作，就引入了单点登录这个概念，利用单点登录可以实现相互信任的多应用系统之间的“一处登录，到处通行”与“一处登出、处处登出”的效果</p>
 <h3 id="二、SSO原理"><a href="#二、SSO原理" class="headerlink" title="二、SSO原理"></a>二、SSO原理</h3><p>​    SSO原理其实很简单，就是有这么一个认证系统，专门用来验证用户的身份是否合法，当用户进行登录操作时，会访问该系统，然后这个认证系统会返回一个ticket票据信息，作为用户的一个合法凭证。</p>
@@ -208,39 +187,93 @@
 <h4 id="（完结！）"><a href="#（完结！）" class="headerlink" title="（完结！）"></a>（完结！）</h4>
       
     </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2018/12/10/J2EE - 单点登录技术/" data-id="cjsrqbv9t0003osuyk1fpt0yo" class="article-share-link">分享到</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
   </div>
   
     
 <nav id="article-nav">
-  
-  
-    <a href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">算法 - 二叉树 - 完全二叉树转大根堆</div>
-    </a>
-  
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">算法 - 二叉树 - 完全二叉树转大根堆</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
 </nav>
 
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
   
 </article>
-
-
 </section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="lbyte-lin">
+    <h3 class="avatar-name">
       
-      <aside id="sidebar">
+        lbyte
+      
+    </h3>
+    <p class="avatar-slogan">
+      人生如一个又一个小小的队列重现，春夏秋冬轮回年年，早中晚夜循环天天，变化的是时间，不变的是对未来执着的信念
+    </p>
+  </div>
+</div>
+
+
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/J2EE/">J2EE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jsp/">jsp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/分布式消息中间件/">分布式消息中间件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/多线程/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题诊所/">问题诊所</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
@@ -269,61 +302,21 @@
   </div>
 
   
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-  
 </aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 lbyte<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
-    </div>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 lbyte &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
   </div>
 </footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-  <a href="#search" class="mobile-nav-link st-search-show-outputs">搜索</a>
-</nav>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-  
-
-<!-- totop start -->
-<div id="totop">
-	<a title="返回顶部"></a>
-</div>
-<!-- totop end -->
-
-<!-- swiftype search start -->
-
-<!-- swiftype search end -->
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
-
+<script src="/js/jquery-2.0.3.min.js"></script>
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   <script src="/fancybox/jquery.fancybox.pack.js"></script>
@@ -331,6 +324,18 @@
 
 <script src="/js/script.js"></script>
 
-</div>
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
 </body>
 </html>

@@ -1,12 +1,17 @@
-
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8">
+  
+
   
   <title>算法 - 最大公约数最小公倍数 | lbyte</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="keywords" content="lbyte">
+  
   <meta name="description" content="算法 - 最大公约数最小公倍数">
 <meta name="keywords" content="lbyte">
 <meta property="og:type" content="article">
@@ -20,144 +25,172 @@
 <meta name="twitter:title" content="算法 - 最大公约数最小公倍数">
 <meta name="twitter:description" content="算法 - 最大公约数最小公倍数">
   
-    <link rel="alternative" href="/atom.xml" title="lbyte" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="lbyte" type="application/atom+xml">
   
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
-  
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
-  
-
+  <link rel="stylesheet" href="/css/highlight.css">
 </head>
 </html>
 <body>
-<div id="container">
-  <div id="wrap">
-    <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <nav id="upper-nav" class="inner">
-      <a id="main-nav-toggle" class="nav-icon"></a>
-      <div class="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        
-          <a id="nav-github" class="nav-icon" href="https://github.com/myname"></a>
-        
-      </div>
-    </nav>
-    <div id="header-title">
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="lbyte-lin">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
       
-        <h1 id="blog-title-wrap">
-          <a href="/" id="blog-title">My Blog</a>
-        </h1>
+        <a class="nav-item" href="/" title>首页</a>
       
-    </div>
-    <div id="contenedor">
-      <ul class="cube">
-        <li class="cara">MyLogo</li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-      </ul>
-    </div>
-    <nav id="main-nav">
+        <a class="nav-item" href="/archives" title>归档</a>
       
-        <a class="main-nav-link" href="/">Home</a>
-      
-        <a class="main-nav-link" href="/archives">Archives</a>
-      
-        <a class="main-nav-link" href="/about">About</a>
-      
-      <a class="main-nav-link st-search-show-outputs">搜索</a>
     </nav>
   </div>
 </header>
-
-    <div class="outer">
-      <section id="main"><article id="post-算法 - 最大公约数最小公倍数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2018/07/10/算法 - 最大公约数最小公倍数/" class="article-date">
-  <time datetime="2018-07-09T16:00:00.000Z" itemprop="datePublished">2018-07-10</time>
-</h3>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-算法 - 最大公约数最小公倍数" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
   
     <h1 class="article-title" itemprop="name">
       算法 - 最大公约数最小公倍数
     </h1>
   
 
-      </header>
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2018/07/10/算法 - 最大公约数最小公倍数/" class="article-date">
+  <time datetime="2018-07-09T16:00:00.000Z" itemprop="datePublished">2018-07-10</time>
+</a>
     
-    <div class="article-entry" itemprop="articleBody">
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+    
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
       
-        
         <h4 id="思路"><a href="#思路" class="headerlink" title="[思路]"></a>[思路]</h4><p>1、最大公约数：使用辗转相除法（也叫欧几里德算法）</p>
 <p>2、最小公倍数：最小公倍数 = 两数乘积 / 最大公约数</p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="[代码]"></a>[代码]</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 最大公约数和最小公倍数问题：</span></span><br><span class="line"><span class="comment"> * 输入两个正整数a、b，求其最大公约数和最小公倍数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GCDAndLCM</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a, b;</span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请依次输入两个正整数："</span>);</span><br><span class="line">		a = sc.nextInt();</span><br><span class="line">		b = sc.nextInt();</span><br><span class="line">		<span class="keyword">if</span> (sc != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">// 关闭键盘录入对象</span></span><br><span class="line">			sc.close();</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(a + <span class="string">"和"</span> + b + <span class="string">"的最大公约数是："</span> + getGCD(a, b));</span><br><span class="line">		System.out.println(a + <span class="string">"和"</span> + b + <span class="string">"的最小公倍数是："</span> + getLCM(a, b));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取两个正整数的最大公约数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> a 第1个正整数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> b 第2个正整数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回两个正整数的最大公约数</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getGCD</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 使用辗转相除法（也叫欧几里德算法）</span></span><br><span class="line">		<span class="keyword">int</span> temp = a % b;</span><br><span class="line">		<span class="keyword">while</span> (temp &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			a = b;</span><br><span class="line">			b = temp;</span><br><span class="line">			temp = a % b;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> b;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取两个正整数的最小公倍数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> a 第1个正整数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> b 第2个正整数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回两个正整数的最小公倍数</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getLCM</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 最小公倍数 = 两数乘积 / 最大公约数</span></span><br><span class="line">		<span class="keyword">return</span> (a * b) / getGCD(a, b);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">请依次输入两个正整数：</span><br><span class="line">10 30</span><br><span class="line">10和30的最大公约数是：10</span><br><span class="line">10和30的最小公倍数是：30</span><br></pre></td></tr></table></figure></div>
       
     </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-        <a data-url="http://yoursite.com/2018/07/10/算法 - 最大公约数最小公倍数/" data-id="cjsiuhwd5000yakuypsqbxa0a" class="article-share-link">分享到</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
   </div>
   
     
 <nav id="article-nav">
-  
-    <a href="/2018/07/22/算法 - 排序系列 - 冒泡排序/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          算法 - 排序系列 - 冒泡排序
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/06/29/算法 - 排序系列 - 快速排序/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">算法 - 排序系列 - 快速排序</div>
-    </a>
-  
+  <div class="article-nav-block">
+    
+      <a href="/2018/07/22/算法 - 排序系列 - 冒泡排序/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            算法 - 排序系列 - 冒泡排序
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2018/06/29/算法 - 排序系列 - 快速排序/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">算法 - 排序系列 - 快速排序</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
 </nav>
 
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
   
 </article>
-
-
 </section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="lbyte-lin">
+    <h3 class="avatar-name">
       
-      <aside id="sidebar">
+        lbyte
+      
+    </h3>
+    <p class="avatar-slogan">
+      人生如一个又一个小小的队列重现，春夏秋冬轮回年年，早中晚夜循环天天，变化的是时间，不变的是对未来执着的信念
+    </p>
+  </div>
+</div>
+
+
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/J2EE/">J2EE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jsp/">jsp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/分布式消息中间件/">分布式消息中间件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/多线程/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题诊所/">问题诊所</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
@@ -186,61 +219,21 @@
   </div>
 
   
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-  
 </aside>
-      
-    </div>
-    <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 lbyte<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-      .
-      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
-    </div>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 lbyte &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
   </div>
 </footer>
-  </div>
-  <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-  <a href="#search" class="mobile-nav-link st-search-show-outputs">搜索</a>
-</nav>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-  
-
-<!-- totop start -->
-<div id="totop">
-	<a title="返回顶部"></a>
-</div>
-<!-- totop end -->
-
-<!-- swiftype search start -->
-
-<!-- swiftype search end -->
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
-
+<script src="/js/jquery-2.0.3.min.js"></script>
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   <script src="/fancybox/jquery.fancybox.pack.js"></script>
@@ -248,6 +241,18 @@
 
 <script src="/js/script.js"></script>
 
-</div>
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
 </body>
 </html>
