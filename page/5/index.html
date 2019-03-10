@@ -1,17 +1,12 @@
+
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
   <title>lbyte</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  <meta name="keywords" content="lbyte">
-  
   <meta name="keywords" content="lbyte">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lbyte">
@@ -21,109 +16,250 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lbyte">
   
-    <link rel="alternate" href="/atom.xml" title="lbyte" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="lbyte" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/images/default-avatar.jpeg">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/highlight.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+
 </head>
 </html>
 <body>
-  <div id="fullpage" class="mobile-nav-right">
-    
-      <div id="wrapper" title="lbyte-lin">
-    
-    
-      <header id="header">
-  <div id="nav-toggle" class="nav-toggle"></div>
-  <div class="head-box global-width">
-    <nav class="nav-box nav-right">
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+          <a id="nav-github" class="nav-icon" href="https://github.com/myname"></a>
+        
+      </div>
+    </nav>
+    <div id="header-title">
       
-        <a class="nav-item" href="/" title>首页</a>
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">My Blog</a>
+        </h1>
       
-        <a class="nav-item" href="/archives" title>归档</a>
+    </div>
+    <div id="contenedor">
+      <ul class="cube">
+        <li class="cara">MyLogo</li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+      </ul>
+    </div>
+    <nav id="main-nav">
       
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">搜索</a>
     </nav>
   </div>
 </header>
-      <div id="middlecontent" title class="global-width sidebar-right">
-        <section id="main">
+
+    <div class="outer">
+      <section id="main">
   
-    <article id="post-算法 - 逆序对问题" class="article global-container article-type-post" itemscope itemprop="blogPost">
+    <article id="post-算法 - 排序系列 - 插入排序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/06/26/算法 - 排序系列 - 插入排序/" class="article-date">
+  <time datetime="2018-06-25T16:00:00.000Z" itemprop="datePublished">2018-06-26</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
-    <header class="article-header">
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/26/算法 - 排序系列 - 插入排序/">算法 - 排序系列 - 插入排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
+        
+        <h3 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h3><p>将一个数据插入到已经排好序的有序数据中，每次都是将无序部分中的第一个元素与有序部分的元素从后往前逐个进行比较，直到找到合适的插入位置，有序部分的长度加1…最终整体有序。</p>
+<h3 id="二、图解"><a href="#二、图解" class="headerlink" title="二、图解"></a>二、图解</h3><p><img src="/2018/06/26/算法 - 排序系列 - 插入排序/1.png" alt="1"></p>
+<h3 id="三、代码实现"><a href="#三、代码实现" class="headerlink" title="三、代码实现"></a>三、代码实现</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 插入排序 </span></span><br><span class="line"><span class="comment"> * 与数据状况有关</span></span><br><span class="line"><span class="comment"> * 最好情况：如果数组一开始就是从小到大有序的, 时间复杂度：O(N),空间复杂度：O(1)</span></span><br><span class="line"><span class="comment"> * 最坏情况：如果数组一开始就是逆序的, 时间复杂度：O(N^2),空间复杂度：O(1)</span></span><br><span class="line"><span class="comment"> * 通常我们按最坏情况的时间复杂度来讲</span></span><br><span class="line"><span class="comment"> * 所以：</span></span><br><span class="line"><span class="comment"> * 时间复杂度：O(N^2)，空间复杂度：O(1)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertionSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 处理i位置的元素时，0~i-1之间是已经有序的，要做的就是看这个元素可以插入到哪个位置</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> cur = i - <span class="number">1</span>; cur &gt;= <span class="number">0</span> &amp;&amp; arr[cur + <span class="number">1</span>] &lt; arr[cur]; cur--) &#123;</span><br><span class="line">				swap(arr, cur, cur + <span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">		arr[i] = arr[i] ^ arr[j];</span><br><span class="line">		arr[j] = arr[i] ^ arr[j];</span><br><span class="line">		arr[i] = arr[i] ^ arr[j];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123; <span class="number">10</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">12</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">12</span>, <span class="number">56</span>, <span class="number">30</span>, <span class="number">1</span>, <span class="number">25</span>, <span class="number">9</span>, -<span class="number">10</span>, -<span class="number">5</span>, <span class="number">6</span>, <span class="number">0</span> &#125;;</span><br><span class="line">		insertionSort(arr);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> a : arr) &#123;</span><br><span class="line">			System.out.print(a + <span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-10 -5 0 1 1 6 6 6 9 9 10 12 12 25 30 56</span><br></pre></td></tr></table></figure></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2018/06/26/算法 - 排序系列 - 插入排序/" data-id="cjsiuhwd5000vakuyqn50unei" class="article-share-link">分享到</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-算法 - 逆序对问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/06/25/算法 - 逆序对问题/" class="article-date">
+  <time datetime="2018-06-24T16:00:00.000Z" itemprop="datePublished">2018-06-25</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
       <a class="article-title" href="/2018/06/25/算法 - 逆序对问题/">算法 - 逆序对问题</a>
     </h1>
   
 
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2018/06/25/算法 - 逆序对问题/" class="article-date">
-  <time datetime="2018-06-24T16:00:00.000Z" itemprop="datePublished">2018-06-25</time>
-</a>
+      </header>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
+        
         <p>逆序对问题 ：在一个数组中，左边的数如果比右边的数大，则折两个数构成一个逆序对，请打印所有逆序对</p>
 <h4 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseOrder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printReverseOrder</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		mergeSort(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (L == R) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> mid = L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		mergeSort(arr, L, mid);</span><br><span class="line">		mergeSort(arr, mid + <span class="number">1</span>, R);</span><br><span class="line">		merge(arr, L, mid, R);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> l, <span class="keyword">int</span> m, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] help = <span class="keyword">new</span> <span class="keyword">int</span>[r - l + <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> p1 = l;</span><br><span class="line">		<span class="keyword">int</span> p2 = m + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= m &amp;&amp; p2 &lt;= r) &#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[p1] &gt; arr[p2]) &#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = p2; j &lt;= r; j++) &#123;</span><br><span class="line">					System.out.println(<span class="string">"("</span> + arr[p1] + <span class="string">","</span> + arr[j] + <span class="string">")"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			help[i++] = arr[p1] &gt; arr[p2] ? arr[p1++] : arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= m) &#123;</span><br><span class="line">			help[i++] = arr[p1++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p2 &lt;= r) &#123;</span><br><span class="line">			help[i++] = arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; help.length; i++) &#123;</span><br><span class="line">			arr[l + i] = help[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123; <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">2</span> &#125;;</span><br><span class="line">		printReverseOrder(arr);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
       
     </div>
-    
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2018/06/25/算法 - 逆序对问题/" data-id="cjsiuhwew001pakuyjxg6ocif" class="article-share-link">分享到</a>
+        
+      </div>
+    </footer>
   </div>
-  
+  </div>
+  </div>
   
 </article>
 
+
+
   
-    <article id="post-算法 - 排序系列 - 选择排序" class="article global-container article-type-post" itemscope itemprop="blogPost">
+    <article id="post-算法 - 小和问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/06/25/算法 - 小和问题/" class="article-date">
+  <time datetime="2018-06-24T16:00:00.000Z" itemprop="datePublished">2018-06-25</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
-    <header class="article-header">
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/25/算法 - 小和问题/">算法 - 小和问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
+        
+        <h4 id="【图解】"><a href="#【图解】" class="headerlink" title="【图解】"></a>【图解】</h4><p><img src="/2018/06/25/算法 - 小和问题/小和问题.png" alt="小和问题"></p>
+<h4 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 小和问题</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmallSum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">smallSum</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> mergeSort(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (L == R) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> mid = L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">return</span> mergeSort(arr, L, mid) + mergeSort(arr, mid + <span class="number">1</span>, R) + merge(arr, L, mid, R);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> l, <span class="keyword">int</span> m, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] help = <span class="keyword">new</span> <span class="keyword">int</span>[r - l + <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> p1 = l;</span><br><span class="line">		<span class="keyword">int</span> p2 = m + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= m &amp;&amp; p2 &lt;= r) &#123;</span><br><span class="line">			res += arr[p1] &lt; arr[p2] ? (r - p2 + <span class="number">1</span>) * arr[p1] : <span class="number">0</span>;</span><br><span class="line">			help[i++] = arr[p1] &lt; arr[p2] ? arr[p1++] : arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p1 &lt;= m) &#123;</span><br><span class="line">			help[i++] = arr[p1++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span> (p2 &lt;= r) &#123;</span><br><span class="line">			help[i++] = arr[p2++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; help.length; i++) &#123;</span><br><span class="line">			arr[l + i] = help[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123; <span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">5</span> &#125;;</span><br><span class="line">		System.out.println(smallSum(arr));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2018/06/25/算法 - 小和问题/" data-id="cjsiuhwca000jakuy1zuuqc7m" class="article-share-link">分享到</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-算法 - 排序系列 - 选择排序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/06/21/算法 - 排序系列 - 选择排序/" class="article-date">
+  <time datetime="2018-06-20T16:00:00.000Z" itemprop="datePublished">2018-06-21</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
       <a class="article-title" href="/2018/06/21/算法 - 排序系列 - 选择排序/">算法 - 排序系列 - 选择排序</a>
     </h1>
   
 
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2018/06/21/算法 - 排序系列 - 选择排序/" class="article-date">
-  <time datetime="2018-06-20T16:00:00.000Z" itemprop="datePublished">2018-06-21</time>
-</a>
+      </header>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
+        
         <h3 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h3><p>每一次从待排序的数据元素中选出最小的一个元素，存放在当次排序序列的起始位置，第一次0到N-1之间选出最小值放在0位置处，第二次1到N-1之间选出最小值放在1位置处…从而整体有序。</p>
 <h3 id="二、图解"><a href="#二、图解" class="headerlink" title="二、图解"></a>二、图解</h3><p><img src="/2018/06/21/算法 - 排序系列 - 选择排序/1.png" alt="1"></p>
 <h3 id="三、代码实现"><a href="#三、代码实现" class="headerlink" title="三、代码实现"></a>三、代码实现</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 选择排序 </span></span><br><span class="line"><span class="comment"> * 时间复杂度：O(N^2),空间复杂度：O(1)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SelectionSort</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (arr == <span class="keyword">null</span> || arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">			<span class="comment">//minIndex：记录i~arr.length-1的最小值的索引</span></span><br><span class="line">			<span class="keyword">int</span> minIndex = i;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">				minIndex = arr[j] &lt; arr[minIndex] ? j : minIndex;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (minIndex != i) &#123;</span><br><span class="line">				swap(arr, i, minIndex);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">		arr[i] = arr[i] ^ arr[j];</span><br><span class="line">		arr[j] = arr[i] ^ arr[j];</span><br><span class="line">		arr[i] = arr[i] ^ arr[j];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123; <span class="number">9</span>, <span class="number">6</span>, <span class="number">6</span>, <span class="number">13</span>, <span class="number">1</span>, <span class="number">22</span>, -<span class="number">3</span>, <span class="number">0</span> &#125;;</span><br><span class="line">		selectionSort(arr);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> a : arr) &#123;</span><br><span class="line">			System.out.print(a + <span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
@@ -131,84 +267,102 @@
 
       
     </div>
-    
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2018/06/21/算法 - 排序系列 - 选择排序/" data-id="cjsiuhwd5000wakuyh7q9aobo" class="article-share-link">分享到</a>
+        
+      </div>
+    </footer>
   </div>
-  
+  </div>
+  </div>
   
 </article>
 
+
+
   
-    <article id="post-JSP - 自定义标签" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
+    <article id="post-JSP - 自定义标签" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/05/20/JSP - 自定义标签/" class="article-date">
+  <time datetime="2018-05-19T16:00:00.000Z" itemprop="datePublished">2018-05-20</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/jsp/">jsp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
       <a class="article-title" href="/2018/05/20/JSP - 自定义标签/">JSP - 自定义标签</a>
     </h1>
   
 
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2018/05/20/JSP - 自定义标签/" class="article-date">
-  <time datetime="2018-05-19T16:00:00.000Z" itemprop="datePublished">2018-05-20</time>
-</a>
+      </header>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/jsp/">jsp</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
+        
         <h3 id="一、编写自定义标签类"><a href="#一、编写自定义标签类" class="headerlink" title="一、编写自定义标签类"></a>一、编写自定义标签类</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTag</span> <span class="keyword">extends</span> <span class="title">TagSupport</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">doStartTag</span><span class="params">()</span> <span class="keyword">throws</span> JspException </span>&#123;</span><br><span class="line">  	JspWriter out = <span class="keyword">super</span>.pageContext.getOut();</span><br><span class="line">  	<span class="comment">//.........</span></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        out.print(<span class="string">"&lt;span&gt;自定义标签输出的内容&lt;span&gt;"</span>);</span><br><span class="line">        out.print(<span class="string">"&lt;h3&gt;自定义标签输出的标题&lt;h3&gt;"</span>);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">super</span>.doStartTag();</span><br><span class="line">			<span class="comment">//.....</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <h3 id="二、编写tld描述文件"><a href="#二、编写tld描述文件" class="headerlink" title="二、编写tld描述文件"></a>二、编写tld描述文件</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="XML"><figure class="iseeu highlight /xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE taglib</span></span><br><span class="line"><span class="meta">  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"</span></span><br><span class="line"><span class="meta">  "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">taglib</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tlib-version</span>&gt;</span>2.0<span class="tag">&lt;/<span class="name">tlib-version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">jsp-version</span>&gt;</span>1.2<span class="tag">&lt;/<span class="name">jsp-version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">short-name</span>&gt;</span>myTag<span class="tag">&lt;/<span class="name">short-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">uri</span>&gt;</span>http://itheima/myTag/<span class="tag">&lt;/<span class="name">uri</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tag</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>out<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tag-class</span>&gt;</span>com.itheima.crm.utils.MyTag<span class="tag">&lt;/<span class="name">tag-class</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">body-content</span>&gt;</span>JSP<span class="tag">&lt;/<span class="name">body-content</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tag</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">taglib</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 <h3 id="三、使用自定义标签，页面引入"><a href="#三、使用自定义标签，页面引入" class="headerlink" title="三、使用自定义标签，页面引入"></a>三、使用自定义标签，页面引入</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">"myTag"</span> uri=<span class="string">"http://itheima/myTag/"</span>%&gt;</span><br><span class="line">&lt;myTag:out&gt;&lt;/myTag:out&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
-    
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2018/05/20/JSP - 自定义标签/" data-id="cjsiuhw9o0000akuy2oo3jjnf" class="article-share-link">分享到</a>
+        
+      </div>
+    </footer>
   </div>
-  
+  </div>
+  </div>
   
 </article>
 
+
+
   
-    <article id="post-计算机基础" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
+    <article id="post-计算机基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/04/10/计算机基础/" class="article-date">
+  <time datetime="2018-04-09T16:00:00.000Z" itemprop="datePublished">2018-04-10</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/计算机/">计算机</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
       <a class="article-title" href="/2018/04/10/计算机基础/">计算机基础</a>
     </h1>
   
 
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2018/04/10/计算机基础/" class="article-date">
-  <time datetime="2018-04-09T16:00:00.000Z" itemprop="datePublished">2018-04-10</time>
-</a>
+      </header>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/计算机/">计算机</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
+        
         <h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><h3 id="一、通识"><a href="#一、通识" class="headerlink" title="一、通识"></a>一、通识</h3><h5 id="1、将任意一个十进制数转换成任意进制"><a href="#1、将任意一个十进制数转换成任意进制" class="headerlink" title="1、将任意一个十进制数转换成任意进制"></a>1、将任意一个十进制数转换成任意进制</h5><p>例如：将十进制数 13 转换成 3进制 表示形式？<br>13%3=1（最低位）    13/3=4<br>4%3=1            4/3=1<br>1%3=1（最高位）    1/3=0    结束<br>答案是：111</p>
 <h3 id="二、操作系统"><a href="#二、操作系统" class="headerlink" title="二、操作系统"></a>二、操作系统</h3><h5 id="1、32位和64位"><a href="#1、32位和64位" class="headerlink" title="1、32位和64位"></a>1、32位和64位</h5><p>是指进程的逻辑内存的寻址空间的大小，32位的操作系统每个进程都会有2^32大小（4G）的寻址空间可以使用，但不意味着直接把这4G给这些进程</p>
 <h5 id="2、进程和线程"><a href="#2、进程和线程" class="headerlink" title="2、进程和线程"></a>2、进程和线程</h5><p>内存结构不同：<br>进程在操作系统里面是有明显的边界的，它们相互独立，不能共享内存；而线程是程序的多个顺序的流动态执行，没有独立的地址空间和内存，不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制，线程与线程是可以共享内存的；<br>通信上存在不同：<br>进程之间的内存是独立的，所以必须通过特定的通信方式进行，常见的通信方式是使用TCP/IP的端口来实现；<br>而线程之间通信是很方便的，只需要指针一指，指向相应的内存空间既可以实现通信。<br>开销上存在差异：<br>进程需要分配比较大的内存空间，进程里面的内存指的是逻辑内存，每个进程里面可以有很多线程在运行，所以开销比较大；而线程只需要分配栈和PC就可以了，开销比较小。</p>
@@ -221,42 +375,51 @@
 
       
     </div>
-    
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2018/04/10/计算机基础/" data-id="cjsiuhwfb001zakuyr7vogefe" class="article-share-link">分享到</a>
+        
+      </div>
+    </footer>
   </div>
-  
+  </div>
+  </div>
   
 </article>
 
+
+
   
-    <article id="post-MySQL安装篇" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
+    <article id="post-MySQL安装篇" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2017/12/20/MySQL安装篇/" class="article-date">
+  <time datetime="2017-12-19T16:00:00.000Z" itemprop="datePublished">2017-12-20</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
       <a class="article-title" href="/2017/12/20/MySQL安装篇/">开发工具 - MySQL安装篇</a>
     </h1>
   
 
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2017/12/20/MySQL安装篇/" class="article-date">
-  <time datetime="2017-12-19T16:00:00.000Z" itemprop="datePublished">2017-12-20</time>
-</a>
+      </header>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
-  </div>
-
-    
-  </div>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
+        
         <h4 id="一、下载MySQL"><a href="#一、下载MySQL" class="headerlink" title="一、下载MySQL"></a>一、下载MySQL</h4><p>MySQL官网：<a href="https://www.mysql.com/" target="_blank" rel="noopener">https://www.mysql.com/</a></p>
 <h4 id="二、安装MySQL"><a href="#二、安装MySQL" class="headerlink" title="二、安装MySQL"></a>二、安装MySQL</h4><p>本文以mysql-5.5.27-winx64.msi为例进行安装，其实不管哪个版本，安装本质都是相通的</p>
 <p>1、双击运行mysql-5.5.27-winx64.msi，安装前面部分都是傻瓜式安装方式比较简单</p>
@@ -291,67 +454,34 @@
 
       
     </div>
-    
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2017/12/20/MySQL安装篇/" data-id="cjsiuhwbf0003akuy3smf4k4r" class="article-share-link">分享到</a>
+        
+      </div>
+    </footer>
   </div>
-  
+  </div>
+  </div>
   
 </article>
 
+
+
   
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
-  </nav>
-
-
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    </nav>
+  
 </section>
-        <aside id="sidebar">
-  
-    <div class="widget-box">
-  <div class="avatar-box">
-    <img class="avatar" src="/images/default-avatar.jpeg" title="lbyte-lin">
-    <h3 class="avatar-name">
       
-        lbyte
-      
-    </h3>
-    <p class="avatar-slogan">
-      人生如一个又一个小小的队列重现，春夏秋冬轮回年年，早中晚夜循环天天，变化的是时间，不变的是对未来执着的信念
-    </p>
-  </div>
-</div>
-
-
+      <aside id="sidebar">
   
     
-  <div class="widget-box">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/J2EE/">J2EE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jsp/">jsp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/多线程/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">最新文章</h3>
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
         
@@ -380,21 +510,61 @@
   </div>
 
   
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
 </aside>
-      </div>
-      <footer id="footer">
-  <div class="foot-box global-width">
-    &copy; 2019 lbyte &nbsp;&nbsp;
-    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
-    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
-    <br>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 lbyte<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+    </div>
   </div>
 </footer>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">搜索</a>
+</nav>
 
-<script src="/js/jquery-2.0.3.min.js"></script>
+  
+
+<!-- totop start -->
+<div id="totop">
+	<a title="返回顶部"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   <script src="/fancybox/jquery.fancybox.pack.js"></script>
@@ -402,18 +572,6 @@
 
 <script src="/js/script.js"></script>
 
-
-
-    </div>
-    <nav id="mobile-nav" class="mobile-nav-box">
-  <div class="mobile-nav-img mobile-nav-top"></div>
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/archives" class="mobile-nav-link">归档</a>
-  
-  <div class="mobile-nav-img  mobile-nav-bottom"></div>
-</nav>    
-  </div>
+</div>
 </body>
 </html>

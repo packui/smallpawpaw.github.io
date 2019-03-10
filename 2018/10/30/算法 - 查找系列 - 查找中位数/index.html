@@ -1,17 +1,12 @@
+
 <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
   <title>算法 - 查找系列 - 查找中位数 | lbyte</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  <meta name="keywords" content="lbyte">
-  
   <meta name="description" content="算法 - 查找系列 - 查找中位数">
 <meta name="keywords" content="lbyte">
 <meta property="og:type" content="article">
@@ -27,171 +22,143 @@
 <meta name="twitter:description" content="算法 - 查找系列 - 查找中位数">
 <meta name="twitter:image" content="http://yoursite.com/2018/10/30/算法%20-%20查找系列%20-%20查找中位数/利用大根堆和小根堆实现数据吞吐流中随时获取中位数.png">
   
-    <link rel="alternate" href="/atom.xml" title="lbyte" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="lbyte" type="application/atom+xml">
   
-  
-    <link rel="icon" href="/images/default-avatar.jpeg">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/highlight.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+
 </head>
 </html>
 <body>
-  <div id="fullpage" class="mobile-nav-right">
-    
-      <div id="wrapper" title="lbyte-lin">
-    
-    
-      <header id="header">
-  <div id="nav-toggle" class="nav-toggle"></div>
-  <div class="head-box global-width">
-    <nav class="nav-box nav-right">
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+          <a id="nav-github" class="nav-icon" href="https://github.com/myname"></a>
+        
+      </div>
+    </nav>
+    <div id="header-title">
       
-        <a class="nav-item" href="/" title>首页</a>
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">My Blog</a>
+        </h1>
       
-        <a class="nav-item" href="/archives" title>归档</a>
+    </div>
+    <div id="contenedor">
+      <ul class="cube">
+        <li class="cara">MyLogo</li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+      </ul>
+    </div>
+    <nav id="main-nav">
       
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">搜索</a>
     </nav>
   </div>
 </header>
-      <div id="middlecontent" title class="global-width sidebar-right">
-        <section id="main"><article id="post-算法 - 查找系列 - 查找中位数" class="article global-container article-type-post" itemscope itemprop="blogPost">
-  
-    <header class="article-header">
-      
+
+    <div class="outer">
+      <section id="main"><article id="post-算法 - 查找系列 - 查找中位数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2018/10/30/算法 - 查找系列 - 查找中位数/" class="article-date">
+  <time datetime="2018-10-29T16:00:00.000Z" itemprop="datePublished">2018-10-30</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
     <h1 class="article-title" itemprop="name">
       算法 - 查找系列 - 查找中位数
     </h1>
   
 
-    </header>
-  
-  <div class="article-meta">
-    <a href="/2018/10/30/算法 - 查找系列 - 查找中位数/" class="article-date">
-  <time datetime="2018-10-29T16:00:00.000Z" itemprop="datePublished">2018-10-30</time>
-</a>
+      </header>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-  </div>
-
-    
-  </div>
-  
-    <span id="busuanzi_container_page_pv">
-      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
-    </span>
-  
-
-  <div class="article-inner">
-    
-    <div class="article-content article-content-doorframe" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
+        
         <h4 id="【图解】"><a href="#【图解】" class="headerlink" title="【图解】"></a>【图解】</h4><p><img src="/2018/10/30/算法 - 查找系列 - 查找中位数/利用大根堆和小根堆实现数据吞吐流中随时获取中位数.png" alt="利用大根堆和小根堆实现数据吞吐流中随时获取中位数"></p>
 <h4 id="【代码】"><a href="#【代码】" class="headerlink" title="【代码】"></a>【代码】</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用大根堆和小根堆实现数据吞吐过程中随时获取中位数的功能</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseHeapImplGetMiddleNum</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] bigRootHeap = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1000</span>];</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] smallRootHeap = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">1000</span>];</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> bigRotHeapSize = -<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> smallRotHeapSize = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 数据吞吐流吐出新数据，将其添加到大根堆或小根堆数组中</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> val 待新增的值</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (val &lt;= bigRootHeap[<span class="number">0</span>] || bigRotHeapSize==-<span class="number">1</span>) &#123;</span><br><span class="line">			heapInsertBigRoot(bigRootHeap, val);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			heapInsertSmallRoot(smallRootHeap, val);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 大根堆新增结点（也即大根堆数组新增元素）</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> arr 大根堆数组</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> val 待新增的值</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapInsertBigRoot</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">		arr[++bigRotHeapSize] = val;</span><br><span class="line">		heapifyBigRoot(arr,bigRotHeapSize);</span><br><span class="line">		<span class="keyword">if</span>(bigRotHeapSize-smallRotHeapSize==<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="comment">//大根堆弹出堆顶元素，堆顶元素和堆底元素交换；小根堆增加元素</span></span><br><span class="line">			heapInsertSmallRoot(smallRootHeap, arr[<span class="number">0</span>]);</span><br><span class="line">			swap(arr,<span class="number">0</span>,bigRotHeapSize);</span><br><span class="line">			bigRotHeapSize--;</span><br><span class="line">			heapifyBig(arr,<span class="number">0</span>,bigRotHeapSize);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 逐步寻找当前元素的左右孩子最大值，再看这个最大值是否比当前元素大，如果是，则进行交换，也是为了确保这个数组始终是一个大根堆</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> arr 小根堆数组</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> cur 小根堆数组的修改了的元素的索引</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> heapSize 小根堆的堆有效长度</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapifyBig</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> cur, <span class="keyword">int</span> heapSize)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">2</span> * cur + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt;= heapSize) &#123;</span><br><span class="line">			<span class="keyword">int</span> maxIndex = left + <span class="number">1</span> &lt;= heapSize ? </span><br><span class="line">							arr[left + <span class="number">1</span>] &gt; arr[left] ? left + <span class="number">1</span> : left </span><br><span class="line">							: left;</span><br><span class="line">			maxIndex = arr[maxIndex] &gt; arr[cur] ? maxIndex : cur;</span><br><span class="line">			<span class="keyword">if</span> (maxIndex == cur) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			swap(arr, cur, maxIndex);</span><br><span class="line">			cur = maxIndex;</span><br><span class="line">			left = <span class="number">2</span> * cur + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 将当前元素逐步往上撸，直到这个元素的父结点不再小于这个元素，即始终保证这个数组是一个大根堆</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> arr 大根堆数组</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> cur 当前元素的索引</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapifyBigRoot</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> cur)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> parent = (cur - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">while</span> (parent &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[parent] &lt; arr[cur]) &#123;</span><br><span class="line">				swap(arr, cur, parent);</span><br><span class="line">				cur = parent;</span><br><span class="line">				parent = (cur-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 小根堆新增结点（也即小根堆数组新增元素）</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> arr 小根堆数组</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> val 待新增的值</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapInsertSmallRoot</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">		arr[++smallRotHeapSize] = val;</span><br><span class="line">		heapifySmallRoot(arr,smallRotHeapSize);</span><br><span class="line">		<span class="keyword">if</span>(smallRotHeapSize-bigRotHeapSize==<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="comment">//小根堆弹出堆顶元素，堆顶元素和堆底元素交换；大根堆增加元素</span></span><br><span class="line">			heapInsertBigRoot(bigRootHeap, arr[<span class="number">0</span>]);</span><br><span class="line">			swap(arr,<span class="number">0</span>,smallRotHeapSize);</span><br><span class="line">			smallRotHeapSize--;</span><br><span class="line">			heapifySmall(arr,<span class="number">0</span>,smallRotHeapSize);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 逐步寻找当前元素的左右孩子最小值，再看这个最小值是否比当前元素小，如果是，则进行交换，也是为了确保这个数组始终是一个小根堆</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> arr 小根堆数组</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> cur 小根堆数组的修改了的元素的索引</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> heapSize 小根堆的堆有效长度</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapifySmall</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> cur, <span class="keyword">int</span> heapSize)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">2</span> * cur + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt;= heapSize) &#123;</span><br><span class="line">			<span class="keyword">int</span> minIndex = left + <span class="number">1</span> &lt;= heapSize ? </span><br><span class="line">							arr[left + <span class="number">1</span>] &lt; arr[left] ? left + <span class="number">1</span> : left </span><br><span class="line">							: left;</span><br><span class="line">			minIndex = arr[minIndex] &lt; arr[cur] ? minIndex : cur;</span><br><span class="line">			<span class="keyword">if</span> (minIndex == cur) &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			swap(arr, cur, minIndex);</span><br><span class="line">			cur = minIndex;</span><br><span class="line">			left = <span class="number">2</span> * cur + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 将当前元素逐步往上撸，直到这个元素的父结点不再大于这个元素，即始终保证这个数组是一个小根堆</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> arr 小根堆数组</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> cur 当前元素索引</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapifySmallRoot</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> cur)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> parent = (cur - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">while</span> (parent &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (arr[parent] &gt; arr[cur]) &#123;</span><br><span class="line">				swap(arr, cur, parent);</span><br><span class="line">				cur = parent;</span><br><span class="line">				parent = (cur-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 数据交换</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> arr 数组</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> i 索引1</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> j 索引2</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> tmp = arr[i];</span><br><span class="line">		arr[i] = arr[j];</span><br><span class="line">		arr[j] = tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回中位数</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">getMiddleNum</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(bigRotHeapSize==smallRotHeapSize)&#123;</span><br><span class="line">			<span class="keyword">return</span> (bigRootHeap[<span class="number">0</span>]+smallRootHeap[<span class="number">0</span>])/<span class="number">2.0</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(bigRotHeapSize&gt;smallRotHeapSize)&#123;</span><br><span class="line">			<span class="keyword">return</span> bigRootHeap[<span class="number">0</span>]*<span class="number">1.0</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> smallRootHeap[<span class="number">0</span>]*<span class="number">1.0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//测试中位数的获取</span></span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">3</span>);</span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">3</span>);</span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">4</span>);</span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">5</span>);</span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">6</span>);</span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">7</span>);</span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">8</span>);</span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">30</span>);</span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">30</span>);</span><br><span class="line">		UseHeapImplGetMiddleNum.add(<span class="number">30</span>);</span><br><span class="line">		System.out.println(UseHeapImplGetMiddleNum.getMiddleNum());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
       
     </div>
-    
-      <footer class="article-footer">
-        完
-      </footer>
-    
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+        <a data-url="http://yoursite.com/2018/10/30/算法 - 查找系列 - 查找中位数/" data-id="cjsiuhwdl0011akuy5od8dedz" class="article-share-link">分享到</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
   </div>
   
     
 <nav id="article-nav">
-  <div class="article-nav-block">
-    
-      <a href="/2018/11/01/算法 - 重建二叉树/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption"></strong>
-        <div class="article-nav-title">
-          
-            算法 - 重建二叉树
-          
-        </div>
-      </a>
-    
-  </div>
-  <div class="article-nav-block">
-    
-      <a href="/2018/10/22/J2EE - 前后端分离模式下的跨域访问/" id="article-nav-older" class="article-nav-link-wrap">
-        <div class="article-nav-title">J2EE - 前后端分离模式下的JS跨域访问</div>
-        <strong class="article-nav-caption"></strong>
-      </a>
-    
-  </div>
+  
+    <a href="/2018/11/01/算法 - 重建二叉树/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          算法 - 重建二叉树
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/22/J2EE - 前后端分离模式下的跨域访问/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">J2EE - 前后端分离模式下的JS跨域访问</div>
+    </a>
+  
 </nav>
 
-    
-<div id="gitmentContainer"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  owner: '',
-  repo: '',
-  oauth: {
-    client_id: '',
-    client_secret: '',
-  },
-})
-gitment.render('gitmentContainer')
-</script>
-
-  
   
 </article>
+
+
 </section>
-        <aside id="sidebar">
-  
-    <div class="widget-box">
-  <div class="avatar-box">
-    <img class="avatar" src="/images/default-avatar.jpeg" title="lbyte-lin">
-    <h3 class="avatar-name">
       
-        lbyte
-      
-    </h3>
-    <p class="avatar-slogan">
-      人生如一个又一个小小的队列重现，春夏秋冬轮回年年，早中晚夜循环天天，变化的是时间，不变的是对未来执着的信念
-    </p>
-  </div>
-</div>
-
-
+      <aside id="sidebar">
   
     
-  <div class="widget-box">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/J2EE/">J2EE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jsp/">jsp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/多线程/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-box">
-    <h3 class="widget-title">最新文章</h3>
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
         
@@ -220,21 +187,61 @@ gitment.render('gitmentContainer')
   </div>
 
   
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">五月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
 </aside>
-      </div>
-      <footer id="footer">
-  <div class="foot-box global-width">
-    &copy; 2019 lbyte &nbsp;&nbsp;
-    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
-    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
-    <br>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 lbyte<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+    </div>
   </div>
 </footer>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">搜索</a>
+</nav>
 
-<script src="/js/jquery-2.0.3.min.js"></script>
+  
+
+<!-- totop start -->
+<div id="totop">
+	<a title="返回顶部"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   <script src="/fancybox/jquery.fancybox.pack.js"></script>
@@ -242,18 +249,6 @@ gitment.render('gitmentContainer')
 
 <script src="/js/script.js"></script>
 
-
-
-    </div>
-    <nav id="mobile-nav" class="mobile-nav-box">
-  <div class="mobile-nav-img mobile-nav-top"></div>
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/archives" class="mobile-nav-link">归档</a>
-  
-  <div class="mobile-nav-img  mobile-nav-bottom"></div>
-</nav>    
-  </div>
+</div>
 </body>
 </html>
