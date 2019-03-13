@@ -1,215 +1,644 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
 
+<head>
+  <title>lbyte</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="lbyte">
+    <meta name="author" content="lbyte">
+    <meta name="description" content="" />
+    <meta name="keywords" content="lbyte" />
 
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
 
+    <link rel="alternate" href="/atom.xml" title="lbyte" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
 
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
 
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
 
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
 
-
-
-<!doctype html>
-<html lang="zh-CN">
-
-<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js">
-</script>
-<link href="/plugins/code-theme/tomorrow.css" type="text/css" rel="stylesheet">
-<link rel="stylesheet" href="/plugins/github-markdown.css">
-
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1">
   
-    
-    
-      <link rel="stylesheet" href="/css/legend.css">
-    
   
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
 </head>
 
-<body id="body-home-bg">
-<div id="layout-content">
-  <div id="menu-outer-home">
-  <div id="menu-inner">
-    
-    
-    <div id="site-title">
-      lbyte
+<!--
+<body class="home-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close">
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">AAA</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">BBB</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/J2EE/" class="animsition-link">J2EE<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/JVM/" class="animsition-link">JVM<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/jsp/" class="animsition-link">jsp<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/分布式消息中间件/" class="animsition-link">分布式消息中间件<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/多线程/" class="animsition-link">多线程<small>(5)</small></a></li>
+				    
+				    <li><a href="/categories/小项目/" class="animsition-link">小项目<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/开发工具/" class="animsition-link">开发工具<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/算法/" class="animsition-link">算法<small>(31)</small></a></li>
+				    
+				    <li><a href="/categories/计算机/" class="animsition-link">计算机<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/设计模式/" class="animsition-link">设计模式<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/问题诊所/" class="animsition-link">问题诊所<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                    <li><a href="http://domain.com/" class="animsition-link">Name</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
     </div>
     
+    <!-- ============================ END Off-canvas navigation =========================== -->
 
-     
-    <div>
-    
-      
-      <a href="/">首页</a>
-      
-    
-      
-      <a href="/archives">归档</a>
-      
-    
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">lbyte</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+</div>
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <!-- // .col-md-12 -->
+        </div>
+        <div class="herofade beige-dk"></div>
     </div>
-  </div>
-</div> 
-  <div id="content-outer">
-    <div id="content-inner">
+</section>
+
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
+
+<!-- ============================ END Hero Image =========================== -->
+<!-- ============================ Content =========================== -->
+
+<section id="intro">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/12/10/J2EE - 单点登录技术/">J2EE - 单点登录技术</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-12-09T16:00:00.000Z" itemprop="datePublished">
+          2018-12-10
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        0、写在前面​    这篇博文，笔者主要讲解了单点登录技术相关知识点，同时也给出了相应的Demo，使用单点登录和配置文件打交道比较多，在这里，笔者会在配置文件中比较重要的部分加上注释进行讲解，方便大家理解与掌握这项技术，尽管我已经努力将篇幅缩短，文章还是偏长，但是读者静下心来认真看完，相信也会有所收获
+一、SSO简介​    单点登录技术其实就是SSO技术，在多应用系统当中，因为不同的子系统要部署到不同的服务器上，为了避免每次访问不同的
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/12/10/J2EE - 单点登录技术/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/">算法 - 二叉树 - 完全二叉树转大根堆</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-11-28T16:00:00.000Z" itemprop="datePublished">
+          2018-11-29
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        【图解】
+
+
+【代码】1234567891011121314151617181920212223242526272829303132333435363738394041424344454647import org.junit.Test;/** * 完全二叉树转换成大根堆 *  * @author lbyte */public class HeapInsert &#123;	private void heapInsert(int[] ar
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/11/19/JVM - Java虚拟机内存区域/">JVM - Java虚拟机内存区域</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-11-18T16:00:00.000Z" itemprop="datePublished">
+          2018-11-19
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        一、为什么要学习JVM？​    正式进入JVM之前，读者应该要想一下，我们为什么要学习JVM？Java把内存管理机制交给了Java虚拟机，意味着Java程序员不需要像C程序员一样构造对象后必须配对出现delete或free代码来实现内存释放，但是随之也带来了问题，如果我们的程序出现了内存泄露和溢出问题，而此时Java程序员又不懂JVM，那程序的排错工作就变得非常棘手了，所以Java程序员掌握JVM还是很重要的！
+二、JVM的内存结构​
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/11/19/JVM - Java虚拟机内存区域/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/11/16/算法 - 链表系列 - 寻找链表的倒数第N个结点/">算法 - 链表系列 - 寻找链表的倒数第N个结点</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-11-15T16:00:00.000Z" itemprop="datePublished">
+          2018-11-16
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        0、定义一个链表结点【代码】12345678910111213141516171819202122232425262728class Node &#123;	// 数据域	private int data;	// 指针域	private Node next;	public Node(int data) &#123;		this.data = data;	&#125;	public int getData() &#123;		return
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/11/16/算法 - 链表系列 - 寻找链表的倒数第N个结点/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/11/11/算法 - 链表系列 - 链表成环问题/">算法 - 链表系列 - 链表成环问题</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-11-10T16:00:00.000Z" itemprop="datePublished">
+          2018-11-11
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        0、定义一个链表结点【代码】12345678910111213141516171819202122232425262728class Node &#123;	// 数据域	private int data;	// 指针域	private Node next;	public Node(int data) &#123;		this.data = data;	&#125;	public int getData() &#123;		return
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/11/11/算法 - 链表系列 - 链表成环问题/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/11/06/算法 - 对数器/">算法 - 对数器</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-11-05T16:00:00.000Z" itemprop="datePublished">
+          2018-11-06
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        对数器的概念和使用有一个你想要测的方法A
+实现一个可以确定是绝对正确且很容易实现的算法，但是复杂度可能较高的方法B（这个方法可以是系统库中的方法）
+实现一个随机样本产生器 
+实现比对方法A与方法B结果的方法 
+通过比较方法A和方法B的大量结果实例来验证方法A是否正确
+如果有一个样本使得比对出错，可以打印出样本分析中哪个样本出现了错误，便于后续分析 
+当样本数量很多时比对测试依然正确，可以确定方法A已经正确
+123456789101112
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/11/06/算法 - 对数器/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/11/02/算法 - 二维数组中的查找问题/">算法 - 二维数组中的查找问题</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-11-01T16:00:00.000Z" itemprop="datePublished">
+          2018-11-02
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        【要求】在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下
+递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数
+【代码】123456789101112131415public boolean Find(int target, int [][] array) &#123;     int maxIndex = array.length-1;     
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/11/02/算法 - 二维数组中的查找问题/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/11/01/算法 - 重建二叉树/">算法 - 重建二叉树</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-10-31T16:00:00.000Z" itemprop="datePublished">
+          2018-11-01
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        【要求】输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。
+假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
+例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。 
+【定义二叉树结点】12345678public class TreeNode &#123;     int val;     TreeNode left;     TreeNode rig
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/11/01/算法 - 重建二叉树/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/10/30/算法 - 查找系列 - 查找中位数/">算法 - 查找系列 - 查找中位数</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-10-29T16:00:00.000Z" itemprop="datePublished">
+          2018-10-30
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        【图解】
+【代码】1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021031041051061
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/10/30/算法 - 查找系列 - 查找中位数/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/10/22/J2EE - 前后端分离模式下的跨域访问/">J2EE - 前后端分离模式下的JS跨域访问</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-10-21T16:00:00.000Z" itemprop="datePublished">
+          2018-10-22
+      </time>
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        前后端分离模式下的JS跨域访问解决方案：使用过滤器一、配置web.xml文件12345678910111213141516171819&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	xmlns="http://java.sun.com/xml/ns/javaee"	x
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/10/22/J2EE - 前后端分离模式下的跨域访问/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <nav class="pagination" role="pagination">
+          
+          <a class="pull-right" href="/page/2/">Older Posts →</a>
+        </nav>
+    </div>
+</section>
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
+        </div>
+    </div>
+</section>
+<!-- ============================ END Content =========================== -->
+
       
-      
-  
+<!-- ============================ Footer =========================== -->
 
-<video id="bgvideo" autoplay playsinline loop poster="/images/background.png">
-  <source src="http://cdn.calm.com/scenes/scene-Qqkzy9k7Eo.mp4?v=1418162238190" type="video/mp4">
-</video>
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By lbyte. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
 
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
 
+    resizeHero();
 
-
-  <div id="play-button">
-  <img id="play-img" src="/images/playback_play.png">
-</div>
-<audio id="bgaudio" loop="loop" preload="none"> 
-  <source src="http://cdn.calm.com/scenes/scene-Qqkzy9k7Eo.m4a?v=1418162240715" type="audio/mpeg">
-</audio>
-
-<script>
-$(document).ready(function(){
-  //播放按钮点击
-  var audio = $("#bgaudio")[0];
-  var img = $("#play-img")[0];
-  $("#play-button").click(function(){ 
-    if (audio.paused || audio.ended) {
-      audio.play();
-      img.src = "/images/playback_pause.png";
-    } else {
-      audio.pause();
-      img.src = "/images/playback_play.png";
-    }
-  });
-});
-</script>
-
-
-
-
-<div id="me-button">
-		<img id="play-img" src="/images/me_n.png">
-		
-</div>
-
-<div id="social-div">
-
-
-    
-    
-    <a class="social-a" href="http://weibo.com/3169700852/" target="_blank">
-        <img src="/images/weibo.png">
-    </a>
-    
-
-    
-    
-    <a class="social-a" href="https://github.com/iHongRen" target="_blank">
-        <img src="/images/github.png">
-    </a>
-    
-
-    
-    
-    <a class="social-a" href="https://twitter.com/ihongren" target="_blank">
-        <img src="/images/twitter.png">
-    </a>
-    
-
-
-</div>
-
-
-<div id="about-me">
-  <div id="about-me-inner">
-    <article class="markdown-body"></article>
-  </div>
-</div>
-
-
-<!--[if lt IE 9]>
-<script>
-	document.createElement('video');
-</script>
-<![endif]-->
-
-
-<script>
-
-$(document).ready(function(){
-  //判断是否该显示’关于我‘
-  if( "home_about"  == 'home_about') {
-    $("#about-me").hide(0);
-
-    //加载about(关于)读取文件
-    var s = $('article').html();
-    if (s.length < 2) {
-      var url = window.location.protocol+"//"+window.location.host+"/about/";
-      $.ajax({ 
-          type: "GET", 
-          url: url, 
-          dataType: "html", 
-          success: function (data) { 
-            $('article').html($(data).find('article').html());//解析about的html
-            $("#about-me").css({"visibility": "visible"}).delay(100);
-            $("#about-me").slideToggle('slow');
-          }
-      }); 
-      }
-
-    //个人按钮点击，隐藏和显示关于界面
-    $("#me-button").click(function(){ 
-      $("#social-div").slideToggle();
-      $("#about-me").slideToggle();
+    $(window).resize(function () {
+        resizeHero();
     });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
   }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
 });
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
 </script>
 
 
 
-    </div>
-  </div>
-</div>
-
-
-
-<div id="bottom-outer">
-  
-  <div id="bottom-inner">
-    lbyte 
-    ©2019 |Powered by  
-    <a href="http://hexo.io" target="_blank">Hexo</a> with theme 
-    <a href="https://github.com/iHongRen/legend" target="_blank">legend</a>
-  </div>
-    
-    
-    
-      <a href="/atom.xml">
       
-      <img src="/images/rss.png" height="18" width="18">
-      
-</a></div> 
-
-
-  
-  
-    <script src="/js/legend.js"></script>
-  
-
-
 </body>
 </html>
-
-
-<script>
-$(window).on('load', function(){
-   $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
-   prettyPrint();
- });
-</script>
-
