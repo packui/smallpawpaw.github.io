@@ -1,0 +1,209 @@
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-CN">
+
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js">
+</script>
+<link href="/plugins/code-theme/tomorrow.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="/plugins/github-markdown.css">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1">
+  
+    
+    
+      <link rel="stylesheet" href="/css/legend.css">
+    
+  
+</head>
+
+<body id="body-x">
+<div id="layout-content">
+  <div id="menu-outer-x">
+  <div id="menu-inner">
+    
+    
+    <div id="site-title">
+      lbyte
+    </div>
+    
+
+     
+    <div>
+    
+      
+      <a href="/">首页</a>
+      
+    
+      
+      <a href="/archives">归档</a>
+      
+    
+    </div>
+  </div>
+</div> 
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article class="markdown-body">
+    <h2 id="post-title">算法 - 栈系列 - 获取栈内元素最大值
+       
+        <div id="post-time" datetime="2018-10-04T16:00:00.000Z">
+          2018-10-05
+        </div>
+      
+    </h2>
+    <h4 id="描述"><a href="#描述" class="headerlink" title="[描述]"></a>[描述]</h4><p>设计一个支持获取栈内元素最大值的栈</p>
+<h4 id="要求"><a href="#要求" class="headerlink" title="[要求]"></a>[要求]</h4><p>1、具备pop、push、getMax的功能</p>
+<p>2、pop、push、getMax方法的时间复杂度都是O(1)</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="[思路]"></a>[思路]</h4><p>1、使用两个栈：一个栈专门用来存放添加的元素，作为数据栈，命名dataStack；另一个栈专门用来存放每个时刻栈内最大的元素，作为最大栈，命名maxStack；</p>
+<p>2、当新加入一个元素，则将元素加入到dataStack中</p>
+<p>如果此时maxStack为空，则将这个元素也加入到maxStack当中；</p>
+<p>如果此时maxStack不为空，则拿这个元素和maxStack栈顶元素相比较，如果大于栈顶元素，则把这个元素加入到maxStack当中，否则把maxStack栈顶元素重复压入maxStack当中，确保maxStack顶上的元素总是比下面的大，并且是该时刻所有元素中的最大值</p>
+<p>3、当弹出一个元素，则将dataStack和maxStack栈顶元素都弹出</p>
+<p>4、获取最大值，直接将maxStack栈顶元素返回即可</p>
+<h4 id="图解"><a href="#图解" class="headerlink" title="[图解]"></a>[图解]</h4><p>依次添加一组数据，比如：10    6    25    16</p>
+<p>每删除一个元素，maxStack栈顶的元素还能保证是最大的元素，这也是为什么添加元素时maxStack需要重复压入栈顶元素的原因</p>
+<p><img src="/2018/10/05/算法 - 栈系列 - 获取栈内元素最大值/1.png" alt="1"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="[代码]"></a>[代码]</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取栈内所有元素的最大值</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetMaxElementStack</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 存放所有元素的栈 - 数据栈</span></span><br><span class="line">	<span class="keyword">private</span> Stack&lt;Integer&gt; dataStack;</span><br><span class="line">	<span class="comment">// 存放每一次加入元素之后栈内的最大值 - 最大值栈</span></span><br><span class="line">	<span class="keyword">private</span> Stack&lt;Integer&gt; maxStack;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">GetMaxElementStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		dataStack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">		maxStack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 添加一个元素，无论如何都要加入到dataStack中</span></span><br><span class="line">		dataStack.push(num);</span><br><span class="line">		<span class="comment">// 如果maxStack为空或者栈顶元素小于num，则把这个元素也加入到maxStack</span></span><br><span class="line">		<span class="keyword">if</span> (maxStack.isEmpty() || maxStack.peek() &lt; num) &#123;</span><br><span class="line">			maxStack.push(num);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 否则，maxStack重复压入自己的栈顶元素</span></span><br><span class="line">			maxStack.push(maxStack.peek());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (maxStack.isEmpty()) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"当前栈为空"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		maxStack.pop();</span><br><span class="line">		<span class="keyword">return</span> dataStack.pop();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (maxStack.isEmpty()) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"当前栈为空"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> maxStack.peek();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 测试</span></span><br><span class="line">		GetMaxElementStack stack = <span class="keyword">new</span> GetMaxElementStack();</span><br><span class="line">		stack.push(<span class="number">10</span>);</span><br><span class="line">		stack.push(<span class="number">6</span>);</span><br><span class="line">		stack.push(<span class="number">25</span>);</span><br><span class="line">		stack.push(<span class="number">16</span>);</span><br><span class="line">		System.out.println(stack.getMax());</span><br><span class="line">		stack.pop();</span><br><span class="line">		System.out.println(stack.getMax());</span><br><span class="line">		stack.pop();</span><br><span class="line">		System.out.println(stack.getMax());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+  </article>
+
+  
+    
+    
+      <div id="page-prev-next">
+        
+        
+          <a id="page-prev-a" href="/2018/10/06/算法 - 栈系列 - 中缀表达式转后缀表达式/"> ← 算法 - 栈系列 - 中缀表达式转后缀表达式 </a>
+        
+
+        
+        
+          <a id="page-next-a" href="/2018/10/03/算法 - 链表系列 - 逆置单向链表/"> 算法 - 链表系列 - 逆置单向链表 → </a>
+        
+      </div>
+    
+    
+    
+    
+      
+      <div id="play-button" style="background-color: #6d5aca; border: solid 2px #6d5aca;">
+  <img id="play-img" src="/images/playback_play.png">
+</div>
+<audio id="bgaudio" loop="loop" preload="none"> 
+  <source src="http://cdn.calm.com/scenes/scene-Qqkzy9k7Eo.m4a?v=1418162240715" type="audio/mpeg">
+</audio>
+
+<script>
+$(document).ready(function(){
+  //播放按钮点击
+  var audio = $("#bgaudio")[0];
+  var img = $("#play-img")[0];
+  $("#play-button").click(function(){ 
+    if (audio.paused || audio.ended) {
+      audio.play();
+      img.src = "/images/playback_pause.png";
+    } else {
+      audio.pause();
+      img.src = "/images/playback_play.png";
+    }
+  });
+});
+</script>
+    
+
+    
+    
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div id="reward_comment">文章对我有帮助，打赏作者</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="lbyte WeChat Pay">
+          <p>微信</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="lbyte Alipay">
+          <p>支付宝</p>
+        </div> 
+      
+    </div>
+  </div>
+
+
+  
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTI2MS81ODI5">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+<div id="bottom-outer">
+  
+  <div id="bottom-inner">
+    lbyte 
+    ©2019 |Powered by  
+    <a href="http://hexo.io" target="_blank">Hexo</a> with theme 
+    <a href="https://github.com/iHongRen/legend" target="_blank">legend</a>
+  </div>
+    
+    
+    
+      <a href="/atom.xml">
+      
+      <img src="/images/rss.png" height="18" width="18">
+      
+</a></div> 
+
+
+  
+  
+    <script src="/js/legend.js"></script>
+  
+
+
+</body>
+</html>
+
+
+<script>
+$(window).on('load', function(){
+   $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+   prettyPrint();
+ });
+</script>
+

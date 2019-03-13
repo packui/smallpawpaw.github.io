@@ -1,0 +1,226 @@
+
+
+
+
+
+
+<!doctype html>
+<html lang="zh-CN">
+
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js">
+</script>
+<link href="/plugins/code-theme/tomorrow.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="/plugins/github-markdown.css">
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1">
+  
+    
+    
+      <link rel="stylesheet" href="/css/legend.css">
+    
+  
+</head>
+
+<body id="body-x">
+<div id="layout-content">
+  <div id="menu-outer-x">
+  <div id="menu-inner">
+    
+    
+    <div id="site-title">
+      lbyte
+    </div>
+    
+
+     
+    <div>
+    
+      
+      <a href="/">首页</a>
+      
+    
+      
+      <a href="/archives">归档</a>
+      
+    
+    </div>
+  </div>
+</div> 
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article class="markdown-body">
+    <h2 id="post-title">多线程 - Object类的wait方法详解
+       
+        <div id="post-time" datetime="2018-09-21T16:00:00.000Z">
+          2018-09-22
+        </div>
+      
+    </h2>
+    <h3 id="一、wait-方法"><a href="#一、wait-方法" class="headerlink" title="一、wait()方法"></a>一、wait()方法</h3><p>调用 wait()方法的线程必须事先获取共享对象的监视器锁，否则调用 wait()方法时线程会抛出 IllegalMonitorStateException异常</p>
+<p>那么一个线程如何才能获取一个共享变量的监视器锁呢？</p>
+<p>(1) 执行 synchronized 同步代码块时， 使用该共享变量作为参数: </p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(共享变量)&#123; </span><br><span class="line">    <span class="comment">//...... </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>(2) 调用该共享变量的方法，并且该方法使用了synchronized修饰: </p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">add</span> <span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123; </span><br><span class="line">    <span class="comment">//... </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>一个线程可以从挂起状态变为可以运行状态(也就是被唤醒)， 即使该线程没有被其他线程调用 notify()、 notifyAll()方法进行通知，也可以进行虚假唤醒，方式有：</p>
+<p>在其它线程里被中断，或者等待超时</p>
+<p>虽然虚假唤醒在应用实践中很少发生，但要防患于未然，做法就是不停地去测试该线程被唤醒的条件是否满足，不满足则继续等待，也就是说在一个循环里来进行 wait()方法调用，从而进行防范，退出循环的条件是满足了唤醒该线程的条件</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(obj) &#123; </span><br><span class="line">    <span class="keyword">while</span>(条件不满足) &#123; </span><br><span class="line">        <span class="comment">//... obj.wait(); </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>当线程1调用共享对象A的 wait()方法时，线程1只会释放共享对象A的锁，线程1持有的其他共享对象的监视器锁并不会被释放</p>
+<p>当线程1调用共享变量A的 wait()方法时， 线程1会被阻塞挂起， 直到发生下面几件事情之一才返回： </p>
+<p>(1) 其他线程调用了共享对象A的 notify()或 notifyAll()方法；</p>
+<p>(2) 其他线程调用了线程1的 interrupt()方法， 线程1抛出 InterruptedException异常返回</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * wait()方法</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitMethod</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** 创建共享对象 */</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">volatile</span> Object A = <span class="keyword">new</span> Object();</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">volatile</span> Object B = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 创建线程1</span></span><br><span class="line">		Thread thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// 获取共享变量A的监视器锁</span></span><br><span class="line">				<span class="keyword">synchronized</span> (A) &#123;</span><br><span class="line">					System.out.println(<span class="string">"线程1获取了A的锁"</span>);</span><br><span class="line">					System.out.println(<span class="string">"线程1尝试去获取B的锁..."</span>);</span><br><span class="line">					<span class="keyword">synchronized</span> (B) &#123;</span><br><span class="line">						System.out.println(<span class="string">"线程1获取了B的锁"</span>);</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							<span class="comment">// 线程1会阻塞，释放获取的A的监视器锁，不会释放B的监视器锁</span></span><br><span class="line">							A.wait();</span><br><span class="line">						&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 创建线程2</span></span><br><span class="line">		Thread thread2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">synchronized</span> (A) &#123;</span><br><span class="line">					System.out.println(<span class="string">"线程2获取了A的锁"</span>);</span><br><span class="line">					System.out.println(<span class="string">"线程2尝试去获取B的锁..."</span>);</span><br><span class="line">					<span class="keyword">synchronized</span> (B) &#123;</span><br><span class="line">						System.out.println(<span class="string">"线程2获取了B的锁"</span>);</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							<span class="comment">// 线程2会阻塞，释放获取的A锁</span></span><br><span class="line">							A.wait();</span><br><span class="line">						&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 启动线程</span></span><br><span class="line">		thread1.start();</span><br><span class="line">		thread2.start();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/* 执行结果示例：</span></span><br><span class="line"><span class="comment">		 *  线程1获取了A的锁</span></span><br><span class="line"><span class="comment">			线程1尝试去获取B的锁...</span></span><br><span class="line"><span class="comment">			线程1获取了B的锁</span></span><br><span class="line"><span class="comment">			线程2获取了A的锁</span></span><br><span class="line"><span class="comment">			线程2尝试去获取B的锁...</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="二、wait-方法-InterruptedException异常"><a href="#二、wait-方法-InterruptedException异常" class="headerlink" title="二、wait()方法 - InterruptedException异常"></a>二、wait()方法 - InterruptedException异常</h3><p>当线程1调用共享对象obj的 wait()方法被阻塞挂起后，如果其他线程中断了线程1</p>
+<p>则线程1会抛出 InterruptedException异常并返回 </p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * wait()方法 - InterruptedException异常</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitMethodInterrupt</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/** 创建共享对象 */</span></span><br><span class="line">	<span class="keyword">static</span> Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 创建线程1</span></span><br><span class="line">		Thread thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">synchronized</span>(obj)&#123;</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						<span class="comment">// 线程1会被阻塞挂起</span></span><br><span class="line">						obj.wait();</span><br><span class="line">					&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 启动线程1</span></span><br><span class="line">		thread1.start();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 主线程休眠1秒，确保线程1先运行</span></span><br><span class="line">		Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"线程1中断前"</span>);</span><br><span class="line">		<span class="comment">// 在主线程里中断线程1,则在 obj.wait()处会抛出 java.lang.InterruptedException异常而返回并终止</span></span><br><span class="line">		thread1.interrupt();</span><br><span class="line">		System.out.println(<span class="string">"线程1中断后"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/* 执行结果：</span></span><br><span class="line"><span class="comment">		 *  线程1中断前</span></span><br><span class="line"><span class="comment">			线程1中断后</span></span><br><span class="line"><span class="comment">			java.lang.InterruptedException</span></span><br><span class="line"><span class="comment">				at java.lang.Object.wait(Native Method)</span></span><br><span class="line"><span class="comment">				at java.lang.Object.wait(Object.java:503)</span></span><br><span class="line"><span class="comment">				at WaitMethodInterrupt$1.run(WaitMethodInterrupt.java:22)</span></span><br><span class="line"><span class="comment">				at java.lang.Thread.run(Thread.java:745)</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="三、wait-long-timeout-方法：单位毫秒"><a href="#三、wait-long-timeout-方法：单位毫秒" class="headerlink" title="三、wait(long timeout)方法：单位毫秒"></a>三、wait(long timeout)方法：单位毫秒</h3><p>该方法相比 wait()方法多了一个超时参数，它的不同之处在于，一个线程1调用共享对象A的wait(long timeout)方</p>
+<p>法被挂起后，如果在指定的 timeout时间内没有其他线程调用A的 notify()或者A的notifyAll()方法进行唤醒，</p>
+<p>那么该方法还是会因为超时而返回。</p>
+<p>如果将 timeout设置为 0则和 wait()方法效果一样，因为在 wait()方法内部其实就是调用了 wait(O)方法</p>
+<p>如果将 timeout设置为负数，则会抛出 IllegalArgumentException异常</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * wait(long timeout)方法</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitTimeoutMethod</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** 创建共享对象资源 */</span></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">volatile</span> Object A = <span class="keyword">new</span> Object();</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">volatile</span> Object B = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 创建线程1</span></span><br><span class="line">		Thread thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">synchronized</span> (A) &#123;</span><br><span class="line">					System.out.println(<span class="string">"线程1获取了A的锁"</span>);</span><br><span class="line">					System.out.println(<span class="string">"线程1尝试获取B的锁..."</span>);</span><br><span class="line">					<span class="keyword">synchronized</span> (B) &#123;</span><br><span class="line">						System.out.println(<span class="string">"线程1获取了B的锁"</span>);</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							<span class="comment">// 线程1会阻塞，不会立马释放B的锁，但是超过5秒后会释放所有的锁</span></span><br><span class="line">							B.wait(<span class="number">5000</span>);</span><br><span class="line">						&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 创建线程1</span></span><br><span class="line">		Thread thread2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="keyword">synchronized</span> (A) &#123;</span><br><span class="line">					System.out.println(<span class="string">"线程2获取了A的锁"</span>);</span><br><span class="line">					System.out.println(<span class="string">"线程2尝试获取B的锁..."</span>);</span><br><span class="line">					<span class="keyword">synchronized</span> (B) &#123;</span><br><span class="line">						System.out.println(<span class="string">"线程2获取了B的锁"</span>);</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							<span class="comment">// 线程2会阻塞，不会立马释放B的锁，超过5秒后会释放所有的锁</span></span><br><span class="line">							B.wait(<span class="number">5000</span>);</span><br><span class="line">						&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 启动线程</span></span><br><span class="line">		thread1.start();</span><br><span class="line">		thread2.start();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/* 执行结果示例：</span></span><br><span class="line"><span class="comment">		 *  线程1获取了A的锁</span></span><br><span class="line"><span class="comment">			线程1尝试获取B的锁...</span></span><br><span class="line"><span class="comment">			线程1获取了B的锁</span></span><br><span class="line"><span class="comment">			线程2获取了A的锁</span></span><br><span class="line"><span class="comment">			线程2尝试获取B的锁...</span></span><br><span class="line"><span class="comment">			线程2获取了B的锁</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="四、wait-long-timeout-int-nanos-方法"><a href="#四、wait-long-timeout-int-nanos-方法" class="headerlink" title="四、wait(long timeout,int nanos)方法"></a>四、wait(long timeout,int nanos)方法</h3><p>底层调用wait(long timeout)方法实现</p>
+<p>这个方法类似于wait(long timeout)方法,但是它允许在释放锁之前对时间量进行更精细的控制来等待通知<br>以纳秒为单位测量，通过以下方式给出：1000000*timeout+nanos<br>在其他所有方面，这个方法与wait(long timeout)方法做的事情一样</p>
+<p>特别的：wait(0,0)与wait(0)的意思相同</p>
+<p>线程会释放此监视器的所有权并等待，直到以下两种情况已经发生：<br>(1) 另一个线程通知等待该对象监视器的线程: 通过调用notify()方法或notifyAll()方法唤醒<br>(2) 超时，超过timeout指定的毫秒时间加上nanos指定的纳秒时间</p>
+<p>线程会一直等待，直到它可以重新获得监视器锁并恢复执行</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * wait(long timeout,int nanos)方法</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WaitTimeoutNanosMethod</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/** wait(long timeout, int nanos)的源码  */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">waitsrc</span><span class="params">(<span class="keyword">long</span> timeout, <span class="keyword">int</span> nanos)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">if</span> (timeout &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"timeout value is negative"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nanos &lt; <span class="number">0</span> || nanos &gt; <span class="number">999999</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"nanosecond timeout value out of range"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nanos &gt;= <span class="number">500000</span> || (nanos != <span class="number">0</span> &amp;&amp; timeout == <span class="number">0</span>)) &#123;</span><br><span class="line">            timeout++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        wait(timeout);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+  </article>
+
+  
+    
+    
+      <div id="page-prev-next">
+        
+        
+          <a id="page-prev-a" href="/2018/09/23/多线程 - Object类的notify方法/"> ← 多线程 - Object类的notify方法详解 </a>
+        
+
+        
+        
+          <a id="page-next-a" href="/2018/09/21/算法 - 栈系列 - 用两个栈实现队列/"> 算法 - 栈系列 - 用两个栈实现队列 → </a>
+        
+      </div>
+    
+    
+    
+    
+      
+      <div id="play-button" style="background-color: #6d5aca; border: solid 2px #6d5aca;">
+  <img id="play-img" src="/images/playback_play.png">
+</div>
+<audio id="bgaudio" loop="loop" preload="none"> 
+  <source src="http://cdn.calm.com/scenes/scene-Qqkzy9k7Eo.m4a?v=1418162240715" type="audio/mpeg">
+</audio>
+
+<script>
+$(document).ready(function(){
+  //播放按钮点击
+  var audio = $("#bgaudio")[0];
+  var img = $("#play-img")[0];
+  $("#play-button").click(function(){ 
+    if (audio.paused || audio.ended) {
+      audio.play();
+      img.src = "/images/playback_pause.png";
+    } else {
+      audio.pause();
+      img.src = "/images/playback_play.png";
+    }
+  });
+});
+</script>
+    
+
+    
+    
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div id="reward_comment">文章对我有帮助，打赏作者</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="lbyte WeChat Pay">
+          <p>微信</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="lbyte Alipay">
+          <p>支付宝</p>
+        </div> 
+      
+    </div>
+  </div>
+
+
+  
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTI2MS81ODI5">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+<!-- City版安装代码已完成 -->
+
+
+<div id="bottom-outer">
+  
+  <div id="bottom-inner">
+    lbyte 
+    ©2019 |Powered by  
+    <a href="http://hexo.io" target="_blank">Hexo</a> with theme 
+    <a href="https://github.com/iHongRen/legend" target="_blank">legend</a>
+  </div>
+    
+    
+    
+      <a href="/atom.xml">
+      
+      <img src="/images/rss.png" height="18" width="18">
+      
+</a></div> 
+
+
+  
+  
+    <script src="/js/legend.js"></script>
+  
+
+
+</body>
+</html>
+
+
+<script>
+$(window).on('load', function(){
+   $('pre').addClass('prettyprint').attr('style', 'overflow:auto;');
+   prettyPrint();
+ });
+</script>
+
