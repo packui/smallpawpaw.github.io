@@ -1,4 +1,55 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>J2EE - 单点登录技术 | lbyte</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">J2EE - 单点登录技术</h1><a id="logo" href="/.">lbyte</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">J2EE - 单点登录技术</h1><div class="post-meta">Dec 10, 2018<span> | </span><span class="category"><a href="/categories/J2EE/">J2EE</a></span></div><div class="post-content"><h3 id="0、写在前面"><a href="#0、写在前面" class="headerlink" title="0、写在前面"></a>0、写在前面</h3><p>​    这篇博文，笔者主要讲解了单点登录技术相关知识点，同时也给出了相应的Demo，使用单点登录和配置文件打交道比较多，在这里，笔者会在配置文件中比较重要的部分加上注释进行讲解，方便大家理解与掌握这项技术，尽管我已经努力将篇幅缩短，文章还是偏长，但是读者静下心来认真看完，相信也会有所收获</p>
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>J2EE - 单点登录技术 | lbyte</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url()">
+        </div>
+    </section>
+    <section class="menu">
+        <div>lbyte</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>J2EE - 单点登录技术</h1>
+    </header>
+
+    <section>
+      <h3 id="0、写在前面"><a href="#0、写在前面" class="headerlink" title="0、写在前面"></a>0、写在前面</h3><p>​    这篇博文，笔者主要讲解了单点登录技术相关知识点，同时也给出了相应的Demo，使用单点登录和配置文件打交道比较多，在这里，笔者会在配置文件中比较重要的部分加上注释进行讲解，方便大家理解与掌握这项技术，尽管我已经努力将篇幅缩短，文章还是偏长，但是读者静下心来认真看完，相信也会有所收获</p>
 <h3 id="一、SSO简介"><a href="#一、SSO简介" class="headerlink" title="一、SSO简介"></a>一、SSO简介</h3><p>​    单点登录技术其实就是SSO技术，在多应用系统当中，因为不同的子系统要部署到不同的服务器上，为了避免每次访问不同的系统都进行登录操作，就引入了单点登录这个概念，利用单点登录可以实现相互信任的多应用系统之间的“一处登录，到处通行”与“一处登出、处处登出”的效果</p>
 <h3 id="二、SSO原理"><a href="#二、SSO原理" class="headerlink" title="二、SSO原理"></a>二、SSO原理</h3><p>​    SSO原理其实很简单，就是有这么一个认证系统，专门用来验证用户的身份是否合法，当用户进行登录操作时，会访问该系统，然后这个认证系统会返回一个ticket票据信息，作为用户的一个合法凭证。</p>
 <p>​    之后，只要是相互信任的子系统，用户就可以凭借这个ticket票据信息进行访问，子系统会拿着这个ticket票据信息去向认证系统进行验证，验证通过，表示该用户已经登录过，则可以进行后续操作</p>
@@ -89,4 +140,48 @@
 <h5 id="5、获取登录用户的用户名-下面创建一个控制器类UserController简单的测试一下"><a href="#5、获取登录用户的用户名-下面创建一个控制器类UserController简单的测试一下" class="headerlink" title="5、获取登录用户的用户名  - 下面创建一个控制器类UserController简单的测试一下"></a>5、获取登录用户的用户名  - 下面创建一个控制器类UserController简单的测试一下</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/login"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">login</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 获取登录用户的用户名</span></span><br><span class="line">		String name = SecurityContextHolder.getContext().getAuthentication().getName();</span><br><span class="line">        <span class="comment">// 我们只需要将程序运行起来</span></span><br><span class="line">        <span class="comment">// 然后在浏览器地址栏输入：http://localhost:10004/user/login.do</span></span><br><span class="line">        <span class="comment">// 就可以在控制台看到用户名被打印出来了，说明我们已经实现了这个功能</span></span><br><span class="line">        <span class="comment">// 拿到单点登录的用户名，就意味着可以进行后续更多的操作了~</span></span><br><span class="line">		System.out.println(name);	</span><br><span class="line">	&#125;	</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="6、单点登出"><a href="#6、单点登出" class="headerlink" title="6、单点登出"></a>6、单点登出</h5><p>​    可以在自己的系统当中，给某个按钮或链接设置访问路径为spring-security.xml配置文件中设置的filterProcessesUrl的值即可，例如：使用上面所示的配置文件，则可以像下面一样使用</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/logout/cas"</span>&gt;</span>退出登录<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="（完结！）"><a href="#（完结！）" class="headerlink" title="（完结！）"></a>（完结！）</h4></div><div class="tags"></div><div class="post-nav"><a class="next" href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/">算法 - 二叉树 - 完全二叉树转大根堆</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/J2EE/">J2EE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jsp/">jsp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/分布式消息中间件/">分布式消息中间件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/多线程/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题诊所/">问题诊所</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/10/J2EE - 单点登录技术/">J2EE - 单点登录技术</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/">算法 - 二叉树 - 完全二叉树转大根堆</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/19/JVM - Java虚拟机内存区域/">JVM - Java虚拟机内存区域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/算法 - 链表系列 - 寻找链表的倒数第N个结点/">算法 - 链表系列 - 寻找链表的倒数第N个结点</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/11/算法 - 链表系列 - 链表成环问题/">算法 - 链表系列 - 链表成环问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/06/算法 - 对数器/">算法 - 对数器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/算法 - 二维数组中的查找问题/">算法 - 二维数组中的查找问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/算法 - 重建二叉树/">算法 - 重建二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/30/算法 - 查找系列 - 查找中位数/">算法 - 查找系列 - 查找中位数</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/22/J2EE - 前后端分离模式下的跨域访问/">J2EE - 前后端分离模式下的JS跨域访问</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">lbyte.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<h4 id="（完结！）"><a href="#（完结！）" class="headerlink" title="（完结！）"></a>（完结！）</h4>
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-12-09T16:00:00.000Z" itemprop="datePublished">
+              2018-12-10
+            </time>
+          </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - lbyte </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

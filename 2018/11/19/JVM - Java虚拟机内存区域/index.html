@@ -1,4 +1,55 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>JVM - Java虚拟机内存区域 | lbyte</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">JVM - Java虚拟机内存区域</h1><a id="logo" href="/.">lbyte</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">JVM - Java虚拟机内存区域</h1><div class="post-meta">Nov 19, 2018<span> | </span><span class="category"><a href="/categories/JVM/">JVM</a></span></div><div class="post-content"><h3 id="一、为什么要学习JVM？"><a href="#一、为什么要学习JVM？" class="headerlink" title="一、为什么要学习JVM？"></a>一、为什么要学习JVM？</h3><p>​    正式进入JVM之前，读者应该要想一下，我们为什么要学习JVM？Java把内存管理机制交给了Java虚拟机，意味着Java程序员不需要像C程序员一样构造对象后必须配对出现delete或free代码来实现内存释放，但是随之也带来了问题，如果我们的程序出现了内存泄露和溢出问题，而此时Java程序员又不懂JVM，那程序的排错工作就变得非常棘手了，所以Java程序员掌握JVM还是很重要的！</p>
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JVM - Java虚拟机内存区域 | lbyte</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url()">
+        </div>
+    </section>
+    <section class="menu">
+        <div>lbyte</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <div>
+  <article class="ContentView">
+    <header class="PageTitle">
+        <h1>JVM - Java虚拟机内存区域</h1>
+    </header>
+
+    <section>
+      <h3 id="一、为什么要学习JVM？"><a href="#一、为什么要学习JVM？" class="headerlink" title="一、为什么要学习JVM？"></a>一、为什么要学习JVM？</h3><p>​    正式进入JVM之前，读者应该要想一下，我们为什么要学习JVM？Java把内存管理机制交给了Java虚拟机，意味着Java程序员不需要像C程序员一样构造对象后必须配对出现delete或free代码来实现内存释放，但是随之也带来了问题，如果我们的程序出现了内存泄露和溢出问题，而此时Java程序员又不懂JVM，那程序的排错工作就变得非常棘手了，所以Java程序员掌握JVM还是很重要的！</p>
 <h3 id="二、JVM的内存结构"><a href="#二、JVM的内存结构" class="headerlink" title="二、JVM的内存结构"></a>二、JVM的内存结构</h3><p>​    我们知道Java程序是由Java虚拟机来执行的，Java虚拟机在执行程序时，把它管理的内存分成了多个不同的区域，这些区域各司其职、有各自的生命周期、也有各自的隔离属性。</p>
 <p><img src="/2018/11/19/JVM - Java虚拟机内存区域/JVM运行时数据区.jpg" alt="JVM运行时数据区"></p>
 <h4 id="1、程序计数器"><a href="#1、程序计数器" class="headerlink" title="1、程序计数器"></a>1、程序计数器</h4><p>​    程序计数器，简单来说，它的作用其实就是记录下字节码执行到哪里了，相当于一个行号指示器。</p>
@@ -31,4 +82,48 @@
 <p>​    方法区中还包括运行时常量池，运行时常量池主要用来存放编译期生成的各种字面量、符号引用、翻译出来的直接引用，Java虚拟机规范没有对它做任何细节上的要求，不同的虚拟机产品可以根据自身的需要来定制实现这个内存区域。此外，Java语言并不要求常量只能在编译期产生，也不是必须预置入Class文件中的常量池内存才能进入方法区，例如String类的intern()方法就可以在运行期间将心的常量放入常量池中。</p>
 <p>​    在虚拟机规范中，虚拟机栈规定了一种异常</p>
 <p>（1）OutOfMemoryError：当方法区无法满足内存分配的需要或者常量池无法再申请到内存时，就会抛出该异常</p>
-</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/">算法 - 二叉树 - 完全二叉树转大根堆</a><a class="next" href="/2018/11/16/算法 - 链表系列 - 寻找链表的倒数第N个结点/">算法 - 链表系列 - 寻找链表的倒数第N个结点</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/J2EE/">J2EE</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/jsp/">jsp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/分布式消息中间件/">分布式消息中间件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/多线程/">多线程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/小项目/">小项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/问题诊所/">问题诊所</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/10/J2EE - 单点登录技术/">J2EE - 单点登录技术</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/">算法 - 二叉树 - 完全二叉树转大根堆</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/19/JVM - Java虚拟机内存区域/">JVM - Java虚拟机内存区域</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/16/算法 - 链表系列 - 寻找链表的倒数第N个结点/">算法 - 链表系列 - 寻找链表的倒数第N个结点</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/11/算法 - 链表系列 - 链表成环问题/">算法 - 链表系列 - 链表成环问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/06/算法 - 对数器/">算法 - 对数器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/02/算法 - 二维数组中的查找问题/">算法 - 二维数组中的查找问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/01/算法 - 重建二叉树/">算法 - 重建二叉树</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/30/算法 - 查找系列 - 查找中位数/">算法 - 查找系列 - 查找中位数</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/22/J2EE - 前后端分离模式下的跨域访问/">J2EE - 前后端分离模式下的JS跨域访问</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">lbyte.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+
+      
+
+    </section>
+    
+      <section class="ArticleMeta">
+          <div>
+            发布于&nbsp;
+            <time datetime="2018-11-18T16:00:00.000Z" itemprop="datePublished">
+              2018-11-19
+            </time>
+          </div>
+          
+      </section>
+    
+    
+</article>
+
+  
+</div>
+
+            <footer>
+    <div>© 2019 - lbyte </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

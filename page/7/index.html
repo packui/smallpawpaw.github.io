@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>lbyte</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url()">
+        </div>
+    </section>
+    <section class="menu">
+        <div>lbyte</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/08/28/算法 - 猴子吃桃问题/">算法 - 猴子吃桃问题</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2018-08-27T16:00:00.000Z" itemprop="datePublished">
+    2018-08-28
+  </time>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/算法/">算法</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h4 id="思路"><a href="#思路" class="headerlink" title="[思路]"></a>[思路]</h4><p>猴子吃桃问题：</p>
+<ul>
+<li>猴子第一天摘了若干个桃子，当即吃了一半，后来不过瘾，又多吃了一个桃子，第二天早上又将剩下的桃子吃了一半，后来又多吃了一个</li>
+<li>以后每天早上都吃了前一天剩下的一半再加一个。到第10天早上，猴子想再吃桃子时，发现只剩下一个桃子了。</li>
+<li>求：第一天猴子摘了多少个桃子？</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="[代码]"></a>[代码]</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 猴子吃桃问题：</span></span><br><span class="line"><span class="comment"> * 猴子第一天摘了若干个桃子，当即吃了一半，后来不过瘾，又多吃了一个桃子，第二天早上又将剩下的桃子吃了一半，后来又多吃了一个，</span></span><br><span class="line"><span class="comment"> * 以后每天早上都吃了前一天剩下的一半再加一个。到第10天早上，猴子想再吃桃子时，发现只剩下一个桃子了。</span></span><br><span class="line"><span class="comment"> * 求：第一天猴子摘了多少个桃子？</span></span><br><span class="line"><span class="comment"> * 思路：递归思想</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MonkeyEatPeach</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 1534</span></span><br><span class="line">		System.out.println(<span class="string">"猴子第一天摘了"</span> + getPeachNum(<span class="number">1</span>) + <span class="string">"个桃子!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取当天桃子最初的个数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> day 接收一个int类型的参数代表第几天</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回当天桃子最初的个数</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getPeachNum</span><span class="params">(<span class="keyword">int</span> day)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 天数应当在1-10之间</span></span><br><span class="line">		<span class="keyword">if</span> (day &gt; <span class="number">0</span> &amp;&amp; day &lt; <span class="number">10</span>) &#123;</span><br><span class="line">			<span class="comment">// 前一天桃子最初的个数 = 2 *（后一天桃子最初的个数 + 1）</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">2</span> * (getPeachNum(day + <span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (day == <span class="number">10</span>) &#123;</span><br><span class="line">			<span class="comment">// 第10天最初只有1个桃子</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"指定的天数应当在1-10之间"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">猴子第一天摘了1534个桃子!</span><br></pre></td></tr></table></figure>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/08/19/算法 - 自由落体运动/">算法 - 自由落体运动</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2018-08-18T16:00:00.000Z" itemprop="datePublished">
+    2018-08-19
+  </time>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/算法/">算法</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <ul>
+<li>自由落体运动问题：<ul>
+<li>小球从100米高度自由落下，每次落地后反弹回原高度的一半，再落下</li>
+<li>求：小球第10次落地时，共经过多少米？第10次反弹多高？</li>
+</ul>
+</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="[代码]"></a>[代码]</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 自由落体运动问题：</span></span><br><span class="line"><span class="comment"> * 小球从100米高度自由落下，每次落地后反弹回原高度的一半，再落下</span></span><br><span class="line"><span class="comment"> * 求：小球第10次落地时，共经过多少米？第10次反弹多高？</span></span><br><span class="line"><span class="comment"> * 思路：递归思想</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FreeFall</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 输出结果</span></span><br><span class="line">		System.out.println(<span class="string">"小球第10次落地时，共经过"</span> + getLength(<span class="number">10</span>) + <span class="string">"米，反弹"</span> + getReboundHeight(<span class="number">10</span>) + <span class="string">"米"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取截止至当次小球共经过的距离</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> count 接收一个int类型参数代表第几次落地</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回截止至当次小球共经过的距离</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">getLength</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (count &gt; <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="comment">// 后一次经过的总距离 = 前一次经过的总距离 + 两倍的反弹高度</span></span><br><span class="line">			<span class="keyword">return</span> getLength(count - <span class="number">1</span>) + getReboundHeight(count - <span class="number">1</span>) * <span class="number">2</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="comment">// 第一次落地时经过的总距离为100米</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">100</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"指定参数不符！"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取当次小球反弹的高度</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> count 接收一个int类型参数代表第几次落地</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> 返回当次小球反弹的高度</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">getReboundHeight</span><span class="params">(<span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (count &gt; <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="comment">// 后一次反弹的高度 = 前一次反弹的高度/2</span></span><br><span class="line">			<span class="keyword">return</span> getReboundHeight(count - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (count == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="comment">// 第一次反弹的高度为50米</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">50</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"指定参数不符！"</span>);</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">小球第10次落地时，共经过299.609375米，反弹0.09765625米</span><br></pre></td></tr></table></figure>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/08/13/算法 - 统计字符串中各个字符出现的次数/">算法 - 统计字符串中各个字符出现的次数</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2018-08-12T16:00:00.000Z" itemprop="datePublished">
+    2018-08-13
+  </time>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/算法/">算法</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h4 id="代码"><a href="#代码" class="headerlink" title="[代码]"></a>[代码]</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountWord</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 1、获取需要被统计的字符串</span></span><br><span class="line">		Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入一个字符串："</span>);</span><br><span class="line">		String str = sc.nextLine();</span><br><span class="line">		<span class="comment">// 2、将字符串转换成字符数组</span></span><br><span class="line">		<span class="keyword">char</span>[] word = str.toCharArray();</span><br><span class="line">		<span class="comment">// 3、定义一个HashMap集合用于存储字符、字符出现的次数</span></span><br><span class="line">		HashMap&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		<span class="comment">// 4、遍历字符数组并判断集合中是否存在该字符</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">char</span> c : word) &#123;</span><br><span class="line">			<span class="comment">// 5、如果集合不包含该字符，则将该字符作为键存储在集合中，对应的值存储为1、如果集合包含该字符，则对应的值+1</span></span><br><span class="line">			map.put(c, map.containsKey(c) ? map.get(c) + <span class="number">1</span> : <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 6、遍历集合打印每个字符出现的次数</span></span><br><span class="line">		<span class="keyword">for</span> (Character key : map.keySet()) &#123;</span><br><span class="line">			System.out.println(key + <span class="string">"总共出现了："</span> + map.get(key) + <span class="string">"次"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">请输入一个字符串：</span><br><span class="line">bh,jsbv.blyscdghklgcsyugvkasgl</span><br><span class="line">g总共出现了：4次</span><br><span class="line">d总共出现了：1次</span><br><span class="line">b总共出现了：3次</span><br><span class="line">c总共出现了：2次</span><br><span class="line">a总共出现了：1次</span><br><span class="line">l总共出现了：3次</span><br><span class="line">j总共出现了：1次</span><br><span class="line">.总共出现了：1次</span><br><span class="line">k总共出现了：2次</span><br><span class="line">h总共出现了：2次</span><br><span class="line">,总共出现了：1次</span><br><span class="line">v总共出现了：2次</span><br><span class="line">u总共出现了：1次</span><br><span class="line">s总共出现了：4次</span><br><span class="line">y总共出现了：2次</span><br></pre></td></tr></table></figure>
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/08/11/分布式消息中间件 - ActiveMQ/">分布式消息中间件 - ActiveMQ</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2018-08-10T16:00:00.000Z" itemprop="datePublished">
+    2018-08-11
+  </time>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/分布式消息中间件/">分布式消息中间件</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h4 id="0、ActiveMQ介绍"><a href="#0、ActiveMQ介绍" class="headerlink" title="0、ActiveMQ介绍"></a>0、ActiveMQ介绍</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   MQ是消息中间件，是一种在分布式系统中应用程序用来传递消息的媒介，常用的有ActiveMQ，RabbitMQ，kafka，其中ActiveMQ是Apache下的开源项目，完全支持JMS1.1和J2EE1.4规范的JMS Provider实现。 </span><br><span class="line">特点： </span><br><span class="line">1、支持多种语言编写客户端</span><br><span class="line">2、对spring的支持，很容易和spring整合</span><br><span class="line">3、支持多种传输协议：TCP，SSL，NIO，UDP等</span><br><span class="line">4、支持AJAX</span><br><span class="line">5、支持通过JDBC和journal提供高速的消息持久化</span><br><span class="line">消息形式： </span><br><span class="line">1、点对点（一对一）（queue） </span><br><span class="line">2、一对多（topic）</span><br></pre></td></tr></table></figure>
+<h4 id="一、下载ActiveMQ"><a href="#一、下载ActiveMQ" class="headerlink" title="一、下载ActiveMQ"></a>一、下载ActiveMQ</h4><p><a href="http://activemq.apache.org/" target="_blank" rel="noopener">http://activemq.apache.org/</a></p>
+<h4 id="二、解压、启动"><a href="#二、解压、启动" class="headerlink" title="二、解压、启动"></a>二、解压、启动</h4><p>1、进入bin  &gt;  win64或者win32(根据自己系统位数决定)   &gt;   双击activemq.bat</p>
+<p>2、进入ActiveMQ管理系统，用户名和密码都是：admin</p>
+<p><a href="http://localhost:8161/admin/" target="_blank" rel="noopener">http://localhost:8161/admin/</a> </p>
+<h4 id="三、创建HelloActiveMQ项目"><a href="#三、创建HelloActiveMQ项目" class="headerlink" title="三、创建HelloActiveMQ项目"></a>三、创建HelloActiveMQ项目</h4><p>1、讲解压后的ActiveMQ目录lib文件夹下的所有jar包复制到当前项目下</p>
+<p>2、创建Sender.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.jms.Connection;</span><br><span class="line"><span class="keyword">import</span> javax.jms.ConnectionFactory;</span><br><span class="line"><span class="keyword">import</span> javax.jms.DeliveryMode;</span><br><span class="line"><span class="keyword">import</span> javax.jms.Destination;</span><br><span class="line"><span class="keyword">import</span> javax.jms.MessageProducer;</span><br><span class="line"><span class="keyword">import</span> javax.jms.Session;</span><br><span class="line"><span class="keyword">import</span> javax.jms.TextMessage;</span><br><span class="line"><span class="keyword">import</span> org.apache.activemq.ActiveMQConnection;</span><br><span class="line"><span class="keyword">import</span> org.apache.activemq.ActiveMQConnectionFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sender</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SEND_NUMBER = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// ConnectionFactory :连接工厂,JMS 用它创建连接</span></span><br><span class="line">		ConnectionFactory connectionFactory;</span><br><span class="line">		<span class="comment">// Connection :JMS 客户端到JMS Provider 的连接</span></span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// Session: 一个发送或接收消息的线程</span></span><br><span class="line">		Session session;</span><br><span class="line">		<span class="comment">// Destination :消息的目的地;消息发送给谁.</span></span><br><span class="line">		Destination destination;</span><br><span class="line">		<span class="comment">// MessageProducer:消息发送者</span></span><br><span class="line">		MessageProducer producer;</span><br><span class="line">		<span class="comment">// TextMessage message;</span></span><br><span class="line">		<span class="comment">// 构造ConnectionFactory实例对象,此处采用ActiveMq的实现jar</span></span><br><span class="line">		connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,</span><br><span class="line">				ActiveMQConnection.DEFAULT_PASSWORD, <span class="string">"tcp://localhost:61616"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 构造从工厂得到连接对象</span></span><br><span class="line">			connection = connectionFactory.createConnection();</span><br><span class="line">			<span class="comment">// 启动</span></span><br><span class="line">			connection.start();</span><br><span class="line">			<span class="comment">// 获取操作连接</span></span><br><span class="line">			session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">			<span class="comment">// 获取session注意参数值xingbo.xu-queue是一个服务器的queue,须在在ActiveMq的console配置</span></span><br><span class="line">			destination = session.createQueue(<span class="string">"FirstQueue"</span>);</span><br><span class="line">			<span class="comment">// 得到消息生成者【发送者】</span></span><br><span class="line">			producer = session.createProducer(destination);</span><br><span class="line">			<span class="comment">// 设置不持久化,此处学习,实际根据项目决定</span></span><br><span class="line">			producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);</span><br><span class="line">			<span class="comment">// 构造消息,此处写死,项目就是参数,或者方法获取</span></span><br><span class="line">			sendMessage(session, producer);</span><br><span class="line">			session.commit();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">null</span> != connection)</span><br><span class="line">					connection.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Throwable ignore) &#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(Session session, MessageProducer producer)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= SEND_NUMBER; i++) &#123;</span><br><span class="line">			TextMessage message = session.createTextMessage(<span class="string">"ActiveMq生产者发送的消息："</span> + i);</span><br><span class="line">			<span class="comment">// 发送消息到目的地方</span></span><br><span class="line">			System.out.println(<span class="string">"成功发送消息:"</span> + <span class="string">"ActiveMq生产者发送的消息："</span> + i);</span><br><span class="line">			producer.send(message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3、创建Receiver-java"><a href="#3、创建Receiver-java" class="headerlink" title="3、创建Receiver.java"></a>3、创建Receiver.java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.jms.Connection;</span><br><span class="line"><span class="keyword">import</span> javax.jms.ConnectionFactory;</span><br><span class="line"><span class="keyword">import</span> javax.jms.Destination;</span><br><span class="line"><span class="keyword">import</span> javax.jms.MessageConsumer;</span><br><span class="line"><span class="keyword">import</span> javax.jms.Session;</span><br><span class="line"><span class="keyword">import</span> javax.jms.TextMessage;</span><br><span class="line"><span class="keyword">import</span> org.apache.activemq.ActiveMQConnection;</span><br><span class="line"><span class="keyword">import</span> org.apache.activemq.ActiveMQConnectionFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Receiver</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// ConnectionFactory :连接工厂,JMS 用它创建连接</span></span><br><span class="line">		ConnectionFactory connectionFactory;</span><br><span class="line">		<span class="comment">// Connection :JMS 客户端到JMS Provider 的连接</span></span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// Session: 一个发送或接收消息的线程</span></span><br><span class="line">		Session session;</span><br><span class="line">		<span class="comment">// Destination :消息的目的地;消息发送给谁.</span></span><br><span class="line">		Destination destination;</span><br><span class="line">		<span class="comment">// 消费者,消息接收者</span></span><br><span class="line">		MessageConsumer consumer;</span><br><span class="line">		connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,</span><br><span class="line">				ActiveMQConnection.DEFAULT_PASSWORD, <span class="string">"tcp://localhost:61616"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 构造从工厂得到连接对象</span></span><br><span class="line">			connection = connectionFactory.createConnection();</span><br><span class="line">			<span class="comment">// 启动</span></span><br><span class="line">			connection.start();</span><br><span class="line">			<span class="comment">// 获取操作连接</span></span><br><span class="line">			session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">			<span class="comment">// 获取session注意参数值xingbo.xu-queue是一个服务器的queue,须在在ActiveMq的console配置</span></span><br><span class="line">			destination = session.createQueue(<span class="string">"FirstQueue"</span>);</span><br><span class="line">			consumer = session.createConsumer(destination);</span><br><span class="line">			<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">				<span class="comment">// 设置接收者接收消息的时间,为了便于测试,这里谁定为100s</span></span><br><span class="line">				TextMessage message = (TextMessage) consumer.receive(<span class="number">100000</span>);</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">null</span> != message) &#123;</span><br><span class="line">					System.out.println(<span class="string">"客户端消费者收到消息："</span> + message.getText());</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">null</span> != connection)</span><br><span class="line">					connection.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Throwable ignore) &#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4、测试运行"><a href="#4、测试运行" class="headerlink" title="4、测试运行"></a>4、测试运行</h4><p>注意点：先启动Receiver，后启动Sender</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/07/22/算法 - 排序系列 - 冒泡排序/">算法 - 排序系列 - 冒泡排序</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2018-07-21T16:00:00.000Z" itemprop="datePublished">
+    2018-07-22
+  </time>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/算法/">算法</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h3 id="一、原理"><a href="#一、原理" class="headerlink" title="一、原理"></a>一、原理</h3><p>相邻元素两两进行比较，如果前面的大于后面的，则将它们交换，否则不交换。每一对元素都进行同样的操作，每次都可以将当次最大的元素冒到最后面，从而整体有序。</p>
+<h3 id="二、图解"><a href="#二、图解" class="headerlink" title="二、图解"></a>二、图解</h3><p><img src="/2018/07/22/算法 - 排序系列 - 冒泡排序/1.png" alt="1"></p>
+<h3 id="三、代码实现"><a href="#三、代码实现" class="headerlink" title="三、代码实现"></a>三、代码实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 冒泡排序</span></span><br><span class="line"><span class="comment"> * 时间复杂度O(N^2)，空间复杂度O(1)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lbyte</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSort</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubblesort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr==<span class="keyword">null</span>||arr.length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//每次确定当次的最大值，把它冒到当次的最后位置上</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> end=arr.length-<span class="number">1</span>;end&gt;<span class="number">0</span>;end--)&#123;</span><br><span class="line">			<span class="comment">//在未完成排序的区间内,前后元素两两比较</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;end;j++)&#123;				</span><br><span class="line">				<span class="keyword">if</span>(arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">					swap(arr,j,j+<span class="number">1</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">		arr[i] = arr[i] ^ arr[j];</span><br><span class="line">		arr[j] = arr[i] ^ arr[j];</span><br><span class="line">		arr[i] = arr[i] ^ arr[j];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = &#123;<span class="number">10</span>,<span class="number">6</span>,<span class="number">6</span>,<span class="number">12</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">12</span>,<span class="number">56</span>,<span class="number">30</span>,<span class="number">1</span>,<span class="number">25</span>,<span class="number">9</span>,-<span class="number">10</span>,-<span class="number">5</span>,<span class="number">6</span>,<span class="number">0</span>&#125;;</span><br><span class="line">		bubblesort(arr);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> a:arr)&#123;</span><br><span class="line">			System.out.print(a+<span class="string">" "</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="【运行效果】"><a href="#【运行效果】" class="headerlink" title="【运行效果】"></a>【运行效果】</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-10 -5 0 1 1 6 6 6 9 9 10 12 12 25 30 56</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+  <section id="nav-wrapper">
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/6/">« prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/">next »</a>
+    </nav>
+  </section>
+
+
+            <footer>
+    <div>© 2019 - lbyte </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>

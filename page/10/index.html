@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>lbyte</title>
+  
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url()">
+        </div>
+    </section>
+    <section class="menu">
+        <div>lbyte</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/04/10/计算机基础/">计算机基础</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2018-04-09T16:00:00.000Z" itemprop="datePublished">
+    2018-04-10
+  </time>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/计算机/">计算机</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><h3 id="一、通识"><a href="#一、通识" class="headerlink" title="一、通识"></a>一、通识</h3><h5 id="1、将任意一个十进制数转换成任意进制"><a href="#1、将任意一个十进制数转换成任意进制" class="headerlink" title="1、将任意一个十进制数转换成任意进制"></a>1、将任意一个十进制数转换成任意进制</h5><p>例如：将十进制数 13 转换成 3进制 表示形式？<br>13%3=1（最低位）    13/3=4<br>4%3=1            4/3=1<br>1%3=1（最高位）    1/3=0    结束<br>答案是：111</p>
+<h3 id="二、操作系统"><a href="#二、操作系统" class="headerlink" title="二、操作系统"></a>二、操作系统</h3><h5 id="1、32位和64位"><a href="#1、32位和64位" class="headerlink" title="1、32位和64位"></a>1、32位和64位</h5><p>是指进程的逻辑内存的寻址空间的大小，32位的操作系统每个进程都会有2^32大小（4G）的寻址空间可以使用，但不意味着直接把这4G给这些进程</p>
+<h5 id="2、进程和线程"><a href="#2、进程和线程" class="headerlink" title="2、进程和线程"></a>2、进程和线程</h5><p>内存结构不同：<br>进程在操作系统里面是有明显的边界的，它们相互独立，不能共享内存；而线程是程序的多个顺序的流动态执行，没有独立的地址空间和内存，不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制，线程与线程是可以共享内存的；<br>通信上存在不同：<br>进程之间的内存是独立的，所以必须通过特定的通信方式进行，常见的通信方式是使用TCP/IP的端口来实现；<br>而线程之间通信是很方便的，只需要指针一指，指向相应的内存空间既可以实现通信。<br>开销上存在差异：<br>进程需要分配比较大的内存空间，进程里面的内存指的是逻辑内存，每个进程里面可以有很多线程在运行，所以开销比较大；而线程只需要分配栈和PC就可以了，开销比较小。</p>
+<p>虽然系统资源调度和分配最终进CPU的是某个线程，但是考虑这个线程的时候还需要考虑其所在的进程是怎样的，所以线程不是独立单位<br>文件/网络句柄是所有进程都可以使用的，所有进程都可以打开同一个文件，也可以抢同一个网络端口</p>
+<h5 id="3、进程为什么不能共享内存？"><a href="#3、进程为什么不能共享内存？" class="headerlink" title="3、进程为什么不能共享内存？"></a>3、进程为什么不能共享内存？</h5><p>因为进程在操作系统中是有明显的边界的，不同的应用程序需要分配不同的内存，考虑到用户信息和软件的安全性问题，进程是不能共享内存的，假设一个网上银行在运行，如果进程的内存被共享，意味着用户的相关信息是可以被别的进程获取到，这是很危险的，所以进程之间不能共享内存。</p>
+<h5 id="4、存储"><a href="#4、存储" class="headerlink" title="4、存储"></a>4、存储</h5><p>操作系统中的存储是结构化的，包括硬盘、内存、缓存、寄存器，速度由慢到快，价格也是从便宜到贵，放在内存的东西访问速度是很快的，比如谷歌搜索为什么快，因为谷歌把存储大部分信息都放在了内存里，少部分访问量小的存放在硬盘里，基于内存的搜索是很快的</p>
+<h5 id="5、寻址空间"><a href="#5、寻址空间" class="headerlink" title="5、寻址空间"></a>5、寻址空间</h5><p>寻址空间是内存独立的，每个进程都有自己的寻址空间，这个寻址空间的大小和物理内存没有关系，只和操作系统的位数有关系，可能是32位也可能是64位的逻辑内存的大小。<br>32位  -&gt;  4G<br>64位  -&gt;  过大，暂时不考虑<br>64位JVM：意味着Java程序可以使用的内存很大，当把一个32位系统下的程序迁移到64位上时，我们不要更改代码，只          需要重新编译一下就可以了<br>例如：int n = *p;  -&gt; 编译成汇编： MOV EAX,[EBX]，也就是把EBX寄存器里的地址指向的数据读出来，放在EAX寄                                             存器里面，然后编译器会记住n对应的是EAX，p对应的是EBX<br>指针p指向的不是物理内存，而是一个逻辑内存，也就是寻址空间，接下来，系统会将这个逻辑地址和物理内存进行对应，因为逻辑内存比较大，我们对应的地址有可能在物理内存里，也有可能不在物理内存里，如果在，我们直接把相应的数据取出来就可以了，如果不在，则在虚拟内存里面，接下来，就需要把虚拟内存里的数据放到物理内存里面，这个过程不是说直接把p指向的那块内存放到物理内存去，而是把p指向所在的那个分页放过去，这个分页可能几K，也可能几M，如果物理内存可以放得下，则直接放进去就可以了，如果放不下，系统会把物理内存里很久没有使用的东西交换进虚拟内存里，交换完成后，p指向的部分就进入了物理内存，也就确保了p所指向的数据在物理内存里了，接下来只需把这部分数据取出来放到EAX寄存器里面就好了。</p>
+<p>一个运行良好的系统或者程序里面，绝大部分数据都已经在物理内存里面，这样就会很快，但是如果物理内存使用量过多的话，就会发生频繁的分页，系统性能就会变得很慢。</p>
+<h5 id="6、信号量和互斥锁"><a href="#6、信号量和互斥锁" class="headerlink" title="6、信号量和互斥锁"></a>6、信号量和互斥锁</h5><p>信号量又称为信号灯，它是用来协调不同进程间的数据对象的，而最主要的应用是共享内存方式的进程间通信。本质上，信号量是一个计数器，它用来记录对某个资源（如共享内存）的存取状况。<br>互斥体禁止多个线程同时进入受保护的代码“临界区”（critical section）。因此，在任意时刻，只有一个线程被允许进入这样的代码保护区。<br>对于互斥锁，如果资源已经被占用，资源申请者只能进入睡眠状态。但是自旋锁不会引起调用者睡眠，如果自旋锁已经被别的执行单元保持，调用者就一直循环在那里看是否该自旋锁的保持者已经释放了锁，”自旋”一词就是因此而得名。</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2017/12/20/MySQL安装篇/">开发工具 - MySQL安装篇</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2017-12-19T16:00:00.000Z" itemprop="datePublished">
+    2017-12-20
+  </time>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/开发工具/">开发工具</a> }
+  </li>
+
+
+  </ul>
+  
+</div>
+
+    </header>
+    <div>
+      
+        <h4 id="一、下载MySQL"><a href="#一、下载MySQL" class="headerlink" title="一、下载MySQL"></a>一、下载MySQL</h4><p>MySQL官网：<a href="https://www.mysql.com/" target="_blank" rel="noopener">https://www.mysql.com/</a></p>
+<h4 id="二、安装MySQL"><a href="#二、安装MySQL" class="headerlink" title="二、安装MySQL"></a>二、安装MySQL</h4><p>本文以mysql-5.5.27-winx64.msi为例进行安装，其实不管哪个版本，安装本质都是相通的</p>
+<p>1、双击运行mysql-5.5.27-winx64.msi，安装前面部分都是傻瓜式安装方式比较简单</p>
+<p>2、安装MySQL之后，会继续进入MySQL配置设置，如下：</p>
+<p><img src="/2017/12/20/MySQL安装篇/p1.PNG" alt="1"></p>
+<p>选择进行详细配置还是标准配置，这里选择“详细配置”</p>
+<p><img src="/2017/12/20/MySQL安装篇/p2.PNG" alt="2"></p>
+<p>选择安装的MySQL作为服务器还是开发使用，这里选择开发使用</p>
+<p><img src="/2017/12/20/MySQL安装篇/p3.PNG" alt="3"></p>
+<p>选择多功能类型数据库、仅支持事务类型数据库还是非事务数据库，这里选择“多功能类型”</p>
+<p><img src="/2017/12/20/MySQL安装篇/p4.PNG" alt="4"></p>
+<p>存储引擎的表空间配置，默认下一步即可</p>
+<p><img src="/2017/12/20/MySQL安装篇/p5.PNG" alt="5"></p>
+<p>设置MySQL并发连接数，我们选择第一个，表示假定20个连接的模式，可以根据自己的需要设置</p>
+<p><img src="/2017/12/20/MySQL安装篇/p6.PNG" alt="6"></p>
+<p>设置MySQL端口，默认3306即可</p>
+<p><img src="/2017/12/20/MySQL安装篇/p7.PNG" alt="7"></p>
+<p>设置MySQL的字符集，这里选择第二个 将utf8作为MySQL默认的字符集</p>
+<p><img src="/2017/12/20/MySQL安装篇/p8.PNG" alt="8"></p>
+<p>设置MySQL服务的名字、默认MySQL即可，将“Include Bin Directory in Windows PATH”勾选上，将MySQL的bin添加到系统环境变量中去，方便我们后期在命令行窗口操作MySQL</p>
+<p><img src="/2017/12/20/MySQL安装篇/p9.PNG" alt="9"></p>
+<p>设置root账户的密码（自己要记牢），然后Next</p>
+<p><img src="/2017/12/20/MySQL安装篇/p10.PNG" alt="10"></p>
+<p>点击“execute”表示执行</p>
+<p><img src="/2017/12/20/MySQL安装篇/p11.PNG" alt="11"></p>
+<p>当出现下图，四个都打上对勾，表示安装配置成功，点击“finish”完成全部安装配置</p>
+<p><img src="/2017/12/20/MySQL安装篇/p12.PNG" alt="12"></p>
+<p>3、验证MySQL是否安装成功</p>
+<p>在命令行窗口下，输入: mysql -uroot -p，然后回车，输入刚刚配置的root账户的密码，出现如下界面，表示安装确实成功了</p>
+<p><img src="/2017/12/20/MySQL安装篇/p13.PNG" alt="13"></p>
+<p>4、接下来就可以快乐的玩玩MySQL了！</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
+
+  <section id="nav-wrapper">
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/9/">« prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+    </nav>
+  </section>
+
+
+            <footer>
+    <div>© 2019 - lbyte </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
+</footer>
+
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
+
+</script>
+</body>
+</html>
