@@ -1,173 +1,123 @@
 <!DOCTYPE html>
-<html>
-  <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-    
-    <title>category: 分布式消息中间件 | lbyte</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    
-      <link rel="icon" href="/favicon.png">
-    
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
-
-  </head>
-
-  <body>
-</body></html>
-<header>
-	<a id="logo" href="/" title="lbyte">
-	<img src="/favicon.png" alt="lbyte"></a>
-	
-	
-		<!--搜索栏-->
-		<i class="js-toggle-search iconfont icon-search"></i>
-
-
-<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
-	<div class="search-form__inner">
-		<div>
-			<i class="iconfont icon-search"></i>
-			<input class="text-input" placeholder="Enter Key..." type="search">
-		</div>
-	</div>
-</form>
-	
-
-	
-		<!--侧边导航栏-->
-		<a id="nav-toggle" href="#"><span></span></a>
-
-<nav>
-	<div class="menu-top-container">
-		<ul id="menu-top" class="menu">
-			
-				
-				<li class="current-menu-item">
-					<a href="http://weibo.com/" target="_blank">Weibo</a>
-				</li>
-			
-		</ul>
-	</div>
-</nav>
-	
-
-</header>
-<div class="m-header ">
-	<section id="hero1" class="hero">
-		<div class="inner">
-		</div>
-	</section>
-	
-		<figure class="top-image" data-enable="true"></figure>
-	
-</div>
-
-<!--文章列表-->
-<div class="wrapper">
+<html lang="zh-cmn-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>lbyte</title>
   
-    <ul class="posts-list mb+ js-posts">
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-            <i class="post-status iconfont icon-icon"></i>  
-          
-          <h2 class="no-background">
-            <span><a href="/2018/08/11/分布式消息中间件 - ActiveMQ/">分布式消息中间件 - ActiveMQ</a></span>
-            <time class="post-time" datetime="2018-08-10T16:00:00.000Z" itemprop="datePublished">2018-08-11</time>
-          </h2>
-        </li>
-      
-    </ul>
-    
+  
+  
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github-gist.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
 
+<body>
+<div class="Shell">
+    <aside class="SideBar">
+    <section class="avatar" style="background-image: url()">
+        <div class="av-pic" style="background-image: url()">
+        </div>
+    </section>
+    <section class="menu">
+        <div>lbyte</div>
+        
+        <ul>
+          
+            <a href="/" class="Btn">
+              <li>Home</li>
+            </a>  
+          
+            <a href="/archives/" class="Btn">
+              <li>Archive</li>
+            </a>  
+          
+        </ul>
+    </section>
+    <section class="media">
+        
+    </section>
+</aside>
+
+    <div class="container">
+        <div data-pager-shell>
+            <ul class="Index">
+  
+    <header class="PageTitle">
+        <h1>{ 分布式消息中间件 }</h1>
+    </header>
+  
+  
+    <li>
+      <article class="ListView">
+    <header class="title">
+      
+        <h1>
+          <a href="/2018/08/11/分布式消息中间件 - ActiveMQ/">分布式消息中间件 - ActiveMQ</a>
+        </h1>
+      
+      <div class="ListMeta">
+  <time datetime="2018-08-10T16:00:00.000Z" itemprop="datePublished">
+    2018-08-11
+  </time>
+  
+  
+  / 
+  <ul>
+    
+  <li class="meta-text">
+  { <a href="/categories/分布式消息中间件/">分布式消息中间件</a> }
+  </li>
+
+
+  </ul>
   
 </div>
 
+    </header>
+    <div>
+      
+        <h4 id="0、ActiveMQ介绍"><a href="#0、ActiveMQ介绍" class="headerlink" title="0、ActiveMQ介绍"></a>0、ActiveMQ介绍</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   MQ是消息中间件，是一种在分布式系统中应用程序用来传递消息的媒介，常用的有ActiveMQ，RabbitMQ，kafka，其中ActiveMQ是Apache下的开源项目，完全支持JMS1.1和J2EE1.4规范的JMS Provider实现。 </span><br><span class="line">特点： </span><br><span class="line">1、支持多种语言编写客户端</span><br><span class="line">2、对spring的支持，很容易和spring整合</span><br><span class="line">3、支持多种传输协议：TCP，SSL，NIO，UDP等</span><br><span class="line">4、支持AJAX</span><br><span class="line">5、支持通过JDBC和journal提供高速的消息持久化</span><br><span class="line">消息形式： </span><br><span class="line">1、点对点（一对一）（queue） </span><br><span class="line">2、一对多（topic）</span><br></pre></td></tr></table></figure></div>
+<h4 id="一、下载ActiveMQ"><a href="#一、下载ActiveMQ" class="headerlink" title="一、下载ActiveMQ"></a>一、下载ActiveMQ</h4><p><a href="http://activemq.apache.org/" target="_blank" rel="noopener">http://activemq.apache.org/</a></p>
+<h4 id="二、解压、启动"><a href="#二、解压、启动" class="headerlink" title="二、解压、启动"></a>二、解压、启动</h4><p>1、进入bin  &gt;  win64或者win32(根据自己系统位数决定)   &gt;   双击activemq.bat</p>
+<p>2、进入ActiveMQ管理系统，用户名和密码都是：admin</p>
+<p><a href="http://localhost:8161/admin/" target="_blank" rel="noopener">http://localhost:8161/admin/</a> </p>
+<h4 id="三、创建HelloActiveMQ项目"><a href="#三、创建HelloActiveMQ项目" class="headerlink" title="三、创建HelloActiveMQ项目"></a>三、创建HelloActiveMQ项目</h4><p>1、讲解压后的ActiveMQ目录lib文件夹下的所有jar包复制到当前项目下</p>
+<p>2、创建Sender.java</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.jms.Connection;</span><br><span class="line"><span class="keyword">import</span> javax.jms.ConnectionFactory;</span><br><span class="line"><span class="keyword">import</span> javax.jms.DeliveryMode;</span><br><span class="line"><span class="keyword">import</span> javax.jms.Destination;</span><br><span class="line"><span class="keyword">import</span> javax.jms.MessageProducer;</span><br><span class="line"><span class="keyword">import</span> javax.jms.Session;</span><br><span class="line"><span class="keyword">import</span> javax.jms.TextMessage;</span><br><span class="line"><span class="keyword">import</span> org.apache.activemq.ActiveMQConnection;</span><br><span class="line"><span class="keyword">import</span> org.apache.activemq.ActiveMQConnectionFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sender</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SEND_NUMBER = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// ConnectionFactory :连接工厂,JMS 用它创建连接</span></span><br><span class="line">		ConnectionFactory connectionFactory;</span><br><span class="line">		<span class="comment">// Connection :JMS 客户端到JMS Provider 的连接</span></span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// Session: 一个发送或接收消息的线程</span></span><br><span class="line">		Session session;</span><br><span class="line">		<span class="comment">// Destination :消息的目的地;消息发送给谁.</span></span><br><span class="line">		Destination destination;</span><br><span class="line">		<span class="comment">// MessageProducer:消息发送者</span></span><br><span class="line">		MessageProducer producer;</span><br><span class="line">		<span class="comment">// TextMessage message;</span></span><br><span class="line">		<span class="comment">// 构造ConnectionFactory实例对象,此处采用ActiveMq的实现jar</span></span><br><span class="line">		connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,</span><br><span class="line">				ActiveMQConnection.DEFAULT_PASSWORD, <span class="string">"tcp://localhost:61616"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 构造从工厂得到连接对象</span></span><br><span class="line">			connection = connectionFactory.createConnection();</span><br><span class="line">			<span class="comment">// 启动</span></span><br><span class="line">			connection.start();</span><br><span class="line">			<span class="comment">// 获取操作连接</span></span><br><span class="line">			session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">			<span class="comment">// 获取session注意参数值xingbo.xu-queue是一个服务器的queue,须在在ActiveMq的console配置</span></span><br><span class="line">			destination = session.createQueue(<span class="string">"FirstQueue"</span>);</span><br><span class="line">			<span class="comment">// 得到消息生成者【发送者】</span></span><br><span class="line">			producer = session.createProducer(destination);</span><br><span class="line">			<span class="comment">// 设置不持久化,此处学习,实际根据项目决定</span></span><br><span class="line">			producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);</span><br><span class="line">			<span class="comment">// 构造消息,此处写死,项目就是参数,或者方法获取</span></span><br><span class="line">			sendMessage(session, producer);</span><br><span class="line">			session.commit();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">null</span> != connection)</span><br><span class="line">					connection.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Throwable ignore) &#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">(Session session, MessageProducer producer)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= SEND_NUMBER; i++) &#123;</span><br><span class="line">			TextMessage message = session.createTextMessage(<span class="string">"ActiveMq生产者发送的消息："</span> + i);</span><br><span class="line">			<span class="comment">// 发送消息到目的地方</span></span><br><span class="line">			System.out.println(<span class="string">"成功发送消息:"</span> + <span class="string">"ActiveMq生产者发送的消息："</span> + i);</span><br><span class="line">			producer.send(message);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="3、创建Receiver-java"><a href="#3、创建Receiver-java" class="headerlink" title="3、创建Receiver.java"></a>3、创建Receiver.java</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.jms.Connection;</span><br><span class="line"><span class="keyword">import</span> javax.jms.ConnectionFactory;</span><br><span class="line"><span class="keyword">import</span> javax.jms.Destination;</span><br><span class="line"><span class="keyword">import</span> javax.jms.MessageConsumer;</span><br><span class="line"><span class="keyword">import</span> javax.jms.Session;</span><br><span class="line"><span class="keyword">import</span> javax.jms.TextMessage;</span><br><span class="line"><span class="keyword">import</span> org.apache.activemq.ActiveMQConnection;</span><br><span class="line"><span class="keyword">import</span> org.apache.activemq.ActiveMQConnectionFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Receiver</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// ConnectionFactory :连接工厂,JMS 用它创建连接</span></span><br><span class="line">		ConnectionFactory connectionFactory;</span><br><span class="line">		<span class="comment">// Connection :JMS 客户端到JMS Provider 的连接</span></span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">// Session: 一个发送或接收消息的线程</span></span><br><span class="line">		Session session;</span><br><span class="line">		<span class="comment">// Destination :消息的目的地;消息发送给谁.</span></span><br><span class="line">		Destination destination;</span><br><span class="line">		<span class="comment">// 消费者,消息接收者</span></span><br><span class="line">		MessageConsumer consumer;</span><br><span class="line">		connectionFactory = <span class="keyword">new</span> ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,</span><br><span class="line">				ActiveMQConnection.DEFAULT_PASSWORD, <span class="string">"tcp://localhost:61616"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 构造从工厂得到连接对象</span></span><br><span class="line">			connection = connectionFactory.createConnection();</span><br><span class="line">			<span class="comment">// 启动</span></span><br><span class="line">			connection.start();</span><br><span class="line">			<span class="comment">// 获取操作连接</span></span><br><span class="line">			session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">			<span class="comment">// 获取session注意参数值xingbo.xu-queue是一个服务器的queue,须在在ActiveMq的console配置</span></span><br><span class="line">			destination = session.createQueue(<span class="string">"FirstQueue"</span>);</span><br><span class="line">			consumer = session.createConsumer(destination);</span><br><span class="line">			<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">				<span class="comment">// 设置接收者接收消息的时间,为了便于测试,这里谁定为100s</span></span><br><span class="line">				TextMessage message = (TextMessage) consumer.receive(<span class="number">100000</span>);</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">null</span> != message) &#123;</span><br><span class="line">					System.out.println(<span class="string">"客户端消费者收到消息："</span> + message.getText());</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> (<span class="keyword">null</span> != connection)</span><br><span class="line">					connection.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (Throwable ignore) &#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h4 id="4、测试运行"><a href="#4、测试运行" class="headerlink" title="4、测试运行"></a>4、测试运行</h4><p>注意点：先启动Receiver，后启动Sender</p>
+
+      
+    </div>
+</article>
+
+    </li>
+  
+</ul>
 
 
-
-
-<div class="fat-footer">
-	<div class="wrapper">
-		<div class="layout layout--center">
-			<div class="layout__item palm-mb">
-				<div class="media">
-					<img class="headimg" src="https://imgchr.github.la/steve.jpeg" alt="lbyte">
-					<div class="media__body">
-						<h4>justpsvm</h4>
-						<p class="site-description">Stay Hungry,Stay Foolish.</p>
-					</div>
-				</div>
-				<div class="author-contact">
-					<ul>
-						
-							
-							<li>
-				        		<a href="http://weibo.com/" target="_blank">
-				        			
-				        				<i class="iconfont icon-weibo"></i>
-				        			
-				        		</a>
-				        	</li>
-						
-							
-							<li>
-				        		<a href="https://github.com/" target="_blank">
-				        			
-				        				<i class="iconfont icon-github"></i>
-				        			
-				        		</a>
-				        	</li>
-						
-							
-							<li>
-				        		<a href="https://www.zhihu.com/" target="_blank">
-				        			
-										<i class="iconfont icon-zhihu"></i>
-				        			
-				        		</a>
-				        	</li>
-						
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<footer class="footer" role="contentinfo">
-	<div class="wrapper wrapper--wide split split--responsive">
-		
-			<span>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次</span>
-		
-		<span>Theme by <a href="http://github.com/justpsvm">justpsvm</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
-	</div>
+            <footer>
+    <div>© 2019 - lbyte </div>
+    <div>
+        <span>
+            Powered by <a href="https://hexo.io">Hexo</a>
+        </span>
+        ,
+        <span>
+            Theme - <a href="https://github.com/nameoverflow/hexo-theme-icalm">Icalm</a>
+        </span>
+    </div>
 </footer>
 
-	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
-	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
-	<script src="/js/lib.js"></script>
-	<script src="/js/google-code-prettify/prettify.js"></script>
-	<script src="/js/module.js"></script>
-	<script src="/js/script.js"></script>
-	
-		<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	
-	<script type="text/javascript">
-		//代码高亮
-		$(document).ready(function(){
-	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-   			prettyPrint();
-		});
-	</script>
-	
+        </div>
+    </div>
+</div>
+<script src="/js/pager/dist/singlepager.js"></script>
+<script>
+var sp = new Pager('data-pager-shell')
 
+</script>
+</body>
+</html>
