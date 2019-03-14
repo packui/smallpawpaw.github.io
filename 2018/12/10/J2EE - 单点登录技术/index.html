@@ -1,202 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>j2ee - 单点登录技术 | lbyte</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  
-  <meta name="description" content="J2EE - 单点登录技术">
-<meta name="keywords" content="lbyte">
-<meta property="og:type" content="article">
-<meta property="og:title" content="J2EE - 单点登录技术">
-<meta property="og:url" content="http://yoursite.com/2018/12/10/J2EE - 单点登录技术/index.html">
-<meta property="og:site_name" content="lbyte">
-<meta property="og:description" content="J2EE - 单点登录技术">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/12/10/J2EE%20-%20单点登录技术/p1.PNG">
-<meta property="og:image" content="http://yoursite.com/2018/12/10/J2EE%20-%20单点登录技术/p2.PNG">
-<meta property="og:image" content="http://yoursite.com/2018/12/10/J2EE%20-%20单点登录技术/p3.PNG">
-<meta property="og:updated_time" content="2019-03-03T05:50:36.094Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="J2EE - 单点登录技术">
-<meta name="twitter:description" content="J2EE - 单点登录技术">
-<meta name="twitter:image" content="http://yoursite.com/2018/12/10/J2EE%20-%20单点登录技术/p1.PNG">
-  
-    <link rel="alternate" href="/atom.xml" title="lbyte" type="application/atom+xml">
-  
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>J2EE - 单点登录技术 | lbyte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
 
-  
+    <link rel="stylesheet" href="/css/style.css">
 
-  <link rel="icon" href="/css/images/mylogo.jpg">
-  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-  <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
-  <script src="/js/bootstrap.js"></script>
+  </head>
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css">
-
-  
-    <link rel="stylesheet" href="/css/dialog.css">
-  
-
-  
-
-  
-    <link rel="stylesheet" href="/css/header-post.css">
-  
-
-  
-  
-  
-
-</head>
-</html>
+  <body>
+</body></html>
+<header>
+	<a id="logo" href="/" title="lbyte">
+	<img src="/favicon.png" alt="lbyte"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
 
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
 
-  
-  <div id="container">
-    <div id="wrap">
-      
-        <header>
-
-    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="navbar-inner">
-          
-          <div class="container"> 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            
-              <a class="brand" style="
-                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
-                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
-              </a>
-            
-            
-            <div class="navbar-collapse collapse">
-              <ul class="hnav navbar-nav">
-                
-                  <li> <a class="main-nav-link" href="/">首页</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
-                
-                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
-                
-                  <li><div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder>
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-</div></li>
-            </ul></div>
-          </div>
-                
-      </div>
-    </div>
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
 
 </header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable="true"></figure>
+	
+</div>
 
-
-
-      
-            
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;"><article id="post-J2EE - 单点登录技术" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
+<!--文章列表-->
+<div class="wrapper">
   
-    <h1 class="thumb" itemprop="name">
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
       J2EE - 单点登录技术
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/12/10/J2EE - 单点登录技术/" class="article-date">
-	  <time datetime="2018-12-09T16:00:00.000Z" itemprop="datePublished">2018-12-10</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/J2EE/">J2EE</a>
-
-      
-	<a class="article-views">
-	<span id="busuanzi_container_page_pv">
-		阅读量<span id="busuanzi_value_page_pv"></span>
-	</span>
-	</a>
-
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0、写在前面"><a href="#0、写在前面" class="headerlink" title="0、写在前面"></a>0、写在前面</h3><p>​    这篇博文，笔者主要讲解了单点登录技术相关知识点，同时也给出了相应的Demo，使用单点登录和配置文件打交道比较多，在这里，笔者会在配置文件中比较重要的部分加上注释进行讲解，方便大家理解与掌握这项技术，尽管我已经努力将篇幅缩短，文章还是偏长，但是读者静下心来认真看完，相信也会有所收获</p>
+	<div class="post-body mb">
+		<h3 id="0、写在前面"><a href="#0、写在前面" class="headerlink" title="0、写在前面"></a>0、写在前面</h3><p>​    这篇博文，笔者主要讲解了单点登录技术相关知识点，同时也给出了相应的Demo，使用单点登录和配置文件打交道比较多，在这里，笔者会在配置文件中比较重要的部分加上注释进行讲解，方便大家理解与掌握这项技术，尽管我已经努力将篇幅缩短，文章还是偏长，但是读者静下心来认真看完，相信也会有所收获</p>
 <h3 id="一、SSO简介"><a href="#一、SSO简介" class="headerlink" title="一、SSO简介"></a>一、SSO简介</h3><p>​    单点登录技术其实就是SSO技术，在多应用系统当中，因为不同的子系统要部署到不同的服务器上，为了避免每次访问不同的系统都进行登录操作，就引入了单点登录这个概念，利用单点登录可以实现相互信任的多应用系统之间的“一处登录，到处通行”与“一处登出、处处登出”的效果</p>
 <h3 id="二、SSO原理"><a href="#二、SSO原理" class="headerlink" title="二、SSO原理"></a>二、SSO原理</h3><p>​    SSO原理其实很简单，就是有这么一个认证系统，专门用来验证用户的身份是否合法，当用户进行登录操作时，会访问该系统，然后这个认证系统会返回一个ticket票据信息，作为用户的一个合法凭证。</p>
 <p>​    之后，只要是相互信任的子系统，用户就可以凭借这个ticket票据信息进行访问，子系统会拿着这个ticket票据信息去向认证系统进行验证，验证通过，表示该用户已经登录过，则可以进行后续操作</p>
@@ -288,271 +171,122 @@
 <h5 id="6、单点登出"><a href="#6、单点登出" class="headerlink" title="6、单点登出"></a>6、单点登出</h5><p>​    可以在自己的系统当中，给某个按钮或链接设置访问路径为spring-security.xml配置文件中设置的filterProcessesUrl的值即可，例如：使用上面所示的配置文件，则可以像下面一样使用</p>
 <div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/logout/cas"</span>&gt;</span>退出登录<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 <h4 id="（完结！）"><a href="#（完结！）" class="headerlink" title="（完结！）"></a>（完结！）</h4>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      <div>
-        <ul class="post-copyright">
-          <li class="post-copyright-author">
-          <strong>本文作者:  </strong>lbyte
-          </li>
-          <li class="post-copyright-link">
-          <strong>本文链接:  </strong>
-          <a href="/2018/12/10/J2EE - 单点登录技术/" target="_blank" title="J2EE - 单点登录技术">http://yoursite.com/2018/12/10/J2EE - 单点登录技术/</a>
-          </li>
-          <li class="post-copyright-license">
-            <strong>版权声明:   </strong>
-            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-            许可协议。转载请注明出处
-          </li>
-         
-        </ul>
-<div>
-</div></div>
-      
-      
-        
-	<div id="comment">
-		<!-- 来必力City版安装代码 -->
-		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
-		<script type="text/javascript">
-		   (function(d, s) {
-		       var j, e = d.getElementsByTagName(s)[0];
-
-		       if (typeof LivereTower === 'function') { return; }
-
-		       j = d.createElement(s);
-		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-		       j.async = true;
-
-		       e.parentNode.insertBefore(j, e);
-		   })(document, 'script');
-		</script>
-		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-		</div>
-		<!-- City版安装代码已完成 -->
 	</div>
-
-
-
-      
-      
-        
-      
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2018/11/29/算法 - 二叉树 - 完全二叉树转大根堆/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">算法 - 二叉树 - 完全二叉树转大根堆</div>
-    </a>
-  
-</nav>
-
-  
+	<div class="meta split">
+		
+			<span>本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+		<time class="post-date" datetime="2018-12-09T16:00:00.000Z" itemprop="datePublished">2018-12-10</time>
+	</div>
 </article>
 
-<!-- Table of Contents -->
+<!--评论-->
 
-  <aside id="toc-sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0、写在前面"><span class="nav-number">1.</span> <span class="nav-text">0、写在前面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、SSO简介"><span class="nav-number">2.</span> <span class="nav-text">一、SSO简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、SSO原理"><span class="nav-number">3.</span> <span class="nav-text">二、SSO原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、CAS简介"><span class="nav-number">4.</span> <span class="nav-text">三、CAS简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、CAS运行流程图解"><span class="nav-number">5.</span> <span class="nav-text">四、CAS运行流程图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、CAS-Server的部署"><span class="nav-number">6.</span> <span class="nav-text">五、CAS Server的部署</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、安装部署六步曲"><span class="nav-number">6.0.1.</span> <span class="nav-text">1、安装部署六步曲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、体验CAS服务"><span class="nav-number">6.0.2.</span> <span class="nav-text">2、体验CAS服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、输入用户名和密码进行登录，默认提供的登录方式"><span class="nav-number">6.0.3.</span> <span class="nav-text">3、输入用户名和密码进行登录，默认提供的登录方式</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#六、CAS-Server配置（上）"><span class="nav-number">7.</span> <span class="nav-text">六、CAS Server配置（上）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、修改服务端口号"><span class="nav-number">7.0.1.</span> <span class="nav-text">1、修改服务端口号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、去除CAS的HTTPS认证"><span class="nav-number">7.0.2.</span> <span class="nav-text">2、去除CAS的HTTPS认证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、应用Demo1"><span class="nav-number">8.</span> <span class="nav-text">七、应用Demo1</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、搭建一个war工程，在pom-xml配置文件下添加如下内容："><span class="nav-number">8.0.1.</span> <span class="nav-text">1、搭建一个war工程，在pom.xml配置文件下添加如下内容：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、在工程的web-xml配置文件中添加如下内容："><span class="nav-number">8.0.2.</span> <span class="nav-text">2、在工程的web.xml配置文件中添加如下内容：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、在当前工程下创建一个JSP页面，然后就可以在JSP中获取用户登录名了"><span class="nav-number">8.0.3.</span> <span class="nav-text">3、在当前工程下创建一个JSP页面，然后就可以在JSP中获取用户登录名了</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、重复1-3步骤再创建一个war工程"><span class="nav-number">8.0.4.</span> <span class="nav-text">4、重复1-3步骤再创建一个war工程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、测试单点登录效果"><span class="nav-number">8.0.5.</span> <span class="nav-text">5、测试单点登录效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、CAS-Server配置（下）"><span class="nav-number">9.</span> <span class="nav-text">八、CAS Server配置（下）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、修改登出页面（我可不喜欢每次退出登录都跳到CAS提供的默认页面，我想随心所欲的跳，我跳，我跳！）"><span class="nav-number">9.0.1.</span> <span class="nav-text">1、修改登出页面（我可不喜欢每次退出登录都跳到CAS提供的默认页面，我想随心所欲的跳，我跳，我跳！）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、数据源配置（Oh！My-God！我再也不想用casuser和Mellon来登录了！那就看看接下来怎么操作吧…）"><span class="nav-number">9.0.2.</span> <span class="nav-text">2、数据源配置（Oh！My God！我再也不想用casuser和Mellon来登录了！那就看看接下来怎么操作吧…）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#到这里为止，读者可以改造应用Demo1来试试使用自己数据库的信息来验证CAS单点登录效果了，Just-do-it！！"><span class="nav-number">9.0.2.1.</span> <span class="nav-text">到这里为止，读者可以改造应用Demo1来试试使用自己数据库的信息来验证CAS单点登录效果了，Just do it！！</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#３、更换CAS-Server登录页面（各种炫酷的登录页，从这里起步，哈哈！帅气或漂亮的你应该要有更漂亮的登录页面的！）"><span class="nav-number">9.0.3.</span> <span class="nav-text">３、更换CAS Server登录页面（各种炫酷的登录页，从这里起步，哈哈！帅气或漂亮的你应该要有更漂亮的登录页面的！）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#到这里为止，CAS的基本用法以及重要的应用大概都介绍完了，但是，实际开发当中，怎么可能少得了Spring大家族呢，所以，一般来说，我们会将CAS和Spring-Security结合来使用"><span class="nav-number">9.0.3.1.</span> <span class="nav-text">到这里为止，CAS的基本用法以及重要的应用大概都介绍完了，但是，实际开发当中，怎么可能少得了Spring大家族呢，所以，一般来说，我们会将CAS和Spring Security结合来使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、CAS与Spring-Security安全框架的整合开发"><span class="nav-number">10.</span> <span class="nav-text">九、CAS与Spring Security安全框架的整合开发</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、首先，创建一个war工程，在pom-xml配置文件中添加如下内容："><span class="nav-number">10.0.1.</span> <span class="nav-text">1、首先，创建一个war工程，在pom.xml配置文件中添加如下内容：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、配置工程的web-xml文件"><span class="nav-number">10.0.2.</span> <span class="nav-text">2、配置工程的web.xml文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#3、配置Spring-Security的配置文件spring-security-xml，如下：（这个配置文件很重要-）"><span class="nav-number">10.0.2.1.</span> <span class="nav-text">3、配置Spring Security的配置文件spring-security.xml，如下：（这个配置文件很重要*）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、创建一个UserDetailsServiceImpl实现类（认证类）"><span class="nav-number">10.0.3.</span> <span class="nav-text">4、创建一个UserDetailsServiceImpl实现类（认证类）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、获取登录用户的用户名-下面创建一个控制器类UserController简单的测试一下"><span class="nav-number">10.0.4.</span> <span class="nav-text">5、获取登录用户的用户名  - 下面创建一个控制器类UserController简单的测试一下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、单点登出"><span class="nav-number">10.0.5.</span> <span class="nav-text">6、单点登出</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（完结！）"><span class="nav-number">10.1.</span> <span class="nav-text">（完结！）</span></a></li>
-    
-    </div>
-  </aside>
+	
+<div class="ds-thread" data-thread-key="J2EE - 单点登录技术" data-title="J2EE - 单点登录技术" data-url="http://yoursite.com/2018/12/10/J2EE - 单点登录技术/"></div>
+<script type="text/javascript">
 
-</section>
-        
-      </div>
-      
-      <footer id="footer">
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewbox="0 0 100 102" preserveaspectratio="none">
+    <path d="M0 0 L50 100 L100 0 Z"/>
+  </svg>
+
   
 
-  <div class="container">
-      	<div class="row">
-	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 lbyte All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				访客数 : <span id="busuanzi_value_site_uv"></span> |  
-				访问量 : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
-		</div>
 
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src="https://imgchr.github.la/steve.jpeg" alt="lbyte">
+					<div class="media__body">
+						<h4>justpsvm</h4>
+						<p class="site-description">Stay Hungry,Stay Foolish.</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="http://weibo.com/" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://www.zhihu.com/" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
 		
-  </div>
+			<span>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次</span>
+		
+		<span>Theme by <a href="http://github.com/justpsvm">justpsvm</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
 </footer>
 
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
-</script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
-    
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-
-
-
-
-  <script src="/js/dialog.js"></script>
-
-
-
-
-
-
-
-
-	<div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	
+		<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	<script type="text/javascript">
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
 	</script>
+	
 
-
-
-
-
-
-  </div>
-
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
-
-
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
-
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            lbyte
-          </div>
-          <div class="panel-body">
-            Copyright © 2019 lbyte All Rights Reserved.
-          </div>
-        </div>
-      </div>
-
-
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
-</div>
-  
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
-    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
-  
-</body>
-</html>

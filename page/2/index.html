@@ -1,994 +1,296 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-  <title>lbyte</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  
-  <meta name="keywords" content="lbyte">
-<meta property="og:type" content="website">
-<meta property="og:title" content="lbyte">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="lbyte">
-<meta property="og:locale" content="zh-CN">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lbyte">
-  
-    <link rel="alternate" href="/atom.xml" title="lbyte" type="application/atom+xml">
-  
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>lbyte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
 
-  
+    <link rel="stylesheet" href="/css/style.css">
 
-  <link rel="icon" href="/css/images/mylogo.jpg">
-  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
-  <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
 
-  <script src="/js/jquery-3.1.1.min.js"></script>
-  <script src="/js/bootstrap.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css">
-
-  
-    <link rel="stylesheet" href="/css/home.css">
-  
-
-  
-
-  
-
-  
-  
-  
-
-</head>
-</html>
-
+  </head>
 
   <body>
+</body></html>
+<header>
+	<a id="logo" href="/" title="lbyte">
+	<img src="/favicon.png" alt="lbyte"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
 
 
-  
-    <header id="header">
-
-	<!-- 背景图模式 -->
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
 	
 
-    
-      <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
 
-      <!-- Support rolling -->  
-        
-        <section class="awSlider">
-          <div class="carousel slide carousel-fade " data-ride="carousel">
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-               
-                  
-                    <div class="item active">
-                  
-                    <img id="carousel-img0" src="/css/images/home-bg.jpg">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img0 = new Image();
-                      var imageTag0 = document.getElementById("carousel-img0");
-                      img0.src = imageTag0.src;
-                      img0.onload=function(){
-                        if (img0.width / img0.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag0.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag0.style.height = document.body.clientHeight + "px";
-                          imageTag0.style.marginLeft = -(document.body.clientHeight * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img1" src="/css/images/sample.jpg">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img1 = new Image();
-                      var imageTag1 = document.getElementById("carousel-img1");
-                      img1.src = imageTag1.src;
-                      img1.onload=function(){
-                        if (img1.width / img1.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag1.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag1.style.height = document.body.clientHeight + "px";
-                          imageTag1.style.marginLeft = -(document.body.clientHeight * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-                  
-                    <div class="item">
-                  
-                    <img id="carousel-img2" src="https://source.unsplash.com/collection/954550/1920x1080">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img2 = new Image();
-                      var imageTag2 = document.getElementById("carousel-img2");
-                      img2.src = imageTag2.src;
-                      img2.onload=function(){
-                        if (img2.width / img2.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag2.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag2.style.height = document.body.clientHeight + "px";
-                          imageTag2.style.marginLeft = -(document.body.clientHeight * img2.width / img2.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-            </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Geri</span>
-            </a>
-            <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">İleri</span>
-            </a>
-          </div>
-        </section>
-        <script>
-          $('section.awSlider .carousel').carousel({
-              pause: '',
-              interval: 5000
-          });
-          var startImage = $('section.awSlider .item.active > img').attr('src');
-          $('section.awSlider .carousel').on('slid.bs.carousel', function () {
-              var bscn = $(this).find('.item.active > img').attr('src');
-              $('section.awSlider > img').attr('src', bscn);
-          });
-        </script>
-      
-
-    
- 
-
-
-    <canvas width="100%" height="100%"></canvas>
-    <script>
-      var c = document.getElementsByTagName('canvas')[0],
-          x = c.getContext('2d'),
-          w = window.innerWidth,
-          h = window.innerHeight,
-          pr = window.devicePixelRatio || 1,
-          f = 90,
-          q,
-          m = Math,
-          r = 0,
-          u = m.PI*2,
-          v = m.cos,
-          z = m.random
-      c.width = w*pr
-      c.height = h*pr
-      x.scale(pr, pr)
-      x.globalAlpha = 0.6
-
-      <!-- 折线Polyline背景 -->
-      
-    </script>
-    
-
-    
-      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
-    
-
-        
-          <div class="homelogoback" style="border: 1px solid #404040;">
-            <h1><a href="#content" id="logo">lbyte</a></h1>
-            <h3></h3>
-            <h5>lbyte</h5>
-            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
-          </div>
-        
-    
-    </div>
-  </div>
-
-  <!-- 自适应主页背景大图 -->
-  
-
- <!-- home_logo_image居中 -->
- 
-    <script>
-        var homelogodiv = document.getElementById("homelogo");
-        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
-          homelogodiv.style.width = document.body.clientWidth + "px";
-          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
-        } else {
-          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
-          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
-        }
-    </script>
-  
-
-  <div class="intro-navigate">
-      <p class="navigater-list">
-        
-          <a id="beautifont" class="main-nav-link" href="/">首页</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/archives">归档</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/categories">分类</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/tags">标签</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/about">关于</a>
-        
-      </p>
-  </div>
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
 
 </header>
-  
-  <div id="container">
-    <div id="wrap">
-      
-            
-      <div id="content" class="outer">
-        
-          <section id="main" style="float:none;">
-  
-    <article id="post-算法 - 查找系列 - 有序数组相关查找" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/19/算法 - 查找系列 - 有序数组相关查找/">算法 - 查找系列 - 有序数组相关查找</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/19/算法 - 查找系列 - 有序数组相关查找/" class="article-date">
-	  <time datetime="2018-10-18T16:00:00.000Z" itemprop="datePublished">2018-10-19</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          【代码】12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394import org.junit.Test;/** * 一个有序数组A，另一个无序数组B，请打印B中的所有不在A中的数，A数组长...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/19/算法 - 查找系列 - 有序数组相关查找/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-多线程 - 创建线程的三种方式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/13/多线程 - 创建线程的三种方式/">多线程 - 创建线程的三种方式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/13/多线程 - 创建线程的三种方式/" class="article-date">
-	  <time datetime="2018-10-12T16:00:00.000Z" itemprop="datePublished">2018-10-13</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/多线程/">多线程</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          一、方式一：继承Thread1234567891011121314151617/** 方式一：继承Thread */public class ExtendsThread extends Thread &#123;	@Override	public void run() &#123;		System.out.println("继承Thread的线程执行了...");	&#125;              public static void main(String[] args) &#12...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/13/多线程 - 创建线程的三种方式/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-算法 - 应用递归求最大值" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/10/算法 - 应用递归求最大值/">算法 - 应用递归求最大值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/10/算法 - 应用递归求最大值/" class="article-date">
-	  <time datetime="2018-10-09T16:00:00.000Z" itemprop="datePublished">2018-10-10</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          【图解】
-【代码】1234567891011121314151617181920212223242526import org.junit.Test;/** * 应用递归求最大值 *  * @author lbyte */public class RecursionGetMaxValue &#123;	public int getMax(int[] arr, int L, int R) &#123;		if (L == R) &#123;			return arr[L];		&#125;		...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/10/算法 - 应用递归求最大值/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-多线程 - 随机性" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/09/多线程 - 随机性/">多线程 - 随机性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/09/多线程 - 随机性/" class="article-date">
-	  <time datetime="2018-10-08T16:00:00.000Z" itemprop="datePublished">2018-10-09</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/多线程/">多线程</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          [代码]12345678910111213141516171819202122232425262728293031323334package thread;/** * 验证线程执行的随机性 *  * @author lbyte */public class RandomExecute extends Thread&#123;		private int i;		public RandomExecute(int i) &#123;		this.i=i;	&#125;	@Override	pub...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/09/多线程 - 随机性/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-算法 - 链表系列 - 单链表的基本实现" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/09/算法 - 链表系列 - 单链表的基本实现/">算法 - 链表系列 - 单链表的基本实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/09/算法 - 链表系列 - 单链表的基本实现/" class="article-date">
-	  <time datetime="2018-10-08T16:00:00.000Z" itemprop="datePublished">2018-10-09</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          【代码】123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/09/算法 - 链表系列 - 单链表的基本实现/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-算法 - 栈系列 - 中缀表达式转后缀表达式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/06/算法 - 栈系列 - 中缀表达式转后缀表达式/">算法 - 栈系列 - 中缀表达式转后缀表达式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/06/算法 - 栈系列 - 中缀表达式转后缀表达式/" class="article-date">
-	  <time datetime="2018-10-05T16:00:00.000Z" itemprop="datePublished">2018-10-06</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          一、什么是中缀表达式 &amp; 后缀表达式？中缀表达式： 我们生活中使用的算术表达式其实就是中缀表达式举个例子：（1+6/3）*6 - 5
-后缀表达式： 更有利于计算机进行计算的一种表达式，不再包含括号()，也不再考虑运算符优先级，一律从左到右进行计算举个例子： 1  2  +
-二、怎么将中缀表达式转换成后缀表达式呢？利用栈结构来实现中缀表达式   -&gt;   后缀表达式
-转换规则：
-
-在中缀表达式中从左往右依次进行操作
-括号的优先级最低、其余运算符优先级与我们日常使用一致
-遇到数字...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/06/算法 - 栈系列 - 中缀表达式转后缀表达式/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-算法 - 栈系列 - 获取栈内元素最大值" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/05/算法 - 栈系列 - 获取栈内元素最大值/">算法 - 栈系列 - 获取栈内元素最大值</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/05/算法 - 栈系列 - 获取栈内元素最大值/" class="article-date">
-	  <time datetime="2018-10-04T16:00:00.000Z" itemprop="datePublished">2018-10-05</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          [描述]设计一个支持获取栈内元素最大值的栈
-[要求]1、具备pop、push、getMax的功能
-2、pop、push、getMax方法的时间复杂度都是O(1)
-[思路]1、使用两个栈：一个栈专门用来存放添加的元素，作为数据栈，命名dataStack；另一个栈专门用来存放每个时刻栈内最大的元素，作为最大栈，命名maxStack；
-2、当新加入一个元素，则将元素加入到dataStack中
-如果此时maxStack为空，则将这个元素也加入到maxStack当中；
-如果此时maxStack不为空...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/05/算法 - 栈系列 - 获取栈内元素最大值/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-算法 - 链表系列 - 逆置单向链表" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/03/算法 - 链表系列 - 逆置单向链表/">算法 - 链表系列 - 逆置单向链表</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/03/算法 - 链表系列 - 逆置单向链表/" class="article-date">
-	  <time datetime="2018-10-02T16:00:00.000Z" itemprop="datePublished">2018-10-03</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          0、定义一个链表结点【代码】12345678910111213141516171819202122232425262728class Node &#123;	// 数据域	private int data;	// 指针域	private Node next;	public Node(int data) &#123;		this.data = data;	&#125;	public int getData() &#123;		return data;	&#125;	public void s...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/03/算法 - 链表系列 - 逆置单向链表/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-算法 - 素数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/01/算法 - 素数/">算法 - 素数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/01/算法 - 素数/" class="article-date">
-	  <time datetime="2018-09-30T16:00:00.000Z" itemprop="datePublished">2018-10-01</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          [描述]设计一个方法，判断给定的数是否是素数
-[要求]无
-[思路]0、素数：除了1和本身再无其它约数
-[代码]1234567891011121314151617181920212223242526/** * 判断素数 *  * @author lbyte */public class Prime &#123;	public static boolean isPrime(int num) &#123;		if (num &lt; 2) &#123;			return false;		&#12...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/01/算法 - 素数/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-算法 - 矩阵相乘" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/01/算法 - 矩阵相乘/">算法 - 常见系列 - 矩阵相乘</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/01/算法 - 矩阵相乘/" class="article-date">
-	  <time datetime="2018-09-30T16:00:00.000Z" itemprop="datePublished">2018-10-01</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/算法/">算法</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          [描述]设计一个方法，实现矩阵相乘的计算
-[要求]无
-[思路]0、A、B为矩阵，计算C = AB
-1、当矩阵A的列数等于矩阵B的行数时，A与B可以相乘
-2、矩阵C的行数等于矩阵A的行数，C的列数等于B的列数
-3、乘积C的第m行第n列的元素等于矩阵A的第m行的元素与矩阵B的第n列对应元素乘积之和
-[代码]123456789101112131415161718192021222324252627282930313233343536373839/** * 矩阵相乘 *  * @author lb...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/01/算法 - 矩阵相乘/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
-  </nav>
-
-</section>
-        
-      </div>
-      
-        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
-      
-      <footer id="footer">
-  
-
-  <div class="container">
-      	<div class="row">
-	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 lbyte All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				访客数 : <span id="busuanzi_value_site_uv"></span> |  
-				访问量 : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
 		</div>
+	</section>
+	
+		<figure class="top-image" data-enable="true"></figure>
+	
+</div>
 
+<!--文章列表-->
+<div class="wrapper">
+  
+    <ul class="posts-list mb+ js-posts">
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+            <i class="post-status iconfont icon-icon"></i>  
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/19/算法 - 查找系列 - 有序数组相关查找/">算法 - 查找系列 - 有序数组相关查找</a></span>
+            <time class="post-time" datetime="2018-10-18T16:00:00.000Z" itemprop="datePublished">2018-10-19</time>
+          </h2>
+        </li>
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/13/多线程 - 创建线程的三种方式/">多线程 - 创建线程的三种方式</a></span>
+            <time class="post-time" datetime="2018-10-12T16:00:00.000Z" itemprop="datePublished">2018-10-13</time>
+          </h2>
+        </li>
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/10/算法 - 应用递归求最大值/">算法 - 应用递归求最大值</a></span>
+            <time class="post-time" datetime="2018-10-09T16:00:00.000Z" itemprop="datePublished">2018-10-10</time>
+          </h2>
+        </li>
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/09/多线程 - 随机性/">多线程 - 随机性</a></span>
+            <time class="post-time" datetime="2018-10-08T16:00:00.000Z" itemprop="datePublished">2018-10-09</time>
+          </h2>
+        </li>
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/09/算法 - 链表系列 - 单链表的基本实现/">算法 - 链表系列 - 单链表的基本实现</a></span>
+            <time class="post-time" datetime="2018-10-08T16:00:00.000Z" itemprop="datePublished">2018-10-09</time>
+          </h2>
+        </li>
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/06/算法 - 栈系列 - 中缀表达式转后缀表达式/">算法 - 栈系列 - 中缀表达式转后缀表达式</a></span>
+            <time class="post-time" datetime="2018-10-05T16:00:00.000Z" itemprop="datePublished">2018-10-06</time>
+          </h2>
+        </li>
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/05/算法 - 栈系列 - 获取栈内元素最大值/">算法 - 栈系列 - 获取栈内元素最大值</a></span>
+            <time class="post-time" datetime="2018-10-04T16:00:00.000Z" itemprop="datePublished">2018-10-05</time>
+          </h2>
+        </li>
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/03/算法 - 链表系列 - 逆置单向链表/">算法 - 链表系列 - 逆置单向链表</a></span>
+            <time class="post-time" datetime="2018-10-02T16:00:00.000Z" itemprop="datePublished">2018-10-03</time>
+          </h2>
+        </li>
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/01/算法 - 素数/">算法 - 素数</a></span>
+            <time class="post-time" datetime="2018-09-30T16:00:00.000Z" itemprop="datePublished">2018-10-01</time>
+          </h2>
+        </li>
+      
+                <!--<div class="type">
+          <div class="mask">
+            <i class="iconfont"></i>
+          </div>
+          </div>-->
+        <li class="post">
+          
+          <h2 class="no-background">
+            <span><a href="/2018/10/01/算法 - 矩阵相乘/">算法 - 常见系列 - 矩阵相乘</a></span>
+            <time class="post-time" datetime="2018-09-30T16:00:00.000Z" itemprop="datePublished">2018-10-01</time>
+          </h2>
+        </li>
+      
+    </ul>
+    
+      <div class="pagination mb+ js-pagination">
+        <div class="js-next pagination__load">
+            <a href="/page/3/"><i class="iconfont icon-next"></i></a></div>
+        </div>
+    </div>
+    
+
+  
+
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src="https://imgchr.github.la/steve.jpeg" alt="lbyte">
+					<div class="media__body">
+						<h4>justpsvm</h4>
+						<p class="site-description">Stay Hungry,Stay Foolish.</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="http://weibo.com/" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://www.zhihu.com/" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
 		
-  </div>
+			<span>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次</span>
+		
+		<span>Theme by <a href="http://github.com/justpsvm">justpsvm</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
 </footer>
 
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
-</script>
-    </div>
-    <!-- <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-    <a href="/categories" class="mobile-nav-link">Categories</a>
-  
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
-    
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-
-
-  <script src="/js/home.js"></script>
-
-
-
-
-
-
-
-
-
-
-	<div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	
+		<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	<script type="text/javascript">
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
 	</script>
+	
 
-
-
-
-
-
-  </div>
-
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
-
-
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
-
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            lbyte
-          </div>
-          <div class="panel-body">
-            Copyright © 2019 lbyte All Rights Reserved.
-          </div>
-        </div>
-      </div>
-
-
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
-</div>
-  
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
-</body>
-</html>
